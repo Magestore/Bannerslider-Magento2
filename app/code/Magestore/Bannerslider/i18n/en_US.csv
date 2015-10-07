@@ -1,0 +1,157 @@
+------- Please choose position -------,------- Please choose position -------
+-------- Please select a slider --------,-------- Please select a slider --------
+--------- Please choose style -------,--------- Please choose style -------
+A total of %1 record(s) have been changed status.,A total of %1 record(s) have been changed status.
+A total of %1 record(s) have been deleted.,A total of %1 record(s) have been deleted.
+Add New Banner,Add New Banner
+Add New Slider,Add New Slider
+Alt Text,Alt Text
+Animation Effect,Animation Effect
+Are you sure?,Are you sure?
+Banner ID,Banner ID
+Banner ID,Banner ID
+Banner Image,Banner Image
+Banner Information,Banner Information
+Banner Status,Banner Status
+Banners,Banners
+Bar,Bar
+Blue,Blue
+Bottom-Left,Bottom-Left
+Bottom-Middle,Bottom-Middle
+Bottom-Right,Bottom-Right
+Cart-Content-Top,Cart-Content-Top
+Catalog and product,Catalog and product
+Catalog-Content-Top,Catalog-Content-Top
+Catalog-Menu-Bottom,Catalog-Menu-Bottom
+Catalog-Menu-Top,Catalog-Menu-Top
+Catalog-Page-Bottom,Catalog-Page-Bottom
+Catalog-Sidebar-Bottom-Left,Catalog-Sidebar-Bottom-Left
+Catalog-Sidebar-Bottom-Right,Catalog-Sidebar-Bottom-Right
+Catalog-Sidebar-Top-Left,Catalog-Sidebar-Top-Left
+Catalog-Sidebar-Top-Right,Catalog-Sidebar-Top-Right
+Category-Content-Top,Category-Content-Top
+Category-Menu-Bottom,Category-Menu-Bottom
+Category-Menu-Top,Category-Menu-Top
+Category-Page-Bottom,Category-Page-Bottom
+Category-Sidebar-Bottom-Left,Category-Sidebar-Bottom-Left
+Category-Sidebar-Bottom-Right,Category-Sidebar-Bottom-Right
+Category-Sidebar-Top-Left,Category-Sidebar-Top-Left
+Category-Sidebar-Top-Right,Category-Sidebar-Top-Right
+Change status,Change status
+Checkout-Content-Top,Checkout-Content-Top
+Color,Color
+Content-Top,Content-Top
+Create Banner,Create Banner
+CSV,CSV
+Custom,Custom
+Custom slider,Custom slider
+Customer-Content-Top,Customer-Content-Top
+Customer-Siderbar-Main-Bottom,Customer-Siderbar-Main-Bottom
+Customer-Siderbar-Main-Top,Customer-Siderbar-Main-Top
+Default for using in CMS page template,Default for using in CMS page template
+Delete,Delete
+Delete,Delete
+Delete successfully !,Delete successfully !
+Disabled,Disabled
+Edit,Edit
+Edit Banner '%1',Edit Banner '%1'
+Enabled,Enabled
+Ending time,Ending time
+Excel,Excel
+Fade,Fade
+Fade,Fade
+FlexSlider 1,FlexSlider 1
+FlexSlider 2,FlexSlider 2
+FlexSlider 3,FlexSlider 3
+FlexSlider 4,FlexSlider 4
+General (will be disaplyed on all pages),General (will be disaplyed on all pages)
+Gray,Gray
+Green,Green
+Height,Height
+Homepage-Content-Top,Homepage-Content-Top
+ID,ID
+Image,Image
+Left-Middle,Left-Middle
+List Slider,List Slider
+Manage Banners,Manage Banners
+Manage Sliders,Manage Sliders
+Menu-Bottom,Menu-Bottom
+Menu-Top,Menu-Top
+Name,Name
+No,No
+Note displayed on all pages,Note displayed on all pages
+Note\'s content,Note\'s content
+Orange,Orange
+Order,Order
+Orderly,Orderly
+Page-Bottom,Page-Bottom
+Please select banner(s).,Please select banner(s).
+Please select banner(s).,Please select banner(s).
+Please select slider(s).,Please select slider(s).
+Pop up on Home page,Pop up on Home page
+Popular positions,Popular positions
+Position,Position
+Preview,Preview
+Preview Slider Styles,Preview Slider Styles
+Product-Content-Top,Product-Content-Top
+Product-Menu-Bottom,Product-Menu-Bottom
+Product-Menu-Top,Product-Menu-Top
+Product-Sidebar-Bottom-Left,Product-Sidebar-Bottom-Left
+Product-Sidebar-Bottom-Right,Product-Sidebar-Bottom-Right
+Product-Sidebar-Top-Left,Product-Sidebar-Top-Left
+Product-Sidebar-Top-Right,Product-Sidebar-Top-Right
+Rain,Rain
+Random,Random
+Red,Red
+Reports,Reports
+Responsive Slider,Responsive Slider
+Right-Middle,Right-Middle
+Save and Continue Edit,Save and Continue Edit
+Save Banner,Save Banner
+Save Slider,Save Slider
+Select available Slider Styles,Select available Slider Styles
+Select Slider Mode,Select Slider Mode
+Sidebar-Bottom-Left,Sidebar-Bottom-Left
+Sidebar-Bottom-Right,Sidebar-Bottom-Right
+Sidebar-Top-Left,Sidebar-Top-Left
+Sidebar-Top-Right,Sidebar-Top-Right
+Slide,Slide
+Slider,Slider
+Slider Evolution Caborno,Slider Evolution Caborno
+Slider Evolution Default,Slider Evolution Default
+Slider Evolution Fresh,Slider Evolution Fresh
+Slider Evolution Minimalist,Slider Evolution Minimalist
+Slider ID,Slider ID
+Slider Information,Slider Information
+Slider Status,Slider Status
+Slider\'s Mode,Slider\'s Mode
+Something went wrong while saving the banner.,Something went wrong while saving the banner.
+Something went wrong while saving the slider.,Something went wrong while saving the slider.
+Sort type,Sort type
+Special Slider,Special Slider
+Speed,Speed
+Square,Square
+Starting time,Starting time
+Status,Status
+Target,Target
+The banner has been saved.,The banner has been saved.
+The slider has been saved.,The slider has been saved.
+This banner no longer exists.,This banner no longer exists.
+This slider no longer exists.,This slider no longer exists.
+Title,Title
+Top-Left,Top-Left
+Top-Middle,Top-Middle
+Top-Right,Top-Right
+URL,URL
+Use Default Value,Use Default Value
+Width,Width
+XML,XML
+Yellow,Yellow
+Yes,Yes
+"You have to save banner and close this window!","You have to save banner and close this window!"
+"Add code below to a template file.","Add code below to a template file."
+"You can put a slider on a cms page. Below is an example which we put a slider with slider_id is your_slider_id on a cms page.","You can put a slider on a cms page. Below is an example which we put a slider with slider_id is your_slider_id on a cms page."
+"Please copy and paste the code below on one of xml layout files where you want to show the banner Please replace the your_slider_id variable with your own slider Id.","Please copy and paste the code below on one of xml layout files where you want to show the banner Please replace the your_slider_id variable with your own slider Id."
+New Window with Browser Navigation,New Window with Browser Navigation
+Parent Window with Browser Navigation,Parent Window with Browser Navigation
+New Window without Browser Navigation,New Window without Browser Navigation

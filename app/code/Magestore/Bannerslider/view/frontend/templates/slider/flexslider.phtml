@@ -1,0 +1,113 @@
+<?php
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/flexslider.css')?>">
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/custom.css')?>">
+<script type="text/javascript">
+(function  () {
+    var flexSliderSelector = '<?php echo $htmlId; ?>';
+    require(['jquery', 'magestore/flexslider'], function($) {
+        $(document).ready(function($) {
+            var STYLESLIDE_FLEXSLIDER_ONE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_ONE ?>;
+            var STYLESLIDE_FLEXSLIDER_TWO = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO ?>;
+            var STYLESLIDE_FLEXSLIDER_THREE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_THREE ?>;
+
+            switch (<?php echo $styleSlide ?>) {
+                case STYLESLIDE_FLEXSLIDER_ONE:
+                    $('.' + flexSliderSelector).flexslider({
+                        animation: '<?php echo $slider->getData("animationB") ?>',
+                        slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>,
+                    });
+                    break;
+                case STYLESLIDE_FLEXSLIDER_TWO:
+                    $('.' + flexSliderSelector).flexslider({
+                        animation: '<?php echo $slider->getData("animationB") ?>',
+                        controlNav: 'thumbnails',
+                        slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>,
+                    });
+                    break;
+                case STYLESLIDE_FLEXSLIDER_THREE:
+                    $('#'+flexSliderSelector + '-carousel').flexslider({
+                        animation: 'slide',
+                        controlNav: false,
+                        animationLoop: true,
+                        slideshow: true,
+                        itemWidth: 210,
+                        itemMargin: 5,
+                        asNavFor: '#' + flexSliderSelector
+                    });
+                    $('#' + flexSliderSelector).flexslider({
+                        animation: '<?php echo $slider->getData("animationB") ?>',
+                        controlNav: false,
+                        animationLoop: true,
+                        slideshow: true,
+                        sync: '#'+flexSliderSelector + '-carousel',
+                        slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>
+                    });
+                    break;
+                default:
+                    $('.' + flexSliderSelector).flexslider({
+                        animation: 'slide',
+                        animationLoop: true,
+                        itemWidth: 400,
+                        slideshow: true,
+                        itemMargin: 5,
+                        minItems: 2,
+                        maxItems: 4
+                    });
+                    break;
+            }
+
+        });
+    });
+})();
+</script>
+<div class="magestore-bannerslider-standard" data-mage-init='{"magestore/impress": {"url": "<?php echo $this->getUrl("bannerslider/index/impress") ?>", "slider_id": "<?php echo $block->getSlider()->getId() ?>"}}'>
+    <?php if ($block->isShowTitle() == \Magestore\Bannerslider\Model\Slider::SHOW_TITLE_YES) :
+    ?>
+        <div class="magestore-bannerslider-title" style="font: bold 12px/16px Arial, Helvetica, sans-serif;text-transform: uppercase;color: #e26703;">
+        <strong><span><?php echo $slider->getTitle(); ?></span></strong>
+        </div>
+    <?php endif; ?>
+    <div class="magestore-bannerslide-flex-slider" style="margin: auto; margin-bottom: 40px;">
+        <div id="<?php echo $htmlId ?>" class="flexslider flexslider-content-image <?php echo $htmlId ?>" style="margin:auto">
+            <ul class="slides">
+                <?php foreach ($bannerCollection as $banner):
+                ?>
+                    <?php if ($styleSlide == \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO) : ?>
+                    <li data-thumb="<?php echo $block->getBannerImageUrl($banner) ?>">
+                        <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+                        <img alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+                        </a>
+                    </li>
+                    <?php else :
+                    ?>
+                    <li>
+                        <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+                        <img alt="<?php echo $banner->getImageAlt() ?>"  src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                <?php endforeach ?>
+            </ul>
+        </div>
+
+        <?php if ($styleSlide ==  \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_THREE) :
+        ?>
+        <!-- for flex slide carousel-->
+        <div id="<?php echo $htmlId ?>-carousel" class="flexslider flexslider-carousel" style="margin:auto">
+            <ul class="slides">
+                <?php foreach ($bannerCollection as $banner) :
+                ?>
+                    <li>
+                        <img  alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>" />
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>

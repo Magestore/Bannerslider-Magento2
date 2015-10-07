@@ -1,0 +1,38 @@
+<?php
+$styleSlide= $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/slider'.$styleSlide.'.css')?>">
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/custom.css')?>">
+<script type="text/javascript">
+    require(['jquery','magestore/evolutionslider'], function($) {
+        $(document).ready(function($) {
+            $(".magestore-bannerslider-evolution-slider-<?php echo $slider->getId(); ?>").slideshow({
+                width: '<?php echo $slider->getWidth() ?>',
+                height: '<?php echo $slider->getHeight() ?>',
+                transition: '<?php echo $slider->getData("animationB") ?>',
+                delay : <?php echo $slider->getSliderSpeed() ?>,
+            });
+        });
+    });
+</script>
+<div class="magestore-bannerslider-standard" data-mage-init='{"magestore/impress": {"url": "<?php echo $this->getUrl("bannerslider/index/impress") ?>", "slider_id": "<?php echo $slider->getId() ?>"}}'>
+    <?php if ($block->isShowTitle() == 1) :
+    ?>
+        <div class="magestore-bannerslider-title" style="font: bold 12px/16px Arial, Helvetica, sans-serif;text-transform: uppercase;color: #e26703; margin: auto; width: <?php echo $slider->getWidth() ?>px;">
+        <strong><span><?php echo $slider->getTitle(); ?></span></strong>
+        </div>
+    <?php endif; ?>
+    <div class="magestore-bannerslide-evolution-slider" style="margin: auto; margin-bottom: 40px">
+        <div class="magestore-bannerslider-evolution-slider-<?php echo $slider->getId(); ?>" style="margin:auto; width: <?php echo $slider->getWidth() ?>px; height: <?php echo $slider->getHeight() ?>px;">
+            <?php foreach ($block->getBannerCollection() as $banner) :
+            ?>
+                <div>
+                    <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+                    <img style="width: <?php echo $slider->getWidth() ?>px; height: <?php echo $slider->getHeight() ?>px;" alt="<?php echo $banner->getImageAlt() ?>"  src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+                    </a>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>

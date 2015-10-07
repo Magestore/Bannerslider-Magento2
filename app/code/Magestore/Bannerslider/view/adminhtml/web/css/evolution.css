@@ -1,0 +1,18 @@
+/*
+* @Author: zerokool - Nguyen Huu Tien
+* @Date:   2015-07-19 22:26:44
+* @Last Modified by:   zero
+* @Last Modified time: 2015-07-29 16:34:42
+*/
+.jquery-slider-wrapper img {
+    width: 100%;
+    height: 100%;
+    /*max-width: none !important;*/
+}
+.jquery-slider-wrapper img {
+    width: 100%;
+    height: 100%;
+}
+.jquery-slider-wrapper .jquery-slider-slide {
+	height: 100%;
+}

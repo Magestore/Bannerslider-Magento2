@@ -1,0 +1,166 @@
+.ads-note-box{
+	position:relative;
+	width:100%;
+}
+.ads-note-close{
+	width:40px;
+	height:40px;
+	background:#CCC;
+	position:absolute;
+	z-index:91000;
+	cursor:pointer;
+}
+.ads-note-content{
+	width:120px;
+	position:relative;
+}
+.ads-note-content-text{
+	padding:5.5px;
+	width:130px;
+	min-height:29px;
+	position:relative;
+}
+.ads-note-content-img{
+	background:#fff;
+	width:300px;
+	height:0;
+	overflow:hidden;
+	clear:both;
+}
+
+.ads-note-left .ads-note-show{
+	width:30px;
+	height:30px;
+	position:absolute;
+	top:0px;
+	left:-35px;
+	border-top-right-radius:30px;
+	border-bottom-right-radius:30px;
+}
+.ads-note-right .ads-note-show{
+	width:30px;
+	height:30px;
+	position:absolute;
+	top:0px;
+	right:-35px;
+	border-top-left-radius:30px;
+	border-bottom-left-radius:30px;
+}
+.ads-note-top .ads-note-show{
+	height:30px;
+	width: 30px;
+	position:absolute;
+	top:-35px;
+	left:110px;
+	border-bottom-right-radius:30px;
+	border-bottom-left-radius:30px;
+}
+.ads-note-bottom .ads-note-show{
+	height:31px;
+	width: 30px;
+	position:absolute;
+	bottom:-35px;
+	left:120px;
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
+}
+/*Button Arrow*/
+.ads-note-left .ads-note-show-arrow{
+	width:20px;
+	height:20px;
+	background:url(../images/arrow.png) no-repeat -59px 0;
+	margin:auto;
+	margin-top:4px;
+}
+.ads-note-right .ads-note-show-arrow{
+	width:20px;
+	height:20px;
+	background:url(../images/arrow.png) no-repeat -20px 0;
+	margin:auto;
+	margin-top:4px;
+}
+.ads-note-top .ads-note-show-arrow{
+	width:19px;
+	height:20px;
+	background:url(../images/arrow.png) no-repeat -0 0;
+	margin:auto;
+	margin-top:4px;
+	position:relative;
+}
+.ads-note-bottom .ads-note-show-arrow{
+	width:19px;
+	height:20px;
+	background:url(../images/arrow.png) no-repeat -39px 0;
+	margin:auto;
+	margin-top:4px;
+}
+/*Button close*/
+.ads-note-left .ads-note-close{
+	top:0px;
+	left:0;
+	background:url(../images/close-button.png) no-repeat -40px;
+	z-index: 9999;
+}
+.ads-note-right .ads-note-close{
+	top:0px;
+	right:0;
+	background:url(../images/close-button.png) no-repeat -80px;
+	z-index: 9999;
+}
+.ads-note-top .ads-note-close{
+	position:absolute;
+	bottom:0;
+	left:0;
+	background:url(../images/close-button.png) no-repeat 0px;
+	z-index: 9999;
+}
+.ads-note-bottom .ads-note-close{
+	top:0px;
+	left:0;
+	background:url(../images/close-button.png) no-repeat -40px;
+	z-index: 9999;
+}
+/*Content*/
+.ads-note-left .ads-note-content{
+	top:0;
+	left:0;
+}
+.ads-note-right .ads-note-content{
+	top:0;
+	right:0;
+}
+.ads-note-top .ads-note-content{
+	top:0;
+	right:0;
+}
+.ads-note-bottom .ads-note-content{
+	top:0;
+	left:0;
+}
+.ads-note-left .ads-note-content-text{
+	padding-left:40px;
+	border-top-right-radius:30px;
+
+}
+.ads-note-right .ads-note-content-text{
+	padding-left:10px;
+	padding-right:35px;
+	border-top-left-radius:30px;
+	text-align:right;
+	float:right;
+
+}
+.ads-note-top .ads-note-content-text{
+	padding-right:10px;
+	padding-left:35px;
+	text-align:left;
+	border-bottom-right-radius:30px;
+	float:left;
+
+}
+.ads-note-bottom .ads-note-content-text{
+	padding-left:40px;
+	border-top-right-radius:30px;
+
+}
+

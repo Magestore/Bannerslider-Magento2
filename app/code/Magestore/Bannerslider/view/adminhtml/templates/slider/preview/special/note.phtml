@@ -1,0 +1,81 @@
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/jquery.ads.note.css')?>">
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/slider3.css')?>">
+<?php
+$previewNoteIDMin = \Magestore\Bannerslider\Block\Adminhtml\Preview::PREVIEW_NOTE_ID_MIN;
+$previewNoteIDMax = \Magestore\Bannerslider\Block\Adminhtml\Preview::PREVIEW_NOTE_ID_MAX;
+ ?>
+<?php
+for ($i = $previewNoteIDMin; $i <= $previewNoteIDMax; ++$i) :
+?>
+  <div id="ads-note-slider<?php echo $i ?>" class="ads-note-slider">
+
+  <div class="ads-note-box" >
+
+       <div class="ads-note-content">
+           <div class="ads-note-content-text">
+                  Text color <strong><span style="color: #83ba00;">Green</span></strong>
+           </div>
+           <div class="ads-note-content-img">
+               <div class="note-slider note-slider<?php echo $i ?>"  style="margin:auto">
+                   <div>
+                       <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_cheesecake_brownie.jpg')?>" width="300px" height="200px" />
+                   </div>
+                   <div>
+                       <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_lemon.jpg') ?>" width="300px" height="200px" />
+                   </div>
+                   <div>
+                       <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_donut.jpg') ?>" width="300px" height="200px" />
+                   </div>
+                   <div>
+                       <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_caramel.jpg') ?>" width="300px" height="200px" />
+                   </div>
+               </div>
+           </div>
+       </div>
+  </div>
+</div>
+<?php endfor; ?>
+<script type="text/javascript">
+require(['jquery','magestore/evolutionslider', 'magestore/note'], function($) {
+    $(document).ready(function($) {
+        $("#ads-note-slider1").adsNote({
+            bgcolor: "#83ba00", //23b8ff
+            position: "top-left"
+        });
+        $("#ads-note-slider2").adsNote({
+            bgcolor: "#f7d700",
+            position: "top-right"
+        });
+        $("#ads-note-slider3").adsNote({
+            bgcolor: "#dd0707",
+            position: "middle-top"
+        });
+        $("#ads-note-slider4").adsNote({
+            bgcolor: "#ee5f00",
+            position: "middle-left"
+        });
+        $("#ads-note-slider5").adsNote({
+            bgcolor: "#999",
+            position: "middle-right"
+        });
+        $("#ads-note-slider6").adsNote({
+            bgcolor: "#23b8ff",
+            position: "bottom-left"
+        });
+        $("#ads-note-slider7").adsNote({
+            bgcolor: "#ee5f00",
+            position: "middle-bottom"
+        });
+        $("#ads-note-slider8").adsNote({
+            bgcolor: "#dd0707",
+            position: "bottom-right"
+        });
+
+        $(".note-slider").slideshow({
+            width: 300,
+            height: 200,
+            transition: 'squarerandom'
+        });
+    });
+});
+</script>

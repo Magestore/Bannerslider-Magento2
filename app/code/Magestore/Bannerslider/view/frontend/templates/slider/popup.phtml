@@ -1,0 +1,33 @@
+<?php
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$banner = $block->getFirstBannerItem();
+?>
+<div id="magestore-bannerslider-popup-<?php echo $slider->getId() ?>" class="magestore-bannerslider-popup" data-mage-init='{"magestore/impress": {"url": "<?php echo $this->getUrl("bannerslider/index/impress") ?>", "slider_id": "<?php echo $block->getSlider()->getId() ?>"}}'>
+    <div id="magestore-bannerslider-popup-close-<?php echo $slider->getId() ?>" title="Close"></div>
+    <?php if ($slider->getShowTitle() == 1) :
+    ?>
+        <p style="text-transform: uppercase; color: #e26703; margin-bottom: 0px; background-color: rgb(255, 255, 255);">
+            <strong><span><?php echo $slider->getTitle() ?></span></strong>
+        </p>
+    <?php endif; ?>
+    <?php if ($banner->getId()) :
+    ?>
+        <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+            <img style="width:<?php echo $slider->getWidth() ?>px; height: <?php echo $slider->getHeight() ?>px;"  alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+        </a>
+    <?php endif ?>
+    </div>
+<script type="text/javascript">
+require(['jquery','magestore/popup'], function($) {
+    $(document).ready(function() {
+        var left = ($(window).width() - <?php echo $slider->getWidth() ?>) / 2;
+        var top =  ($(window).height() - <?php echo $slider->getHeight() ?>) / 2;
+        $('#magestore-bannerslider-popup-<?php echo $slider->getId() ?>').bPopup({
+            position: [left, top]
+        });
+    });
+});
+</script>
+
+

@@ -1,0 +1,40 @@
+body {
+  font:80%/1.25em arial, sans-serif;
+  letter-spacing:.1em;
+}
+h1, h2, p, pre {
+	display:block;
+	width:600px;
+}
+h1 {
+	font:225%/1.25em garamond, georgia, 'times new roman', serif;
+	text-align:center;
+	color:#333;
+	margin:0 auto 15px;
+}
+h2 {
+	font:200%/1.25em garamond, georgia, 'times new roman', serif;
+	text-align:center;
+	color:#AAA;
+	margin:30px auto 15px;
+}
+p {
+	margin:15px auto;
+	padding:15px;
+	border-top:1px dotted #DDD;
+	border-bottom:1px dotted #DDD;
+}
+	p.highlight {
+	  border:1px solid #FFD;
+	  padding:15px;
+	  background:#FFE;
+	  color:#820;
+	}
+	p.footer {
+		display:block;
+		text-align:center;
+		border:none;
+	}
+pre {
+	margin:15px auto;
+}

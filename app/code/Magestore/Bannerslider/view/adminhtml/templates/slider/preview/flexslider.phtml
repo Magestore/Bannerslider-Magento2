@@ -1,0 +1,121 @@
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/flexslider.css')?>">
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/evolution.css')?>">
+<?php $sliderpreviewId = $this->getRequest()->getParam('sliderpreview_id') ?>
+<script type="text/javascript">
+require(['jquery', 'magestore/flexslider'], function($) {
+    $(document).ready(function($) {
+        var STYLESLIDE_FLEXSLIDER_ONE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_ONE ?>;
+        var STYLESLIDE_FLEXSLIDER_TWO = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO ?>;
+        var STYLESLIDE_FLEXSLIDER_THREE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_THREE ?>;
+
+        switch (<?php echo $sliderpreviewId ?>) {
+            case STYLESLIDE_FLEXSLIDER_ONE:
+                $('.flexslider').flexslider({
+                    animation: "slide"
+                });
+                break;
+            case STYLESLIDE_FLEXSLIDER_TWO:
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails"
+                });
+                break;
+            case STYLESLIDE_FLEXSLIDER_THREE:
+                $('#carousel').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    itemWidth: 210,
+                    itemMargin: 5,
+                    asNavFor: '#flexslider'
+                });
+
+                $('#flexslider').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    sync: "#carousel"
+                });
+                break;
+            default:
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    animationLoop: false,
+                    itemWidth: 400,
+                    itemMargin: 5,
+                    minItems: 2,
+                    maxItems: 4
+                });
+                break;
+        }
+
+    });
+});
+</script>
+<div style="width: 500; margin: auto">
+    <?php if ($sliderpreviewId == \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO) :
+    ?>
+    <div id="flexslider" class="flexslider" style="margin:auto">
+        <ul class="slides">
+            <li data-thumb="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_cheesecake_brownie.jpg')?>">
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_cheesecake_brownie.jpg')?>"  height="500px" />
+            </li>
+
+            <li data-thumb="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_lemon.jpg')?>">
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_lemon.jpg') ?>"  height="500px" />
+            </li>
+
+            <li data-thumb="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_donut.jpg')?>">
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_donut.jpg') ?>"  height="500px" />
+            </li>
+            <li data-thumb="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_caramel.jpg')?>">
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_caramel.jpg') ?>"  height="500px" />
+            </li>
+        </ul>
+    </div>
+    <?php else :
+    ?>
+    <div id="flexslider" class="flexslider" style="margin:auto">
+        <ul class="slides">
+            <li>
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_cheesecake_brownie.jpg')?>"  height="500px" />
+            </li>
+
+            <li>
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_lemon.jpg') ?>"  height="500px" />
+            </li>
+
+            <li>
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_donut.jpg') ?>"  height="500px" />
+            </li>
+            <li>
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_caramel.jpg') ?>"  height="500px" />
+            </li>
+        </ul>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($sliderpreviewId == \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_THREE) :
+    ?>
+    <div id="carousel" class="flexslider" style="margin:auto">
+        <ul class="slides">
+            <li>
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_cheesecake_brownie.jpg')?>"/>
+            </li>
+
+            <li>
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_lemon.jpg') ?>"/>
+            </li>
+
+            <li>
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_donut.jpg') ?>" />
+            </li>
+            <li>
+                <img src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_caramel.jpg') ?>" />
+            </li>
+        </ul>
+    </div>
+    <?php endif; ?>
+</div>

@@ -1,0 +1,89 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * @see \Magestore\Bannerslider\Block\Adminhtml\Form\Renderer\Fieldset\Element
+ */
+?>
+<?php
+/* @var $block \Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Element */
+$element = $block->getElement();
+$note = $element->getNote() ? '<div class="note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox' || $element->getExtType() == 'radio';
+$addOn = $element->getBeforeElementHtml() || $element->getAfterElementHtml();
+$fieldId = ($element->getHtmlId()) ? ' id="attribute-' . $element->getHtmlId() . '-container"' : '';
+$fieldClass = "field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($addOn) ? ' with-addon' : '';
+$fieldClass .= ($element->getRequired()) ? ' required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId());
+?>
+
+<?php $block->checkFieldDisable() ?>
+<?php
+    $elementToggleCode = $element->getToggleCode() ? $element->getToggleCode()
+        : 'toggleValueElements(this, this.parentNode.parentNode.parentNode)';
+?>
+<?php if (!$element->getNoDisplay()): ?>
+    <?php if ($element->getType() == 'hidden'): ?>
+        <?php echo $element->getElementHtml() ?>
+    <?php else: ?>
+    <div<?php echo $fieldAttributes ?> data-attribute-code="<?php echo $element->getHtmlId() ?>"
+        data-apply-to="<?php echo $block->escapeHtml($this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode(
+            $element->hasEntityAttribute() ? $element->getEntityAttribute()->getApplyTo() : []
+        ))?>"
+        >
+        <?php if ($elementBeforeLabel): ?>
+            <?php echo $block->getElementHtml() ?>
+            <?php echo $element->getLabelHtml() ?>
+            <?php echo $note ?>
+        <?php else: ?>
+            <?php echo $element->getLabelHtml() ?>
+            <div class="control">
+                <?php echo($addOn) ? '<div class="addon">' . $block->getElementHtml() . '</div>' : $block->getElementHtml(); ?>
+                <?php echo $note ?>
+            </div>
+        <?php endif; ?>
+        <div class="field-service" value-scope="<?php echo $block->getScopeLabel()?>">
+            <?php if ($block->canDisplayUseDefault()): ?>
+                <label for="<?php echo $element->getHtmlId() ?>_default" class="choice use-default">
+                    <input <?php if ($element->getReadonly()):?> disabled="disabled"<?php endif; ?>
+                            type="checkbox"
+                            name="use_default[<?php echo $block->getElementName() ?>]"
+                            class="use-default-control"
+                            id="<?php echo $element->getHtmlId() ?>_default"
+                            <?php if ($block->usedDefault()): ?>
+                                checked="checked" value="true"
+                            <?php else: ?>
+                                value="false"
+                            <?php endif; ?>
+                    />
+                    <span class="use-default-label"><?php echo __('Use Default Value') ?></span>
+                </label>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+<?php endif; ?>
+<script type="text/javascript">
+require(['jquery'],function ($) {
+    $('#<?php echo $element->getHtmlId() ?>_default').click(function(event) {
+        $('#<?php echo $element->getHtmlId() ?>').prop('disabled', $(this).prop('checked'));
+        $(this).val($(this).prop('checked'));
+        if(this.id == 'page_image_default') {
+            $('#page_image_delete').prop('disabled', $(this).prop('checked'));
+            $('#page_image_delete').next().toggleClass('disabled');
+        }
+    });
+});
+</script>

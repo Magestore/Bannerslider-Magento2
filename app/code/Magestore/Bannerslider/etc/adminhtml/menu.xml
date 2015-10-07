@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Bannerslider
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+    	<add id="Magestore_Bannerslider::bannerslider" title="Banner Slider" module="Magestore_Bannerslider" sortOrder="10" resource="Magestore_Bannerslider::bannerslider"/>
+
+        <!-- Magestore_Bannerslider::bannerslider_bannerslider -->
+        <add id="Magestore_Bannerslider::bannerslider_bannerslider" title="Banner Slider" module="Magestore_Bannerslider" sortOrder="10" parent="Magestore_Bannerslider::bannerslider" resource="Magestore_Bannerslider::bannerslider_bannerslider"/>
+
+		<add id="Magestore_Bannerslider::bannerslider_sliders" title="Manage Sliders" module="Magestore_Bannerslider" sortOrder="10" parent="Magestore_Bannerslider::bannerslider_bannerslider" action="bannerslideradmin/slider" resource="Magestore_Bannerslider::bannerslider_sliders"/>
+
+        <add id="Magestore_Bannerslider::bannerslider_banners" title="Manage Banners" module="Magestore_Bannerslider" sortOrder="10" parent="Magestore_Bannerslider::bannerslider_bannerslider" action="bannerslideradmin/banner" resource="Magestore_Bannerslider::bannerslider_banners"/>
+
+        <add id="Magestore_Bannerslider::bannerslider_coreslider" title="Preview Slider Styles" module="Magestore_Bannerslider" sortOrder="10" parent="Magestore_Bannerslider::bannerslider_bannerslider" action="bannerslideradmin/coreslider" resource="Magestore_Bannerslider::bannerslider_coreslider"/>
+
+        <!-- Magestore_Bannerslider::bannerslider_reports -->
+        <add id="Magestore_Bannerslider::bannerslider_reports" title="Reports" module="Magestore_Bannerslider" sortOrder="10" parent="Magestore_Bannerslider::bannerslider_bannerslider" resource="Magestore_Bannerslider::bannerslider_reports"/>
+
+        <add id="Magestore_Bannerslider::bannerslider_reports_perslider" title="Reports Per Slider" module="Magestore_Bannerslider" sortOrder="10" parent="Magestore_Bannerslider::bannerslider_reports" action="bannerslideradmin/report" resource="Magestore_Bannerslider::bannerslider_reports_perslider"/>
+        <add id="Magestore_Bannerslider::bannerslider_reports_allslider" title="Reports All Sliders" module="Magestore_Bannerslider" sortOrder="10" parent="Magestore_Bannerslider::bannerslider_reports" action="bannerslideradmin/report/banner" resource="Magestore_Bannerslider::bannerslider_reports_allslider"/>
+        <!-- End Magestore_Bannerslider::bannerslider_reports -->
+
+        <add id="Magestore_Bannerslider::settings" title="Settings" module="Magestore_Bannerslider" sortOrder="20" parent="Magestore_Bannerslider::bannerslider_bannerslider" action="adminhtml/system_config/edit/section/bannerslider" resource="Magestore_Bannerslider::settings"/>
+
+        <!-- End Magestore_Bannerslider::bannerslider_bannerslider -->
+    </menu>
+</config>

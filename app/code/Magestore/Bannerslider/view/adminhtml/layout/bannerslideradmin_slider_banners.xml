@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Bannerslider
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+        <block class="Magestore\Bannerslider\Block\Adminhtml\Slider\Edit\Tab\Banners" name="bannerslider.slider.edit.tab.banners"/>
+        <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="crosssell_grid_serializer">
+            <arguments>
+                <argument name="input_names" xsi:type="string">order_banner_slider</argument>
+                <argument name="grid_block" xsi:type="string">bannerslider.slider.edit.tab.banners</argument>
+                <argument name="callback" xsi:type="string">getSelectedSliderBanners</argument>
+                <argument name="input_element_name" xsi:type="string">slider_banner</argument>
+                <argument name="reload_param_name" xsi:type="string">banner</argument>
+            </arguments>
+        </block>
+    </container>
+</layout>

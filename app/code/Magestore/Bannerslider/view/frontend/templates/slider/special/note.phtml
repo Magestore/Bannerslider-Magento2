@@ -1,0 +1,49 @@
+<?php
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/jquery.ads.note.css')?>">
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/slider3.css')?>">
+
+<div id="ads-note-<?php echo $slider->getId() ?>" data-mage-init='{"magestore/impress": {"url": "<?php echo $this->getUrl("bannerslider/index/impress") ?>", "slider_id": "<?php echo $block->getSlider()->getId() ?>"}}' >
+	<div class="ads-note-box" >
+        <div class="ads-note-content">
+            <div class="ads-note-content-text">
+                <?php if ($slider->getShowTitle() == 1) :
+                 ?>
+                        <strong><span style="text-transform: uppercase; color: #ffffff; margin-bottom: 1px"><?php echo $slider->getTitle() ?></span></strong>
+                        <br>
+                <?php endif; ?>
+                <?php echo $slider->getDescription() ?>
+            </div>
+            <div class="ads-note-content-img">
+               <div class="bannerslide-minimal-slider">
+                    <div class="slider2-note-<?php echo $slider->getId() ?>">
+                        <?php foreach ($block->getBannerCollection() as $banner) :
+                         ?>
+                            <div>
+                                <a href="<?php echo $banner->getClickUrl(); ?>" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}'  style="display:block;"><img  alt="<?php echo $banner->getImageAlt() ?>"  src="<?php echo $block->getBannerImageUrl($banner) ?>" title="<?php echo $banner->getName(); ?>" width="300" height="200" style="height: 200px !important;"/></a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+require(['jquery','magestore/evolutionslider', 'magestore/note'], function($) {
+    $(document).ready(function($) {
+        $("#ads-note-<?php echo $slider->getId() ?>").adsNote({
+            bgcolor: "<?php echo $slider->getNoteColor() ?>", //23b8ff
+            position: "<?php echo $block->getPositionNote() ?>"
+        });
+        $(".slider2-note-<?php echo $slider->getId() ?>").slideshow({
+            width: 300,
+            height: 200,
+            transition: 'square'
+        });
+
+    });
+});
+</script>
