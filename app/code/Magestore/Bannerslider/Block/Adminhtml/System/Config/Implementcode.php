@@ -38,8 +38,7 @@ class Implementcode extends \Magento\Config\Block\System\Config\Form\Field
 		        <div class="messages">
 		            <div class="message" style="margin-top: 10px;">
 		                <strong>'.__('Add code below to a template file.').'</strong><br />
-		                $this->getLayout()->createBlock("Magestore\Bannerslider\Block\SliderItem")
-                            ->setSliderId(your_slider_id)->toHtml();
+		                $this->getLayout()->createBlock("Magestore\Bannerslider\Block\SliderItem")->setSliderId(your_slider_id)->toHtml();
 		            </div>
 		            <div class="message" style="margin-top: 10px;">
 		                <strong>'.__('You can put a slider on a cms page. Below is an example which we put a slider with slider_id is your_slider_id on a cms page.').'</strong><br />

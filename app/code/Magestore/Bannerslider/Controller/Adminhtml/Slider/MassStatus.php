@@ -38,7 +38,6 @@ class MassStatus extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
     {
         $sliderIds = $this->getRequest()->getParam('slider');
         $status = $this->getRequest()->getParam('status');
-        $storeViewId = $this->getRequest()->getParam('store');
         if (!is_array($sliderIds) || empty($sliderIds)) {
             $this->messageManager->addError(__('Please select slider(s).'));
         } else {
@@ -58,6 +57,8 @@ class MassStatus extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
                 $this->messageManager->addError($e->getMessage());
             }
         }
-        $this->_redirect('*/*/', ['store' => $this->getRequest()->getParam('store')]);
+        $resultRedirect = $this->_resultRedirectFactory->create();
+
+        return $resultRedirect->setPath('*/*/');
     }
 }

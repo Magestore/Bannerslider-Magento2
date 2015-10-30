@@ -93,8 +93,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
          * create_banner_popupwindow : window popup
          * create_banner_popupwindow.banner_id : Id of banner after creating in popup
          * bannerGridJsObject : grid object
-         * bannerGridJsObject.reloadParams['banner[]'] : An array contain Ids of banners, ex. 
-         * Array [ "2", "30", "31", "32", .. ]
+         * bannerGridJsObject.reloadParams['banner[]'] : An array contain Ids of banners, ex. Array [ "2", "30", "31", "32", .. ]
          * edit_form: form
          * edit_form.slider_banner: input for serialization
          *
@@ -104,15 +103,12 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
 			require(['jquery'], function($){
 				window.openBannerPopupWindow = function (url) {
 					var left = ($(document).width()-1000)/2, height= $(document).height();
-					var create_banner_popupwindow = window.open(url, '_blank','width=1000,resizable=1,scrollbars=1,
-                    toolbar=1,'+'left='+left+',height='+height);
+					var create_banner_popupwindow = window.open(url, '_blank','width=1000,resizable=1,scrollbars=1,toolbar=1,'+'left='+left+',height='+height);
 					var windowFocusHandle = function(){
 						if (create_banner_popupwindow.closed) {
 							if (typeof bannerGridJsObject !== 'undefined' && create_banner_popupwindow.banner_id) {
-								bannerGridJsObject.reloadParams['banner[]'].push(create_banner_popupwindow.banner_id 
-                                + '');
-								$(edit_form.slider_banner).val($(edit_form.slider_banner).val() + '&' 
-                                + create_banner_popupwindow.banner_id + '=' + Base64.encode('order_banner_slider=0'));
+								bannerGridJsObject.reloadParams['banner[]'].push(create_banner_popupwindow.banner_id + '');
+								$(edit_form.slider_banner).val($(edit_form.slider_banner).val() + '&' + create_banner_popupwindow.banner_id + '=' + Base64.encode('order_banner_slider=0'));
 				       			bannerGridJsObject.setPage(create_banner_popupwindow.banner_id);
 				       		}
 				       		$(window).off('focus',windowFocusHandle);

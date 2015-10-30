@@ -68,15 +68,6 @@ class Index extends \Magento\Framework\App\Action\Action
     protected $_resultRawFactory;
 
     /**
-     * A factory that knows how to create a "page" result
-     * Requires an instance of controller action in order to impose page type,
-     * which is by convention is determined from the controller action class.
-     *
-     * @var \Magento\Framework\View\Result\PageFactory
-     */
-    protected $_resultPageFactory;
-
-    /**
      * Cookie Manager.
      *
      * @var \Magento\Framework\Stdlib\CookieManagerInterface
@@ -118,7 +109,6 @@ class Index extends \Magento\Framework\App\Action\Action
      * @param \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory          $cookieMetadataFactory
      * @param \Magento\Framework\Stdlib\CookieManagerInterface                $cookieManager
      * @param \Magento\Framework\Controller\Result\RawFactory                 $resultRawFactory
-     * @param \Magento\Framework\View\Result\PageFactory                      $resultPageFactory
      * @param \Magento\Framework\HTTP\PhpEnvironment\Request                  $phpEnvironmentRequest
      */
     public function __construct(
@@ -130,7 +120,6 @@ class Index extends \Magento\Framework\App\Action\Action
         \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory $cookieMetadataFactory,
         \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager,
         \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Framework\HTTP\PhpEnvironment\Request $phpEnvironmentRequest,
         \Magento\Framework\Logger\Monolog $monolog,
         \Magento\Framework\Stdlib\DateTime\Timezone $stdTimezone
@@ -142,7 +131,6 @@ class Index extends \Magento\Framework\App\Action\Action
         $this->_reportCollectionFactory = $reportCollectionFactory;
 
         $this->_resultRawFactory = $resultRawFactory;
-        $this->_resultPageFactory = $resultPageFactory;
         $this->_cookieManager = $cookieManager;
         $this->_cookieMetadataFactory = $cookieMetadataFactory;
         $this->_phpEnvironmentRequest = $phpEnvironmentRequest;

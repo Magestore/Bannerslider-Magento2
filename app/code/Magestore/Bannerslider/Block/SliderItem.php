@@ -22,7 +22,7 @@
 
 namespace Magestore\Bannerslider\Block;
 
-use Magestore\Bannerslider\Model\Slider;
+use Magestore\Bannerslider\Model\Slider as SliderModel;
 use Magestore\Bannerslider\Model\Status;
 
 /**
@@ -124,10 +124,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      * @param \Magento\Framework\View\Element\Template\Context                $context
      * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
      * @param \Magestore\Bannerslider\Model\SliderFactory                     $sliderFactory
-     * @param \Magestore\Bannerslider\Model\Slider                            $slider
+     * @param SliderModel $slider
      * @param \Magento\Framework\Stdlib\DateTime\DateTime                     $stdlibDateTime
      * @param \Magestore\Bannerslider\Helper\Data                             $bannersliderHelper
-     * @param \Magento\Framework\ObjectFactory                                $objectFactory
      * @param \Magento\Store\Model\StoreManagerInterface                      $storeManager
      * @param \Magento\Framework\Stdlib\DateTime\Timezone                     $_stdTimezone
      * @param array                                                           $data
@@ -136,11 +135,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         \Magento\Framework\View\Element\Template\Context $context,
         \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
-        \Magestore\Bannerslider\Model\Slider $slider,
+        SliderModel $slider,
         \Magento\Framework\Stdlib\DateTime\DateTime $stdlibDateTime,
         \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
-        \Magento\Framework\ObjectFactory $objectFactory,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Stdlib\DateTime\Timezone $_stdTimezone,
         array $data = []
     ) {
@@ -149,7 +146,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         $this->_slider = $slider;
         $this->_stdlibDateTime = $stdlibDateTime;
         $this->_bannersliderHelper = $bannersliderHelper;
-        $this->_storeManager = $storeManager;
+        $this->_storeManager = $context->getStoreManager();
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
         $this->_scopeConfig = $context->getScopeConfig();
         $this->_stdTimezone = $_stdTimezone;
@@ -162,10 +159,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template
     {
         $store = $this->_storeManager->getStore()->getId();
 
-        $configEnable = $this->_scopeConfig
-            ->getValue(Slider::XML_CONFIG_BANNERSLIDER, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store);
-        if (!$configEnable || $this->_slider->getStatus() === Status::STATUS_DISABLED || !$this->_slider->getId() 
-            || !$this->getBannerCollection()->getSize()) {
+        $configEnable = $this->_scopeConfig->getValue(SliderModel::XML_CONFIG_BANNERSLIDER, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store);
+        if (!$configEnable || $this->_slider->getStatus() === Status::STATUS_DISABLED || !$this->_slider->getId() || !$this->getBannerCollection()->getSize()) {
             return '';
         }
 
@@ -185,10 +180,10 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         if ($slider->getId()) {
             $this->setSlider($slider);
 
-            if ($slider->getStyleContent() == Slider::STYLE_CONTENT_NO) {
-                $this->setTemplate(Slider::STYLESLIDE_CUSTOM_TEMPLATE);
+            if ($slider->getStyleContent() == SliderModel::STYLE_CONTENT_NO) {
+                $this->setTemplate(SliderModel::STYLESLIDE_CUSTOM_TEMPLATE);
             } else {
-                $this->setTemplate($this->getStyleSlideTemplate($slider->getStyleSlide()));
+                $this->setStyleSlideTemplate($slider->getStyleSlide());
             }
         }
 
@@ -196,41 +191,41 @@ class SliderItem extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * get style slide template.
+     * set style slide template.
      *
      * @param int $styleSlideId
      *
      * @return string
      */
-    public function getStyleSlideTemplate($styleSlideId)
+    public function setStyleSlideTemplate($styleSlideId)
     {
         switch ($styleSlideId) {
             //Evolution slide
-            case Slider::STYLESLIDE_EVOLUTION_ONE:
-            case Slider::STYLESLIDE_EVOLUTION_TWO:
-            case Slider::STYLESLIDE_EVOLUTION_THREE:
-            case Slider::STYLESLIDE_EVOLUTION_FOUR:
-                return self::STYLESLIDE_EVOLUTION_TEMPLATE;
+            case SliderModel::STYLESLIDE_EVOLUTION_ONE:
+            case SliderModel::STYLESLIDE_EVOLUTION_TWO:
+            case SliderModel::STYLESLIDE_EVOLUTION_THREE:
+            case SliderModel::STYLESLIDE_EVOLUTION_FOUR:
+                $this->setTemplate(self::STYLESLIDE_EVOLUTION_TEMPLATE);
                 break;
 
-            case Slider::STYLESLIDE_POPUP:
-                return self::STYLESLIDE_POPUP_TEMPLATE;
+            case SliderModel::STYLESLIDE_POPUP:
+                $this->setTemplate(self::STYLESLIDE_POPUP_TEMPLATE);
                 break;
             //Note all page
-            case Slider::STYLESLIDE_SPECIAL_NOTE:
-                return self::STYLESLIDE_SPECIAL_NOTE_TEMPLATE;
+            case SliderModel::STYLESLIDE_SPECIAL_NOTE:
+                $this->setTemplate(self::STYLESLIDE_SPECIAL_NOTE_TEMPLATE);
                 break;
 
             // Flex slide
             default:
-                return self::STYLESLIDE_FLEXSLIDER_TEMPLATE;
+                $this->setTemplate(self::STYLESLIDE_FLEXSLIDER_TEMPLATE);
                 break;
         }
     }
 
     public function isShowTitle()
     {
-        return $this->_slider->getShowTitle() == Slider::SHOW_TITLE_YES ? true : false;
+        return $this->_slider->getShowTitle() == SliderModel::SHOW_TITLE_YES ? TRUE : FALSE;
     }
 
     /**
@@ -243,6 +238,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         $storeViewId = $this->_storeManager->getStore()->getId();
         $dateTimeNow = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
 
+        /** @var \Magestore\Bannerslider\Model\Resource\Banner\Collection $bannerCollection */
         $bannerCollection = $this->_bannerCollectionFactory->create()
             ->setStoreViewId($storeViewId)
             ->addFieldToFilter('slider_id', $this->_slider->getId())
@@ -251,8 +247,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template
             ->addFieldToFilter('end_time', ['gteq' => $dateTimeNow])
             ->setOrder('order_banner', 'ASC');
 
-        if ($this->_slider->getSortType() == Slider::SORT_TYPE_RANDOM) {
-            $bannerCollection->getSelect()->orderRand('main_table.banner_id');
+        if ($this->_slider->getSortType() == SliderModel::SORT_TYPE_RANDOM) {
+            $bannerCollection->setOrderRandByBannerId();
         }
 
         return $bannerCollection;

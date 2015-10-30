@@ -31,25 +31,12 @@ use Magestore\Bannerslider\Model\Status;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class Banner extends \Magento\Backend\Block\Widget\Form\Generic 
-    implements \Magento\Backend\Block\Widget\Tab\TabInterface
+class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
     /**
      * @var \Magento\Framework\ObjectFactory
      */
     protected $_objectFactory;
-
-    /**
-     * @var \Magento\Store\Model\System\Store
-     */
-    protected $_systemStore;
-
-    /**
-     * helper.
-     *
-     * @var \Magestore\Bannerslider\Helper\Data
-     */
-    protected $_bannersliderHelper;
 
     /**
      * value collection factory.
@@ -74,10 +61,8 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic
      * constructor.
      *
      * @param \Magento\Backend\Block\Template\Context                        $context
-     * @param \Magestore\Bannerslider\Helper\Data                            $bannersliderHelper
      * @param \Magento\Framework\Registry                                    $registry
      * @param \Magento\Framework\Data\FormFactory                            $formFactory
-     * @param \Magento\Store\Model\System\Store                              $systemStore
      * @param \Magento\Framework\ObjectFactory                               $objectFactory
      * @param \Magestore\Bannerslider\Model\Banner                           $banner
      * @param \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory $valueCollectionFactory
@@ -86,19 +71,14 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
-        \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\Store\Model\System\Store $systemStore,
         \Magento\Framework\ObjectFactory $objectFactory,
         \Magestore\Bannerslider\Model\Banner $banner,
         \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory $valueCollectionFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
         array $data = []
     ) {
-        $this->_localeDate = $context->getLocaleDate();
-        $this->_systemStore = $systemStore;
-        $this->_bannersliderHelper = $bannersliderHelper;
         $this->_objectFactory = $objectFactory;
         $this->_banner = $banner;
         $this->_valueCollectionFactory = $valueCollectionFactory;

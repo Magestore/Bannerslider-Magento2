@@ -22,7 +22,7 @@
 
 namespace Magestore\Bannerslider\Block\Adminhtml;
 
-use Magestore\Bannerslider\Model\Slider;
+use Magestore\Bannerslider\Model\Slider as SliderModel;
 
 /**
  * Preview Block
@@ -44,20 +44,11 @@ class Preview extends \Magento\Backend\Block\Template
     const STYLESLIDE_SPECIAL_NOTE_PREVIEW_TEMPLATE = 'Magestore_Bannerslider::slider/preview/special/note.phtml';
     const STYLESLIDE_FLEXSLIDER_PREVIEW_TEMPLATE = 'Magestore_Bannerslider::slider/preview/flexslider.phtml';
 
-    /**
-     * [$_bannersliderHelper description].
-     *
-     * @var \Magestore\Bannerslider\Helper\Data
-     */
-    protected $_bannersliderHelper;
-
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
-        \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_bannersliderHelper = $bannersliderHelper;
     }
 
     /**
@@ -68,36 +59,33 @@ class Preview extends \Magento\Backend\Block\Template
     protected function _prepareLayout()
     {
         $styleslideParam = $this->getRequest()->getParam(self::STYLESLIDE_PARAM);
-        $this->setTemplate($this->getStyleSlidePreviewTemplate($styleslideParam));
+        $this->setStyleSlidePreviewTemplate($styleslideParam);
 
         return parent::_prepareLayout();
     }
 
     /**
-     * get style slide template.
+     * set style slide template.
      *
      * @return string|null
      */
-    public function getStyleSlidePreviewTemplate($styleslideParam)
+    public function setStyleSlidePreviewTemplate($styleslideParam)
     {
         switch ($styleslideParam) {
-            case Slider::STYLESLIDE_EVOLUTION_ONE:
-            case Slider::STYLESLIDE_EVOLUTION_TWO:
-            case Slider::STYLESLIDE_EVOLUTION_THREE:
-            case Slider::STYLESLIDE_EVOLUTION_FOUR:
-                return self::STYLESLIDE_EVOLUTION_PREVIEW_TEMPLATE;
+            case SliderModel::STYLESLIDE_EVOLUTION_ONE:
+            case SliderModel::STYLESLIDE_EVOLUTION_TWO:
+            case SliderModel::STYLESLIDE_EVOLUTION_THREE:
+            case SliderModel::STYLESLIDE_EVOLUTION_FOUR:
+                $this->setTemplate(self::STYLESLIDE_EVOLUTION_PREVIEW_TEMPLATE);
                 break;
-            case Slider::STYLESLIDE_SPECIAL_NOTE:
-                return self::STYLESLIDE_SPECIAL_NOTE_PREVIEW_TEMPLATE;
+            case SliderModel::STYLESLIDE_SPECIAL_NOTE:
+                $this->setTemplate(self::STYLESLIDE_SPECIAL_NOTE_PREVIEW_TEMPLATE);
                 break;
-            case Slider::STYLESLIDE_FLEXSLIDER_ONE:
-            case Slider::STYLESLIDE_FLEXSLIDER_TWO:
-            case Slider::STYLESLIDE_FLEXSLIDER_THREE:
-            case Slider::STYLESLIDE_FLEXSLIDER_FOUR:
-                return self::STYLESLIDE_FLEXSLIDER_PREVIEW_TEMPLATE;
-                break;
-            default:
-                return;
+            case SliderModel::STYLESLIDE_FLEXSLIDER_ONE:
+            case SliderModel::STYLESLIDE_FLEXSLIDER_TWO:
+            case SliderModel::STYLESLIDE_FLEXSLIDER_THREE:
+            case SliderModel::STYLESLIDE_FLEXSLIDER_FOUR:
+                $this->setTemplate(self::STYLESLIDE_FLEXSLIDER_PREVIEW_TEMPLATE);
                 break;
         }
     }
@@ -110,10 +98,10 @@ class Preview extends \Magento\Backend\Block\Template
     public function getSliderEvolutionTransitionArray()
     {
         return [
-            Slider::STYLESLIDE_EVOLUTION_ONE => 'explode',
-            Slider::STYLESLIDE_EVOLUTION_TWO => ['barLeft', 'barRight'],
-            Slider::STYLESLIDE_EVOLUTION_THREE => 'square',
-            Slider::STYLESLIDE_EVOLUTION_FOUR => 'squareRandom',
+            SliderModel::STYLESLIDE_EVOLUTION_ONE   => 'explode',
+            SliderModel::STYLESLIDE_EVOLUTION_TWO   => ['barLeft', 'barRight'],
+            SliderModel::STYLESLIDE_EVOLUTION_THREE => 'square',
+            SliderModel::STYLESLIDE_EVOLUTION_FOUR  => 'squareRandom',
         ];
     }
 }

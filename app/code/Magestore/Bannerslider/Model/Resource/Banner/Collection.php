@@ -50,6 +50,11 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
     protected $_addedTable = [];
 
     /**
+     * @var bool
+     */
+    protected $_isLoadSliderTitle = FALSE;
+
+    /**
      * _construct
      * @return void
      */
@@ -81,6 +86,66 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
         if ($storeViewId = $this->_storeManager->getStore()->getId()) {
             $this->_storeViewId = $storeViewId;
         }
+    }
+
+    /**
+     * @param $isLoadSliderTitle
+     * @return $this
+     */
+    public function setIsLoadSliderTitle($isLoadSliderTitle)
+    {
+        $this->_isLoadSliderTitle = $isLoadSliderTitle;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLoadSliderTitle()
+    {
+        return $this->_isLoadSliderTitle;
+    }
+
+    /**
+     * Before load action.
+     *
+     * @return $this
+     */
+    protected function _beforeLoad()
+    {
+        if ($this->isLoadSliderTitle()) {
+            $this->joinSliderTitle();
+        }
+
+        return parent::_beforeLoad();
+    }
+
+    /**
+     * join table to get Slider Title of Banner
+     * @return $this
+     */
+    public function joinSliderTitle()
+    {
+        $this->getSelect()->joinLeft(
+            ['sliderTable' => $this->getTable('magestore_bannerslider_slider')],
+            'main_table.slider_id = sliderTable.slider_id',
+            ['title' => 'sliderTable.title', 'slider_status' => 'sliderTable.status']
+        );
+
+        return $this;
+    }
+
+    /**
+     * set order random by banner id
+     *
+     * @return $this
+     */
+    public function setOrderRandByBannerId()
+    {
+        $this->getSelect()->orderRand('main_table.banner_id');
+
+        return $this;
     }
 
     /**
@@ -119,8 +184,10 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
             'click_url',
             'target',
             'image_alt',
+            'maintable',
         );
         $storeViewId = $this->getStoreViewId();
+
         if (in_array($field, $attributes) && $storeViewId) {
             if (!in_array($field, $this->_addedTable)) {
                 $sql = sprintf(
@@ -137,7 +204,21 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
                 $this->_addedTable[] = $field;
             }
 
-            return parent::addFieldToFilter($field, $condition);
+            $fieldNullCondition = $this->_translateCondition("$field.value", ['null' => TRUE]);
+
+            $mainfieldCondition = $this->_translateCondition("main_table.$field", $condition);
+
+            $fieldCondition = $this->_translateCondition("$field.value", $condition);
+
+            $condition = $this->_implodeCondition(
+                $this->_implodeCondition($fieldNullCondition, $mainfieldCondition, \Zend_Db_Select::SQL_AND),
+                $fieldCondition,
+                \Zend_Db_Select::SQL_OR
+            );
+
+            $this->_select->where($condition, NULL, \Magento\Framework\DB\Select::TYPE_CONDITION);
+
+            return $this;
         }
         if ($field == 'store_id') {
             $field = 'main_table.banner_id';
@@ -147,26 +228,22 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
     }
 
     /**
+     * @param $firstCondition
+     * @param $secondCondition
+     * @param $type
+     * @return string
+     */
+    protected function _implodeCondition($firstCondition, $secondCondition, $type)
+    {
+        return '(' . implode(') ' . $type . ' (', [$firstCondition, $secondCondition]) . ')';
+    }
+
+    /**
      * get read connnection.
      */
     public function getReadConnection()
     {
         return $this->getResource()->getReadConnection();
-    }
-
-    /**
-     * quote Identifier.
-     */
-    public function quoteIdentifier($ident, $auto = false)
-    {
-        $this->getResource()->getReadConnection()->quoteIdentifier($ident, $auto);
-    }
-    /**
-     * quote.
-     */
-    public function quote($value, $type = null)
-    {
-        $this->getResource()->getReadConnection()->quote($value, $type);
     }
 
     /**

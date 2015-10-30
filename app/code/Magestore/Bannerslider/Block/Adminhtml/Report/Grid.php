@@ -22,6 +22,8 @@
 
 namespace Magestore\Bannerslider\Block\Adminhtml\Report;
 
+use Magestore\Bannerslider\Model\Resource\Report\Collection as ReportCollection;
+
 /**
  * Report grid.
  * @category Magestore
@@ -32,13 +34,6 @@ namespace Magestore\Bannerslider\Block\Adminhtml\Report;
 class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
-     * slider factory.
-     *
-     * @var \Magestore\Bannerslider\Model\SliderFactory
-     */
-    protected $_sliderFactory;
-
-    /**
      * report factory.
      *
      * @var \Magestore\Bannerslider\Model\ReportFactory
@@ -46,43 +41,20 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_reportCollectionFactory;
 
     /**
-     * helper.
-     *
-     * @var \Magestore\Bannerslider\Helper\Data
-     */
-    protected $_bannersliderHelper;
-
-    /**
-     * Registry object.
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $_coreRegistry;
-
-    /**
      * [__construct description].
      *
      * @param \Magento\Backend\Block\Template\Context                         $context
      * @param \Magento\Backend\Helper\Data                                    $backendHelper
-     * @param \Magestore\Bannerslider\Model\SliderFactory                     $sliderFactory
      * @param \Magestore\Bannerslider\Model\Resource\Report\CollectionFactory $reportCollectionFactory
-     * @param \Magento\Framework\Registry                                     $coreRegistry
-     * @param \Magestore\Bannerslider\Helper\Data                             $bannersliderHelper
      * @param array                                                           $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
-        \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
         \Magestore\Bannerslider\Model\Resource\Report\CollectionFactory $reportCollectionFactory,
-        \Magento\Framework\Registry $coreRegistry,
-        \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         array $data = []
     ) {
-        $this->_sliderFactory = $sliderFactory;
         $this->_reportCollectionFactory = $reportCollectionFactory;
-        $this->_coreRegistry = $coreRegistry;
-        $this->_bannersliderHelper = $bannersliderHelper;
         parent::__construct($context, $backendHelper, $data);
     }
 
@@ -103,32 +75,19 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 
     protected function _prepareCollection()
     {
+        /** @var \Magestore\Bannerslider\Model\Resource\Report\Collection $collection */
         $collection = $this->_reportCollectionFactory->create();
-
-        $collection->getSelect()->joinLeft(array(
-            'table_banner' => $collection->getTable('magestore_bannerslider_banner')),
-            'main_table.banner_id = table_banner.banner_id',
-            array('banner_name' => 'table_banner.name', 'banner_url' => 'table_banner.click_url')
-        );
-        $collection->getSelect()->joinLeft(array(
-            'table_slider' => $collection->getTable('magestore_bannerslider_slider')),
-            'main_table.slider_id = table_slider.slider_id',
-            array('slider_title' => 'table_slider.title')
-        );
-        $collection->getSelect()
-            ->columns('SUM(main_table.clicks) AS banner_click')
-            ->columns('SUM(main_table.impmode) AS banner_impress');
 
         $actionName = $this->getRequest()->getActionName();
 
-        if ($actionName === 'index' || ($actionName == 'grid' && $this->getRequest()->getParam('action') === 'index')) {
-            $collection->getSelect()
-                ->group('main_table.slider_id')
-                ->group('main_table.banner_id');
-        } elseif (($actionName == 'grid' && $this->getRequest()->getParam('action') === 'banner')
-            || $actionName === 'banner') {
-            $collection->getSelect()
-                ->group('main_table.banner_id');
+        if ($actionName === 'index'
+            || ($actionName == 'grid' && $this->getRequest()->getParam('action') === 'index')
+        ) {
+            $collection->reportClickAndImpress(ReportCollection::REPORT_TYPE_PER_SLIDER);
+        } elseif ($actionName === 'banner'
+            || ($actionName == 'grid' && $this->getRequest()->getParam('action') === 'banner')
+        ) {
+            $collection->reportClickAndImpress(ReportCollection::REPORT_TYPE_ALL_SLIDER);
         }
 
         $this->setCollection($collection);

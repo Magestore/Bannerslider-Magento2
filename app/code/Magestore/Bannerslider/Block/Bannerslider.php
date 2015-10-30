@@ -22,7 +22,7 @@
 
 namespace Magestore\Bannerslider\Block;
 
-use Magestore\Bannerslider\Model\Slider;
+use Magestore\Bannerslider\Model\Slider as SliderModel;
 use Magestore\Bannerslider\Model\Status;
 
 /**
@@ -48,32 +48,6 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
     protected $_coreRegistry;
 
     /**
-     * slider factory.
-     *
-     * @var \Magestore\Bannerslider\Model\SliderFactory
-     */
-    protected $_sliderFactory;
-
-    /**
-     * category Factory.
-     *
-     * @var \Magento\Catalog\Model\CategoryFactory
-     */
-    protected $_categoryFactory;
-
-    /**
-     * Banner Factory.
-     *
-     * @var \Magestore\Bannerslider\Model\BannerFactory
-     */
-    protected $_bannerFactory;
-
-    /**
-     * @var \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory
-     */
-    protected $_bannerCollectionFactory;
-
-    /**
      * slider collecion factory.
      *
      * @var \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory
@@ -96,8 +70,6 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
      * [__construct description].
      *
      * @param \Magento\Framework\View\Element\Template\Context                $context
-     * @param \Magestore\Bannerslider\Model\BannerFactory                     $bannerFactory
-     * @param \Magestore\Bannerslider\Model\SliderFactory                     $sliderFactory
      * @param \Magento\Framework\Registry                                     $coreRegistry
      * @param \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory
      * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
@@ -107,24 +79,17 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Magestore\Bannerslider\Model\BannerFactory $bannerFactory,
-        \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
         \Magento\Framework\Registry $coreRegistry,
         \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory,
         \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
-        \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_bannerFactory = $bannerFactory;
-        $this->_sliderFactory = $sliderFactory;
         $this->_coreRegistry = $coreRegistry;
         $this->_sliderCollectionFactory = $sliderCollectionFactory;
-        $this->_bannerCollectionFactory = $bannerCollectionFactory;
-        $this->_categoryFactory = $categoryFactory;
+
         $this->_scopeConfig = $context->getScopeConfig();
-        $this->_storeManager = $storeManager;
+        $this->_storeManager = $context->getStoreManager();
     }
 
     /**
@@ -134,8 +99,10 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
     {
         $store = $this->_storeManager->getStore()->getId();
 
-        if ($this->_scopeConfig->getValue(Slider::XML_CONFIG_BANNERSLIDER,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store)) {
+        if ($this->_scopeConfig->getValue(
+            SliderModel::XML_CONFIG_BANNERSLIDER, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store
+        )
+        ) {
             return parent::_toHtml();
         }
 
@@ -214,8 +181,8 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
     {
         $sliderCollection = $this->_sliderCollectionFactory
             ->create()
-            ->addFieldToFilter('style_content', Slider::STYLE_CONTENT_YES)
-            ->addFieldToFilter('style_slide', Slider::STYLESLIDE_SPECIAL_NOTE)
+            ->addFieldToFilter('style_content', SliderModel::STYLE_CONTENT_YES)
+            ->addFieldToFilter('style_slide', SliderModel::STYLESLIDE_SPECIAL_NOTE)
             ->addFieldToFilter('status', Status::STATUS_ENABLED);
 
         $this->appendChildBlockSliders($sliderCollection);
@@ -230,8 +197,8 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
     {
         $sliderCollection = $this->_sliderCollectionFactory
             ->create()
-            ->addFieldToFilter('style_content', Slider::STYLE_CONTENT_YES)
-            ->addFieldToFilter('style_slide', Slider::STYLESLIDE_POPUP)
+            ->addFieldToFilter('style_content', SliderModel::STYLE_CONTENT_YES)
+            ->addFieldToFilter('style_slide', SliderModel::STYLESLIDE_POPUP)
             ->addFieldToFilter('status', Status::STATUS_ENABLED);
         $this->appendChildBlockSliders($sliderCollection);
 

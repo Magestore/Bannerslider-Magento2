@@ -36,8 +36,10 @@ class ExportCsv extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
     public function execute()
     {
         $fileName = 'banners.csv';
-        $content = $this->_view->getLayout()
-            ->createBlock('Magestore\Bannerslider\Block\Adminhtml\Banner\Grid')->getCsv();
+
+        /** @var \\Magento\Framework\View\Result\Page $resultPage */
+        $resultPage = $this->_resultPageFactory->create();
+        $content = $resultPage->getLayout()->createBlock('Magestore\Bannerslider\Block\Adminhtml\Banner\Grid')->getCsv();
 
         return $this->_fileFactory->create($fileName, $content, DirectoryList::VAR_DIR);
     }

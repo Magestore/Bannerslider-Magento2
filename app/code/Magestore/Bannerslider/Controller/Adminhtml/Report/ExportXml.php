@@ -36,8 +36,10 @@ class ExportXml extends \Magestore\Bannerslider\Controller\Adminhtml\Report
     public function execute()
     {
         $fileName = 'reports.xml';
-        $content = $this->_view->getLayout()
-            ->createBlock('Magestore\Bannerslider\Block\Adminhtml\Report\Grid')->getXml();
+
+        /** @var \\Magento\Framework\View\Result\Page $resultPage */
+        $resultPage = $this->_resultPageFactory->create();
+        $content = $resultPage->getLayout()->createBlock('Magestore\Bannerslider\Block\Adminhtml\Report\Grid')->getXml();
 
         return $this->_fileFactory->create($fileName, $content, DirectoryList::VAR_DIR);
     }

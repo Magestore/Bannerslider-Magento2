@@ -59,6 +59,13 @@ class Banner extends \Magento\Framework\Model\AbstractModel
     protected $_bannerFactory;
 
     /**
+     * value factory.
+     *
+     * @var \Magestore\Bannerslider\Model\ValueFactory
+     */
+    protected $_valueFactory;
+
+    /**
      * value collecion factory.
      *
      * @var \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory
@@ -102,6 +109,7 @@ class Banner extends \Magento\Framework\Model\AbstractModel
         \Magestore\Bannerslider\Model\Resource\Banner $resource,
         \Magestore\Bannerslider\Model\Resource\Banner\Collection $resourceCollection,
         \Magestore\Bannerslider\Model\BannerFactory $bannerFactory,
+        \Magestore\Bannerslider\Model\ValueFactory $valueFactory,
         \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory,
         \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory $valueCollectionFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
@@ -114,6 +122,7 @@ class Banner extends \Magento\Framework\Model\AbstractModel
             $resourceCollection
         );
         $this->_bannerFactory = $bannerFactory;
+        $this->_valueFactory = $valueFactory;
         $this->_valueCollectionFactory = $valueCollectionFactory;
         $this->_storeManager = $storeManager;
         $this->_sliderCollectionFactory = $sliderCollectionFactory;
@@ -229,7 +238,7 @@ class Banner extends \Magento\Framework\Model\AbstractModel
             $storeAttributes = $this->getStoreAttributes();
 
             foreach ($storeAttributes as $attribute) {
-                $attributeValue = $this->_valueCollectionFactory->create()
+                $attributeValue = $this->_valueFactory->create()
                     ->loadAttributeValue($this->getId(), $storeViewId, $attribute);
                 if ($this->getData($attribute.'_in_store')) {
                     try {

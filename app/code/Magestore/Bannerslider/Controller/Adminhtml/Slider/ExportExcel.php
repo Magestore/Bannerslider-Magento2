@@ -36,8 +36,10 @@ class ExportExcel extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
     public function execute()
     {
         $fileName = 'sliders.xls';
-        $content = $this->_view->getLayout()
-            ->createBlock('Magestore\Bannerslider\Block\Adminhtml\Slider\Grid')->getExcel();
+
+        /** @var \\Magento\Framework\View\Result\Page $resultPage */
+        $resultPage = $this->_resultPageFactory->create();
+        $content = $resultPage->getLayout()->createBlock('Magestore\Bannerslider\Block\Adminhtml\Slider\Grid')->getExcel();
 
         return $this->_fileFactory->create($fileName, $content, DirectoryList::VAR_DIR);
     }

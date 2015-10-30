@@ -41,30 +41,20 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_bannerCollectionFactory;
 
     /**
-     * Registry object.
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $_coreRegistry;
-
-    /**
      * [__construct description].
      *
      * @param \Magento\Backend\Block\Template\Context                         $context
      * @param \Magento\Backend\Helper\Data                                    $backendHelper
      * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
-     * @param \Magento\Framework\Registry                                     $coreRegistry
      * @param array                                                           $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
         \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
-        \Magento\Framework\Registry $coreRegistry,
         array $data = []
     ) {
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
-        $this->_coreRegistry = $coreRegistry;
         parent::__construct($context, $backendHelper, $data);
     }
 
@@ -115,13 +105,9 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareCollection()
     {
+        /** @var \Magestore\Bannerslider\Model\Resource\Banner\Collection $collection */
         $collection = $this->_bannerCollectionFactory->create()->setStoreViewId(null);
-
-        $collection->getSelect()->joinLeft(
-            ['sliderTable' => $collection->getTable('magestore_bannerslider_slider')],
-            'main_table.slider_id = sliderTable.slider_id',
-            ['title' => 'sliderTable.title']
-        );
+        $collection->setIsLoadSliderTitle(TRUE);
 
         $this->setCollection($collection);
 

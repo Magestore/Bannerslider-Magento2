@@ -46,32 +46,22 @@ class Image extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     protected $_bannerFactory;
 
     /**
-     * Registry object.
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $_coreRegistry;
-
-    /**
      * [__construct description].
      *
      * @param \Magento\Backend\Block\Context              $context       [description]
      * @param \Magento\Store\Model\StoreManagerInterface  $storeManager  [description]
      * @param \Magestore\Bannerslider\Model\BannerFactory $bannerFactory [description]
-     * @param \Magento\Framework\Registry                 $coreRegistry  [description]
      * @param array                                       $data          [description]
      */
     public function __construct(
         \Magento\Backend\Block\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magestore\Bannerslider\Model\BannerFactory $bannerFactory,
-        \Magento\Framework\Registry $coreRegistry,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->_storeManager = $storeManager;
         $this->_bannerFactory = $bannerFactory;
-        $this->_coreRegistry = $coreRegistry;
     }
 
     /**
@@ -84,8 +74,7 @@ class Image extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     public function render(\Magento\Framework\Object $row)
     {
         $banner = $this->_bannerFactory->create()->setStoreViewId(null)->load($row->getBannerId());
-        $srcImage = $this->_storeManager->getStore()
-            ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).$banner->getImage();
+        $srcImage = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . $banner->getImage();
 
         return '<image width="150" height="50" src ="'.$srcImage.'" alt="'.$banner->getImage().'" >';
     }

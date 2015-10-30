@@ -20,9 +20,10 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/layout_generic.xsd">
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/layout_generic.xsd">
     <update handle="formkey"/>
     <container name="root">
         <block class="Magestore\Bannerslider\Block\Adminhtml\Slider\Grid" name="admin.block.slider.grid"/>
     </container>
-</page>
+</layout>

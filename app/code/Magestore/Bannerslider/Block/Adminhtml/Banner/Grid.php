@@ -41,11 +41,11 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_bannerCollectionFactory;
 
     /**
-     * Registry object.
+     * slider collection factory.
      *
-     * @var \Magento\Framework\Registry
+     * @var \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory
      */
-    protected $_coreRegistry;
+    protected $_sliderCollectionFactory;
 
     /**
      * construct.
@@ -53,18 +53,18 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      * @param \Magento\Backend\Block\Template\Context                         $context
      * @param \Magento\Backend\Helper\Data                                    $backendHelper
      * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
-     * @param \Magento\Framework\Registry                                     $coreRegistry
      * @param array                                                           $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
         \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
-        \Magento\Framework\Registry $coreRegistry,
+        \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory,
         array $data = []
     ) {
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
-        $this->_coreRegistry = $coreRegistry;
+        $this->_sliderCollectionFactory = $sliderCollectionFactory;
+
         parent::__construct($context, $backendHelper, $data);
     }
 
@@ -81,13 +81,9 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _prepareCollection()
     {
         $storeViewId = $this->getRequest()->getParam('store');
-        $collection = $this->_bannerCollectionFactory->create()->setStoreViewId($storeViewId);
 
-        $collection->getSelect()->joinLeft(
-            ['sliderTable' => $collection->getTable('magestore_bannerslider_slider')],
-            'main_table.slider_id = sliderTable.slider_id',
-            ['title' => 'sliderTable.title']
-        );
+        /** @var \Magestore\Bannerslider\Model\Resource\Banner\Collection $collection */
+        $collection = $this->_bannerCollectionFactory->create()->setStoreViewId($storeViewId);
 
         $this->setCollection($collection);
 
@@ -137,15 +133,19 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '50px',
             ]
         );
+
         $this->addColumn(
             'title',
             [
                 'header' => __('Slider'),
-                'index' => 'title',
+                'index'   => 'slider_id',
+                'type'    => 'options',
+                'options' => $this->getSliderAvailableOption(),
                 'class' => 'xxx',
                 'width' => '50px',
             ]
         );
+
         $this->addColumn(
             'start_time',
             [
@@ -173,10 +173,10 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Status'),
                 'index' => 'status',
                 'type' => 'options',
-                'filter_index' => 'main_table.status',
                 'options' => Status::getAvailableStatuses(),
             ]
         );
+
         $this->addColumn(
             'edit',
             [
@@ -202,6 +202,23 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addExportType('*/*/exportExcel', __('Excel'));
 
         return parent::_prepareColumns();
+    }
+
+    /**
+     * get slider vailable option
+     *
+     * @return array
+     */
+    public function getSliderAvailableOption()
+    {
+        $option = [];
+        $sliderCollection = $this->_sliderCollectionFactory->create()->addFieldToSelect(['title']);
+
+        foreach ($sliderCollection as $slider) {
+            $option[$slider->getId()] = $slider->getTitle();
+        }
+
+        return $option;
     }
 
     /**

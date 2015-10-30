@@ -44,9 +44,9 @@ class Edit extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
             $model->setStoreViewId($storeViewId)->load($id);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This banner no longer exists.'));
-                $this->_redirect('*/*/');
+                $resultRedirect = $this->_resultRedirectFactory->create();
 
-                return;
+                return $resultRedirect->setPath('*/*/');
             }
         }
 
@@ -56,8 +56,9 @@ class Edit extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
         }
 
         $this->_coreRegistry->register('banner', $model);
-        $this->_view->loadLayout();
-        $this->_view->getLayout()->initMessages();
-        $this->_view->renderLayout();
+
+        $resultPage = $this->_resultPageFactory->create();
+
+        return $resultPage;
     }
 }

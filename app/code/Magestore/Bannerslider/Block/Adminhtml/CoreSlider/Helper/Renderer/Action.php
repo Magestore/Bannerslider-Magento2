@@ -46,32 +46,22 @@ class Action extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract
     protected $_bannerFactory;
 
     /**
-     * Registry object.
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $_coreRegistry;
-
-    /**
      * [__construct description].
      *
      * @param \Magento\Backend\Block\Context              $context       [description]
      * @param \Magento\Store\Model\StoreManagerInterface  $storeManager  [description]
      * @param \Magestore\Bannerslider\Model\BannerFactory $bannerFactory [description]
-     * @param \Magento\Framework\Registry                 $coreRegistry  [description]
      * @param array                                       $data          [description]
      */
     public function __construct(
         \Magento\Backend\Block\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magestore\Bannerslider\Model\BannerFactory $bannerFactory,
-        \Magento\Framework\Registry $coreRegistry,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->_storeManager = $storeManager;
         $this->_bannerFactory = $bannerFactory;
-        $this->_coreRegistry = $coreRegistry;
     }
 
     /**
@@ -85,7 +75,6 @@ class Action extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract
     {
         $url = $this->getUrl('*/slider/preview', array('sliderpreview_id' => $row->getId()));
 
-        return '<a onclick="window.open(\''.$url.'\', \'_blank\',\'width=1000,height=700,resizable=1,scrollbars=1\'); '
-            . 'return false;">Preview</a>';
+        return '<a onclick="window.open(\'' . $url . '\', \'_blank\',\'width=1000,height=700,resizable=1,scrollbars=1\'); return false;">Preview</a>';
     }
 }

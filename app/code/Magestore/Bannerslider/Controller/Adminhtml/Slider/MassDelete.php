@@ -53,6 +53,8 @@ class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
                 $this->messageManager->addError($e->getMessage());
             }
         }
-        $this->_redirect('*/*/');
+        $resultRedirect = $this->_resultRedirectFactory->create();
+
+        return $resultRedirect->setPath('*/*/');
     }
 }

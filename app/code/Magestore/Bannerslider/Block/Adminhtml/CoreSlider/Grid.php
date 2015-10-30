@@ -37,20 +37,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_collectionFactory;
 
     /**
-     * slider factory.
-     *
-     * @var \Magestore\Bannerslider\Model\SliderFactory
-     */
-    protected $_sliderFactory;
-
-    /**
-     * report factory.
-     *
-     * @var \Magestore\Bannerslider\Model\ReportFactory
-     */
-    protected $_reportFactory;
-
-    /**
      * helper.
      *
      * @var \Magestore\Bannerslider\Helper\Data
@@ -58,38 +44,22 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_bannersliderHelper;
 
     /**
-     * Registry object.
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $_coreRegistry;
-
-    /**
      * [__construct description].
      *
      * @param \Magento\Backend\Block\Template\Context     $context            [description]
      * @param \Magento\Backend\Helper\Data                $backendHelper      [description]
-     * @param \Magestore\Bannerslider\Model\SliderFactory $sliderFactory      [description]
-     * @param \Magestore\Bannerslider\Model\ReportFactory $reportFactory      [description]
      * @param \Magento\Framework\Data\Collection          $dataCollection     [description]
-     * @param \Magento\Framework\Registry                 $coreRegistry       [description]
      * @param \Magestore\Bannerslider\Helper\Data         $bannersliderHelper [description]
      * @param array                                       $data               [description]
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
-        \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
-        \Magestore\Bannerslider\Model\ReportFactory $reportFactory,
         \Magento\Framework\Data\CollectionFactory $collectionFactory,
         \Magento\Framework\ObjectFactory $objectFactory,
-        \Magento\Framework\Registry $coreRegistry,
         \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         array $data = []
     ) {
-        $this->_sliderFactory = $sliderFactory;
-        $this->_reportFactory = $reportFactory;
-        $this->_coreRegistry = $coreRegistry;
         $this->_bannersliderHelper = $bannersliderHelper;
         $this->_collectionFactory = $collectionFactory;
         $this->_objectFactory = $objectFactory;

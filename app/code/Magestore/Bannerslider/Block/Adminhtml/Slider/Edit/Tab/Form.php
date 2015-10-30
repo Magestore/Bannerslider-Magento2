@@ -22,7 +22,6 @@
 
 namespace Magestore\Bannerslider\Block\Adminhtml\Slider\Edit\Tab;
 
-use Magestore\Bannerslider\Model\Slider;
 use Magestore\Bannerslider\Model\Status;
 
 /**
@@ -40,11 +39,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      * @var \Magento\Config\Model\Config\Structure\Element\Dependency\FieldFactory
      */
     protected $_fieldFactory;
-
-    /**
-     * @var \Magento\Store\Model\System\Store
-     */
-    protected $_systemStore;
 
     /**
      * [$_bannersliderHelper description].
@@ -69,12 +63,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\Store\Model\System\Store $systemStore,
         \Magento\Config\Model\Config\Structure\Element\Dependency\FieldFactory $fieldFactory,
         array $data = []
     ) {
-        $this->_localeDate = $context->getLocaleDate();
-        $this->_systemStore = $systemStore;
         $this->_bannersliderHelper = $bannersliderHelper;
         $this->_fieldFactory = $fieldFactory;
         parent::__construct($context, $registry, $formFactory, $data);
@@ -191,8 +182,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'label' => __('Select Slider Mode'),
                 'name' => 'style_slide',
                 'values' => $this->_bannersliderHelper->getStyleSlider(),
-                'note' => '<a data-preview-url="'.$previewUrl.'" href="'.$previewUrl
-                            .'" target="_blank" id="style-slide-view">Preview</a>',
+                'note' => '<a data-preview-url="' . $previewUrl . '" href="' . $previewUrl . '" target="_blank" id="style-slide-view">Preview</a>',
             ]
         );
 
@@ -204,11 +194,11 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => 'sort_type',
                 'values' => [
                     [
-                        'value' => Slider::SORT_TYPE_RANDOM,
+                        'value' => \Magestore\Bannerslider\Model\Slider::SORT_TYPE_RANDOM,
                         'label' => __('Random'),
                     ],
                     [
-                        'value' => Slider::SORT_TYPE_ORDERLY,
+                        'value' => \Magestore\Bannerslider\Model\Slider::SORT_TYPE_ORDERLY,
                         'label' => __('Orderly'),
                     ],
                 ],
@@ -314,8 +304,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'label' => __('Position'),
                 'title' => __('Position'),
                 'values' => $this->_bannersliderHelper->getBlockIdsToOptionsArray(),
-                'note' => '<a title="" data-position-image=\''.json_encode($positionImage)
-                .'\' data-tooltip-image="">Preview</a>',
+                'note' => '<a title="" data-position-image=\'' . json_encode($positionImage) . '\' data-tooltip-image="">Preview</a>',
             ]
         );
 
@@ -327,8 +316,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'label' => __('Position'),
                 'title' => __('Position'),
                 'values' => $this->_bannersliderHelper->getBlockIdsToOptionsArray(),
-                'note' => '<a title="" data-position-image=\''.json_encode($positionImage)
-                .'\' data-tooltip-image="">Preview</a>',
+                'note' => '<a title="" data-position-image=\'' . json_encode($positionImage) . '\' data-tooltip-image="">Preview</a>',
             ]
         );
 
@@ -411,13 +399,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     public function getDependencyField($refField, $negative = false, $separator = ',', $fieldPrefix = '')
     {
         return $this->_fieldFactory->create(
-            ['fieldData' => [
-                'value' => (string) $refField,
-                'negative' => $negative,
-                'separator' => $separator
-                ],
-                'fieldPrefix' => $fieldPrefix
-            ]
+            ['fieldData' => ['value' => (string)$refField, 'negative' => $negative, 'separator' => $separator], 'fieldPrefix' => $fieldPrefix]
         );
     }
 

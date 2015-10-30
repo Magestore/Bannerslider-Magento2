@@ -52,8 +52,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $_categoryCollectionFactory;
 
-    protected $_scopeConfig;
-
     /**
      * [__construct description].
      *
@@ -70,7 +68,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         \Magento\Store\Model\StoreManagerInterface $storeManager
     ) {
         parent::__construct($context);
-        $this->_scopeConfig = $context->getScopeConfig();
         $this->_backendUrl = $backendUrl;
         $this->_storeManager = $storeManager;
         $this->_categoryCollectionFactory = $categoryCollectionFactory;
@@ -86,8 +83,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBaseUrlMedia($path = '', $secure = false)
     {
-        return $this->_storeManager->getStore()
-            ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA, $secure).$path;
+        return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA, $secure) . $path;
     }
 
     /**

@@ -35,14 +35,17 @@ class Delete extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
     {
         $bannerId = $this->getRequest()->getParam('banner_id');
         try {
-            $locator = $this->_bannerFactory->create()->load($bannerId);
-            $locator->delete();
+            $banner = $this->_bannerFactory->create()->setId($bannerId);
+            $banner->delete();
             $this->messageManager->addSuccess(
                 __('Delete successfully !')
             );
         } catch (\Exception $e) {
             $this->messageManager->addError($e->getMessage());
         }
-        $this->_redirect('*/*/');
+
+        $resultRedirect = $this->_resultRedirectFactory->create();
+
+        return $resultRedirect->setPath('*/*/');
     }
 }

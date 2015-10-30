@@ -33,6 +33,8 @@ class NewAction extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
 {
     public function execute()
     {
-        $this->_forward('edit');
+        $resultForward = $this->_resultForwardFactory->create();
+
+        return $resultForward->forward('edit');
     }
 }

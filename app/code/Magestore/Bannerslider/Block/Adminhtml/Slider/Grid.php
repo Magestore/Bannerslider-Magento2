@@ -48,19 +48,11 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_bannersliderHelper;
 
     /**
-     * Registry object.
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $_coreRegistry;
-
-    /**
      * [__construct description].
      *
      * @param \Magento\Backend\Block\Template\Context                         $context
      * @param \Magento\Backend\Helper\Data                                    $backendHelper
      * @param \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory
-     * @param \Magento\Framework\Registry                                     $coreRegistry
      * @param \Magestore\Bannerslider\Helper\Data                             $bannersliderHelper
      * @param array                                                           $data
      */
@@ -68,12 +60,10 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
         \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory,
-        \Magento\Framework\Registry $coreRegistry,
         \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         array $data = []
     ) {
         $this->_sliderCollectionFactory = $sliderCollectionFactory;
-        $this->_coreRegistry = $coreRegistry;
         $this->_bannersliderHelper = $bannersliderHelper;
         parent::__construct($context, $backendHelper, $data);
     }

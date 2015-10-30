@@ -38,6 +38,8 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
      */
     public function execute()
     {
+        $resultRedirect = $this->_resultRedirectFactory->create();
+
         if ($data = $this->getRequest()->getPostValue()) {
             $model = $this->_bannerFactory->create();
             $storeViewId = $this->getRequest()->getParam('store');
@@ -68,7 +70,8 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
                     $mediaDirectory = $this->_objectManager->get('Magento\Framework\Filesystem')
                         ->getDirectoryRead(DirectoryList::MEDIA);
                     $result = $uploader->save(
-                        $mediaDirectory->getAbsolutePath(\Magestore\Bannerslider\Model\Banner::BASE_MEDIA_PATH));
+                        $mediaDirectory->getAbsolutePath(\Magestore\Bannerslider\Model\Banner::BASE_MEDIA_PATH)
+                    );
                     $data['image'] = \Magestore\Bannerslider\Model\Banner::BASE_MEDIA_PATH.$result['file'];
                 } catch (\Exception $e) {
                     if ($e->getCode() == 0) {
@@ -97,7 +100,7 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
                 $this->_getSession()->setFormData(false);
 
                 if ($this->getRequest()->getParam('back') === 'edit') {
-                    $this->_redirect(
+                    return $resultRedirect->setPath(
                         '*/*/edit',
                         [
                             'banner_id' => $model->getId(),
@@ -107,30 +110,27 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
                             'saveandclose' => $this->getRequest()->getParam('saveandclose'),
                         ]
                     );
-
-                    return;
                 } elseif ($this->getRequest()->getParam('back') === 'new') {
-                    $this->_redirect('*/*/new', array('_current' => true));
-
-                    return;
+                    return $resultRedirect->setPath(
+                        '*/*/new',
+                        ['_current' => TRUE]
+                    );
                 }
-                $this->_redirect('*/*/');
 
-                return;
-            } catch (\Magento\Framework\Model\Exception $e) {
-                $this->messageManager->addError($e->getMessage());
-            } catch (\RuntimeException $e) {
-                $this->messageManager->addError($e->getMessage());
+                return $resultRedirect->setPath('*/*/');
             } catch (\Exception $e) {
                 $this->messageManager->addError($e->getMessage());
                 $this->messageManager->addException($e, __('Something went wrong while saving the banner.'));
             }
 
             $this->_getSession()->setFormData($data);
-            $this->_redirect('*/*/edit', array('banner_id' => $this->getRequest()->getParam('banner_id')));
 
-            return;
+            return $resultRedirect->setPath(
+                '*/*/edit',
+                ['banner_id' => $this->getRequest()->getParam('banner_id')]
+            );
         }
-        $this->_redirect('*/*/');
+
+        return $resultRedirect->setPath('*/*/');
     }
 }

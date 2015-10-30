@@ -45,9 +45,10 @@ class Edit extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
             $model->load($id);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This slider no longer exists.'));
-                $this->_redirect('*/*/');
 
-                return;
+                $resultRedirect = $this->_resultRedirectFactory->create();
+
+                return $resultRedirect->setPath('*/*/');
             }
         }
 

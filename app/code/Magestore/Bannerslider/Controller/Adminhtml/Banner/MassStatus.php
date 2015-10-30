@@ -44,6 +44,7 @@ class MassStatus extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
             $this->messageManager->addError(__('Please select banner(s).'));
         } else {
             $bannerCollection = $this->_bannerCollectionFactory->create()
+                ->setStoreViewId($storeViewId)
                 ->addFieldToFilter('banner_id', ['in' => $bannerIds]);
             try {
                 foreach ($bannerCollection as $banner) {
@@ -59,6 +60,8 @@ class MassStatus extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
                 $this->messageManager->addError($e->getMessage());
             }
         }
-        $this->_redirect('*/*/', ['store' => $this->getRequest()->getParam('store')]);
+        $resultRedirect = $this->_resultRedirectFactory->create();
+
+        return $resultRedirect->setPath('*/*/', ['store' => $this->getRequest()->getParam('store')]);
     }
 }
