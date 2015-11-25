@@ -22,7 +22,7 @@
 
 namespace Magestore\Bannerslider\Block\Adminhtml\Report;
 
-use Magestore\Bannerslider\Model\Resource\Report\Collection as ReportCollection;
+use Magestore\Bannerslider\Model\ResourceModel\Report\Collection as ReportCollection;
 
 /**
  * Report grid.
@@ -45,13 +45,13 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      *
      * @param \Magento\Backend\Block\Template\Context                         $context
      * @param \Magento\Backend\Helper\Data                                    $backendHelper
-     * @param \Magestore\Bannerslider\Model\Resource\Report\CollectionFactory $reportCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Report\CollectionFactory $reportCollectionFactory
      * @param array                                                           $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
-        \Magestore\Bannerslider\Model\Resource\Report\CollectionFactory $reportCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Report\CollectionFactory $reportCollectionFactory,
         array $data = []
     ) {
         $this->_reportCollectionFactory = $reportCollectionFactory;
@@ -75,7 +75,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 
     protected function _prepareCollection()
     {
-        /** @var \Magestore\Bannerslider\Model\Resource\Report\Collection $collection */
+        /** @var \Magestore\Bannerslider\Model\ResourceModel\Report\Collection $collection */
         $collection = $this->_reportCollectionFactory->create();
 
         $actionName = $this->getRequest()->getActionName();

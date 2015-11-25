@@ -29,7 +29,7 @@ namespace Magestore\Bannerslider\Controller\Adminhtml;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class AbstractAction extends \Magento\Backend\App\Action
+abstract class AbstractAction extends \Magento\Backend\App\Action
 {
     /**
      * @var \Magento\Backend\Helper\Js
@@ -75,7 +75,7 @@ class AbstractAction extends \Magento\Backend\App\Action
     /**
      * Banner Collection Factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory
      */
     protected $_bannerCollectionFactory;
 
@@ -97,8 +97,8 @@ class AbstractAction extends \Magento\Backend\App\Action
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magestore\Bannerslider\Model\BannerFactory $bannerFactory
      * @param \Magestore\Bannerslider\Model\SliderFactory $sliderFactory
-     * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
-     * @param \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory
      * @param \Magento\Framework\Registry $coreRegistry
      * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
@@ -112,8 +112,8 @@ class AbstractAction extends \Magento\Backend\App\Action
         \Magento\Backend\App\Action\Context $context,
         \Magestore\Bannerslider\Model\BannerFactory $bannerFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
-        \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
-        \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory,
         \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,

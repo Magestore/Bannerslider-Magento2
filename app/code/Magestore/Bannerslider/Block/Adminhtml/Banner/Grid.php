@@ -36,14 +36,14 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     /**
      * banner collection factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory
      */
     protected $_bannerCollectionFactory;
 
     /**
      * slider collection factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory
      */
     protected $_sliderCollectionFactory;
 
@@ -52,14 +52,14 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      *
      * @param \Magento\Backend\Block\Template\Context                         $context
      * @param \Magento\Backend\Helper\Data                                    $backendHelper
-     * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory
      * @param array                                                           $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
-        \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
-        \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory,
         array $data = []
     ) {
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
@@ -82,7 +82,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     {
         $storeViewId = $this->getRequest()->getParam('store');
 
-        /** @var \Magestore\Bannerslider\Model\Resource\Banner\Collection $collection */
+        /** @var \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $collection */
         $collection = $this->_bannerCollectionFactory->create()->setStoreViewId($storeViewId);
 
         $this->setCollection($collection);

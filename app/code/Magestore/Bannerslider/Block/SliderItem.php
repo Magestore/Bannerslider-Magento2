@@ -100,7 +100,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
     protected $_bannersliderHelper;
 
     /**
-     * @var \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory
      */
     protected $_bannerCollectionFactory;
 
@@ -122,7 +122,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      * [__construct description].
      *
      * @param \Magento\Framework\View\Element\Template\Context                $context
-     * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory
      * @param \Magestore\Bannerslider\Model\SliderFactory                     $sliderFactory
      * @param SliderModel $slider
      * @param \Magento\Framework\Stdlib\DateTime\DateTime                     $stdlibDateTime
@@ -133,7 +133,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
         SliderModel $slider,
         \Magento\Framework\Stdlib\DateTime\DateTime $stdlibDateTime,
@@ -231,14 +231,14 @@ class SliderItem extends \Magento\Framework\View\Element\Template
     /**
      * get banner collection of slider.
      *
-     * @return \Magestore\Bannerslider\Model\Resource\Banner\Collection
+     * @return \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection
      */
     public function getBannerCollection()
     {
         $storeViewId = $this->_storeManager->getStore()->getId();
         $dateTimeNow = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
 
-        /** @var \Magestore\Bannerslider\Model\Resource\Banner\Collection $bannerCollection */
+        /** @var \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $bannerCollection */
         $bannerCollection = $this->_bannerCollectionFactory->create()
             ->setStoreViewId($storeViewId)
             ->addFieldToFilter('slider_id', $this->_slider->getId())

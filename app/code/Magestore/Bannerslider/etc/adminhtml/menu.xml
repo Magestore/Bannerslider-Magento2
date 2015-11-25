@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
     	<add id="Magestore_Bannerslider::bannerslider" title="Banner Slider" module="Magestore_Bannerslider" sortOrder="10" resource="Magestore_Bannerslider::bannerslider"/>
 

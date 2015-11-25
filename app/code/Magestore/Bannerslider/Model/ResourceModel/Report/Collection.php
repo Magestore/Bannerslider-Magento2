@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\Bannerslider\Model\Resource\Report;
+namespace Magestore\Bannerslider\Model\ResourceModel\Report;
 
 /**
  * Report Collection
@@ -29,14 +29,14 @@ namespace Magestore\Bannerslider\Model\Resource\Report;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class Collection extends \Magento\Framework\Model\Resource\Db\Collection\AbstractCollection
+class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     const REPORT_TYPE_ALL_SLIDER = '1';
     const REPORT_TYPE_PER_SLIDER = '2';
 
     protected function _construct()
     {
-        $this->_init('Magestore\Bannerslider\Model\Report', 'Magestore\Bannerslider\Model\Resource\Report');
+        $this->_init('Magestore\Bannerslider\Model\Report', 'Magestore\Bannerslider\Model\ResourceModel\Report');
     }
 
     /**

@@ -36,14 +36,14 @@ class Value extends \Magento\Framework\Model\AbstractModel
      *
      * @param \Magento\Framework\Model\Context                        $context
      * @param \Magento\Framework\Registry                             $registry
-     * @param \Magestore\Bannerslider\Model\Resource\Value            $resource
-     * @param \Magestore\Bannerslider\Model\Resource\Value\Collection $resourceCollection
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Value            $resource
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Value\Collection $resourceCollection
      */
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Magestore\Bannerslider\Model\Resource\Value $resource,
-        \Magestore\Bannerslider\Model\Resource\Value\Collection $resourceCollection
+        \Magestore\Bannerslider\Model\ResourceModel\Value $resource,
+        \Magestore\Bannerslider\Model\ResourceModel\Value\Collection $resourceCollection
     ) {
         parent::__construct(
             $context,

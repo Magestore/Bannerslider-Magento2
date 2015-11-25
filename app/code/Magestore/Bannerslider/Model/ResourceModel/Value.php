@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\Bannerslider\Model\Resource;
+namespace Magestore\Bannerslider\Model\ResourceModel;
 
 /**
  * Value Resource Model
@@ -29,7 +29,7 @@ namespace Magestore\Bannerslider\Model\Resource;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class Value extends \Magento\Framework\Model\Resource\Db\AbstractDb
+class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
      * construct

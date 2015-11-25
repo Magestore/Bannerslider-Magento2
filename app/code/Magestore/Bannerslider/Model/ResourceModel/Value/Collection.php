@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<!--
+<?php
+
 /**
  * Magestore
  *
@@ -19,6 +19,24 @@
  * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
  * @license     http://www.magestore.com/license-agreement.html
  */
--->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
-</page>
+
+namespace Magestore\Bannerslider\Model\ResourceModel\Value;
+
+/**
+ * Value Collection
+ * @category Magestore
+ * @package  Magestore_Bannerslider
+ * @module   Bannerslider
+ * @author   Magestore Developer
+ */
+class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+{
+    /**
+     * construct
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->_init('Magestore\Bannerslider\Model\Value', 'Magestore\Bannerslider\Model\ResourceModel\Value');
+    }
+}

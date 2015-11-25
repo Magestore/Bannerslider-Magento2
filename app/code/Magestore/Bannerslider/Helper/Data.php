@@ -48,7 +48,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * category collection factory.
      *
-     * @var \Magento\Catalog\Model\Resource\Category\CollectionFactory
+     * @var \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory
      */
     protected $_categoryCollectionFactory;
 
@@ -57,13 +57,13 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      *
      * @param \Magento\Framework\App\Helper\Context                      $context              [description]
      * @param \Magento\Directory\Helper\Data                             $directoryData        [description]
-     * @param \Magento\Directory\Model\Resource\Country\Collection       $countryCollection    [description]
-     * @param \Magento\Directory\Model\Resource\Region\CollectionFactory $regCollectionFactory [description]
+     * @param \Magento\Directory\Model\ResourceModel\Country\Collection       $countryCollection    [description]
+     * @param \Magento\Directory\Model\ResourceModel\Region\CollectionFactory $regCollectionFactory [description]
      * @param \Magento\Store\Model\StoreManagerInterface                 $storeManager         [description]
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
-        \Magento\Catalog\Model\Resource\Category\CollectionFactory $categoryCollectionFactory,
+        \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory,
         \Magento\Backend\Model\UrlInterface $backendUrl,
         \Magento\Store\Model\StoreManagerInterface $storeManager
     ) {

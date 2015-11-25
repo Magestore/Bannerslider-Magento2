@@ -1,8 +1,50 @@
-<?php $sliderpreviewId= $this->getRequest()->getParam('sliderpreview_id') ?>
+<?php
 
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Bannerslider
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+?>
+<?php
+/** @var \Magestore\Bannerslider\Block\Adminhtml\Preview $block */
+
+$sliderpreviewId= $this->getRequest()->getParam('sliderpreview_id');
+$sliderEvolutionTransition = $this->getSliderEvolutionTransitionArray();
+?>
 <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/slider'.$sliderpreviewId.'.css')?>">
 <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::css/evolution.css')?>">
-<?php $sliderEvolutionTransition = $this->getSliderEvolutionTransitionArray(); ?>
+<div class="slider" style="margin:auto;">
+    <div>
+        <img style="width:550px; height: 325px;" src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_cheesecake_brownie.jpg')?>"/>
+    </div>
+
+    <div>
+        <img style="width:550px; height: 325px;" src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_lemon.jpg') ?>"/>
+    </div>
+
+    <div>
+        <img style="width:550px; height: 325px;" src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_donut.jpg') ?>"/>
+    </div>
+    <div>
+        <img style="width:550px; height: 325px;" src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_caramel.jpg') ?>"/>
+    </div>
+</div>
 <script type="text/javascript">
     require(['jquery','magestore/evolutionslider'], function($) {
         $(document).ready(function($) {
@@ -14,19 +56,3 @@
         });
     });
 </script>
- <div class="slider" style="margin:auto;">
-     <div>
-         <img style="width:550px; height: 325px;" src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_cheesecake_brownie.jpg')?>"/>
-     </div>
-
-     <div>
-         <img style="width:550px; height: 325px;" src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_lemon.jpg') ?>"/>
-     </div>
-
-     <div>
-         <img style="width:550px; height: 325px;" src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_donut.jpg') ?>"/>
-     </div>
-     <div>
-         <img style="width:550px; height: 325px;" src="<?php echo $block->getViewFileUrl('Magestore_Bannerslider::images/demo/kitchen_adventurer_caramel.jpg') ?>"/>
-     </div>
- </div>

@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 -->
-<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/layout_generic.xsd">
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
     <container name="root" label="Root">
         <block class="Magestore\Bannerslider\Block\Adminhtml\Slider\Edit\Tab\Banners" name="bannerslider.slider.edit.tab.banners"/>
     </container>

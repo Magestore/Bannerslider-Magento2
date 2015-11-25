@@ -34,8 +34,8 @@ class Report extends \Magento\Framework\Model\AbstractModel
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Magestore\Bannerslider\Model\Resource\Report $resource,
-        \Magestore\Bannerslider\Model\Resource\Report\Collection $resourceCollection
+        \Magestore\Bannerslider\Model\ResourceModel\Report $resource,
+        \Magestore\Bannerslider\Model\ResourceModel\Report\Collection $resourceCollection
     ) {
         parent::__construct(
             $context,

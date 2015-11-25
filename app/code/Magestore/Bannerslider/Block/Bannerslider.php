@@ -50,7 +50,7 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
     /**
      * slider collecion factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory
      */
     protected $_sliderCollectionFactory;
 
@@ -71,8 +71,8 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
      *
      * @param \Magento\Framework\View\Element\Template\Context                $context
      * @param \Magento\Framework\Registry                                     $coreRegistry
-     * @param \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory
-     * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory
      * @param \Magento\Catalog\Model\CategoryFactory                          $categoryFactory
      * @param \Magento\Store\Model\StoreManagerInterface                      $storeManager
      * @param array                                                           $data
@@ -80,8 +80,8 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $coreRegistry,
-        \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory,
-        \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -112,12 +112,12 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
     /**
      * add child block slider.
      *
-     * @param \Magestore\Bannerslider\Model\Resource\Slider\Collection $sliderCollection [description]
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Slider\Collection $sliderCollection [description]
      *
      * @return \Magestore\Bannerslider\Block\Bannerslider [description]
      */
     public function appendChildBlockSliders(
-        \Magestore\Bannerslider\Model\Resource\Slider\Collection $sliderCollection
+        \Magestore\Bannerslider\Model\ResourceModel\Slider\Collection $sliderCollection
     ) {
         foreach ($sliderCollection as $slider) {
             $this->append(

@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\Bannerslider\Model\Resource\Banner;
+namespace Magestore\Bannerslider\Model\ResourceModel\Banner;
 
 /**
  * Banner Collection
@@ -29,7 +29,7 @@ namespace Magestore\Bannerslider\Model\Resource\Banner;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class Collection extends \Magento\Framework\Model\Resource\Db\Collection\AbstractCollection
+class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     /**
      * store view id.
@@ -60,7 +60,7 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
      */
     protected function _construct()
     {
-        $this->_init('Magestore\Bannerslider\Model\Banner', 'Magestore\Bannerslider\Model\Resource\Banner');
+        $this->_init('Magestore\Bannerslider\Model\Banner', 'Magestore\Bannerslider\Model\ResourceModel\Banner');
     }
 
     /**
@@ -69,7 +69,7 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
      * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
      * @param \Magento\Framework\Event\ManagerInterface                    $eventManager
      * @param \Zend_Db_Adapter_Abstract                                    $connection
-     * @param \Magento\Framework\Model\Resource\Db\AbstractDb              $resource
+     * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb              $resource
      */
     public function __construct(
         \Magento\Framework\Data\Collection\EntityFactoryInterface $entityFactory,
@@ -78,7 +78,7 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
         \Magento\Framework\Event\ManagerInterface $eventManager,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         $connection = null,
-        \Magento\Framework\Model\Resource\Db\AbstractDb $resource = null
+        \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
     ) {
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
         $this->_storeManager = $storeManager;
@@ -192,11 +192,11 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
             if (!in_array($field, $this->_addedTable)) {
                 $sql = sprintf(
                     'main_table.banner_id = %s.banner_id AND %s.store_id = %s  AND %s.attribute_code = %s ',
-                    $this->getReadConnection()->quoteTableAs($field),
-                    $this->getReadConnection()->quoteTableAs($field),
-                    $this->getReadConnection()->quote($storeViewId),
-                    $this->getReadConnection()->quoteTableAs($field),
-                    $this->getReadConnection()->quote($field)
+                    $this->getConnection()->quoteTableAs($field),
+                    $this->getConnection()->quoteTableAs($field),
+                    $this->getConnection()->quote($storeViewId),
+                    $this->getConnection()->quoteTableAs($field),
+                    $this->getConnection()->quote($field)
                 );
 
                 $this->getSelect()
@@ -241,9 +241,9 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
     /**
      * get read connnection.
      */
-    public function getReadConnection()
+    public function getConnection()
     {
-        return $this->getResource()->getReadConnection();
+        return $this->getResource()->getConnection();
     }
 
     /**

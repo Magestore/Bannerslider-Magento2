@@ -56,7 +56,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Framework\Data\CollectionFactory $collectionFactory,
-        \Magento\Framework\ObjectFactory $objectFactory,
+        \Magento\Framework\DataObjectFactory $objectFactory,
         \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         array $data = []
     ) {

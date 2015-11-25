@@ -36,7 +36,7 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
     /**
      * banner factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory
      */
     protected $_bannerCollectionFactory;
 
@@ -45,13 +45,13 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
      *
      * @param \Magento\Backend\Block\Template\Context                         $context
      * @param \Magento\Backend\Helper\Data                                    $backendHelper
-     * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory
      * @param array                                                           $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
-        \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
         array $data = []
     ) {
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
@@ -105,7 +105,7 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareCollection()
     {
-        /** @var \Magestore\Bannerslider\Model\Resource\Banner\Collection $collection */
+        /** @var \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $collection */
         $collection = $this->_bannerCollectionFactory->create()->setStoreViewId(null);
         $collection->setIsLoadSliderTitle(TRUE);
 

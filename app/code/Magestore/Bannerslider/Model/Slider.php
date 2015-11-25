@@ -92,7 +92,7 @@ class Slider extends \Magento\Framework\Model\AbstractModel
     /**
      * banner collection factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory
      */
     protected $_bannerCollectionFactory;
 
@@ -101,16 +101,16 @@ class Slider extends \Magento\Framework\Model\AbstractModel
      *
      * @param \Magento\Framework\Model\Context                                $context
      * @param \Magento\Framework\Registry                                     $registry
-     * @param \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory
-     * @param \Magestore\Bannerslider\Model\Resource\Slider                   $resource
-     * @param \Magestore\Bannerslider\Model\Resource\Slider\Collection        $resourceCollection
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Slider                   $resource
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Slider\Collection        $resourceCollection
      */
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Magestore\Bannerslider\Model\Resource\Banner\CollectionFactory $bannerCollectionFactory,
-        \Magestore\Bannerslider\Model\Resource\Slider $resource,
-        \Magestore\Bannerslider\Model\Resource\Slider\Collection $resourceCollection
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Slider $resource,
+        \Magestore\Bannerslider\Model\ResourceModel\Slider\Collection $resourceCollection
     ) {
         parent::__construct(
             $context,
@@ -124,7 +124,7 @@ class Slider extends \Magento\Framework\Model\AbstractModel
     /**
      * get banner collection of slider.
      *
-     * @return \Magestore\Bannerslider\Model\Resource\Banner\Collection
+     * @return \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection
      */
     public function getOwnBanerCollection()
     {

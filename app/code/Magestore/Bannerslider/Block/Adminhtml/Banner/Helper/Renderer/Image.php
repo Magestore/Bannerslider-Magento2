@@ -67,11 +67,11 @@ class Image extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     /**
      * Render action.
      *
-     * @param \Magento\Framework\Object $row
+     * @param \Magento\Framework\DataObject $row
      *
      * @return string
      */
-    public function render(\Magento\Framework\Object $row)
+    public function render(\Magento\Framework\DataObject $row)
     {
         $storeViewId = $this->getRequest()->getParam('store');
         $banner = $this->_bannerFactory->create()->setStoreViewId($storeViewId)->load($row->getId());

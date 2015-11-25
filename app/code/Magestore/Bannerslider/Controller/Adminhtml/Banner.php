@@ -29,7 +29,7 @@ namespace Magestore\Bannerslider\Controller\Adminhtml;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class Banner extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
+abstract class Banner extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
 {
     /**
      * Check if admin has permissions to visit related pages.

@@ -40,7 +40,7 @@ class Banner extends \Magento\Framework\Model\AbstractModel
     /**
      * slider colleciton factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory
      */
     protected $_sliderCollectionFactory;
 
@@ -68,7 +68,7 @@ class Banner extends \Magento\Framework\Model\AbstractModel
     /**
      * value collecion factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory
      */
     protected $_valueCollectionFactory;
 
@@ -96,22 +96,22 @@ class Banner extends \Magento\Framework\Model\AbstractModel
      *
      * @param \Magento\Framework\Model\Context                                $context
      * @param \Magento\Framework\Registry                                     $registry
-     * @param \Magestore\Bannerslider\Model\Resource\Banner                   $resource
-     * @param \Magestore\Bannerslider\Model\Resource\Banner\Collection        $resourceCollection
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Banner                   $resource
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection        $resourceCollection
      * @param \Magestore\Bannerslider\Model\BannerFactory                     $bannerFactory
-     * @param \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory
-     * @param \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory  $valueCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory  $valueCollectionFactory
      * @param \Magento\Store\Model\StoreManagerInterface                      $storeManager
      */
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Magestore\Bannerslider\Model\Resource\Banner $resource,
-        \Magestore\Bannerslider\Model\Resource\Banner\Collection $resourceCollection,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner $resource,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $resourceCollection,
         \Magestore\Bannerslider\Model\BannerFactory $bannerFactory,
         \Magestore\Bannerslider\Model\ValueFactory $valueFactory,
-        \Magestore\Bannerslider\Model\Resource\Slider\CollectionFactory $sliderCollectionFactory,
-        \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory $valueCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory $valueCollectionFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Logger\Monolog $monolog
     ) {

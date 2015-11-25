@@ -20,23 +20,23 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\Bannerslider\Model\Resource\Slider;
+namespace Magestore\Bannerslider\Model\ResourceModel;
 
 /**
- * Slider Collection
+ * Slider Resource Model
  * @category Magestore
  * @package  Magestore_Bannerslider
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class Collection extends \Magento\Framework\Model\Resource\Db\Collection\AbstractCollection
+class Slider extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
-     * _contruct
+     * construct
      * @return void
      */
     protected function _construct()
     {
-        $this->_init('Magestore\Bannerslider\Model\Slider', 'Magestore\Bannerslider\Model\Resource\Slider');
+        $this->_init('magestore_bannerslider_slider', 'slider_id');
     }
 }

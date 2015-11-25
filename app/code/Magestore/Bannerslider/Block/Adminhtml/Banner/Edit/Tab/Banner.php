@@ -34,14 +34,14 @@ use Magestore\Bannerslider\Model\Status;
 class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
     /**
-     * @var \Magento\Framework\ObjectFactory
+     * @var \Magento\Framework\DataObjectFactory
      */
     protected $_objectFactory;
 
     /**
      * value collection factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory
      */
     protected $_valueCollectionFactory;
 
@@ -63,9 +63,9 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
      * @param \Magento\Backend\Block\Template\Context                        $context
      * @param \Magento\Framework\Registry                                    $registry
      * @param \Magento\Framework\Data\FormFactory                            $formFactory
-     * @param \Magento\Framework\ObjectFactory                               $objectFactory
+     * @param \Magento\Framework\DataObjectFactory                               $objectFactory
      * @param \Magestore\Bannerslider\Model\Banner                           $banner
-     * @param \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory $valueCollectionFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory $valueCollectionFactory
      * @param \Magestore\Bannerslider\Model\SliderFactory                    $sliderFactory
      * @param array                                                          $data
      */
@@ -73,9 +73,9 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\Framework\ObjectFactory $objectFactory,
+        \Magento\Framework\DataObjectFactory $objectFactory,
         \Magestore\Bannerslider\Model\Banner $banner,
-        \Magestore\Bannerslider\Model\Resource\Value\CollectionFactory $valueCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory $valueCollectionFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
         array $data = []
     ) {
@@ -303,14 +303,21 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         return parent::_prepareForm();
     }
 
+    /**
+     * @return mixed
+     */
     public function getBanner()
     {
         return $this->_coreRegistry->registry('banner');
     }
 
+    /**
+     * @return \Magento\Framework\Phrase
+     */
     public function getPageTitle()
     {
-        return $this->getBanner()->getId() ? __("Edit Banner '%1'", $this->escapeHtml($this->getBanner()->getName())) : __('New Banner');
+        return $this->getBanner()->getId()
+            ? __("Edit Banner '%1'", $this->escapeHtml($this->getBanner()->getName())) : __('New Banner');
     }
 
     /**

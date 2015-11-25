@@ -20,16 +20,16 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\Bannerslider\Model\Resource;
+namespace Magestore\Bannerslider\Model\ResourceModel;
 
 /**
- * Banner Resource Model
+ * Report Resource Model
  * @category Magestore
  * @package  Magestore_Bannerslider
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class Banner extends \Magento\Framework\Model\Resource\Db\AbstractDb
+class Report extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
      * construct
@@ -37,6 +37,6 @@ class Banner extends \Magento\Framework\Model\Resource\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('magestore_bannerslider_banner', 'banner_id');
+        $this->_init('magestore_bannerslider_report', 'report_id');
     }
 }

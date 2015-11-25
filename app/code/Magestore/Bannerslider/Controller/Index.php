@@ -29,33 +29,33 @@ namespace Magestore\Bannerslider\Controller;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class Index extends \Magento\Framework\App\Action\Action
+abstract class Index extends \Magento\Framework\App\Action\Action
 {
     /**
      * Slider factory.
      *
-     * @var \Megami\MiniLocator\Model\SliderFactory
+     * @var \Magestore\Bannerslider\Model\SliderFactory
      */
     protected $_sliderFactory;
 
     /**
      * banner factory.
      *
-     * @var \Megami\MiniLocator\Model\BannerFactory
+     * @var \Magestore\Bannerslider\Model\BannerFactory
      */
     protected $_bannerFactory;
 
     /**
      * Report factory.
      *
-     * @var \Megami\MiniLocator\Model\ReportFactory
+     * @var \Magestore\Bannerslider\Model\ReportFactory
      */
     protected $_reportFactory;
 
     /**
      * Report collection factory.
      *
-     * @var \Magestore\Bannerslider\Model\Resource\Report\CollectionFactory
+     * @var \Magestore\Bannerslider\Model\ResourceModel\Report\CollectionFactory
      */
     protected $_reportCollectionFactory;
 
@@ -99,24 +99,26 @@ class Index extends \Magento\Framework\App\Action\Action
     protected $_stdTimezone;
 
     /**
-     * [__construct description].
+     * Index constructor.
      *
-     * @param \Magento\Framework\App\Action\Context                           $context
-     * @param \Magestore\Bannerslider\Model\SliderFactory                     $sliderFactory
-     * @param \Magestore\Bannerslider\Model\BannerFactory                     $bannerFactory
-     * @param \Magestore\Bannerslider\Model\ReportFactory                     $reportFactory
-     * @param \Magestore\Bannerslider\Model\Resource\Report\CollectionFactory $reportCollectionFactory
-     * @param \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory          $cookieMetadataFactory
-     * @param \Magento\Framework\Stdlib\CookieManagerInterface                $cookieManager
-     * @param \Magento\Framework\Controller\Result\RawFactory                 $resultRawFactory
-     * @param \Magento\Framework\HTTP\PhpEnvironment\Request                  $phpEnvironmentRequest
+     * @param \Magento\Framework\App\Action\Context                                $context
+     * @param \Magestore\Bannerslider\Model\SliderFactory                          $sliderFactory
+     * @param \Magestore\Bannerslider\Model\BannerFactory                          $bannerFactory
+     * @param \Magestore\Bannerslider\Model\ReportFactory                          $reportFactory
+     * @param \Magestore\Bannerslider\Model\ResourceModel\Report\CollectionFactory $reportCollectionFactory
+     * @param \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory               $cookieMetadataFactory
+     * @param \Magento\Framework\Stdlib\CookieManagerInterface                     $cookieManager
+     * @param \Magento\Framework\Controller\Result\RawFactory                      $resultRawFactory
+     * @param \Magento\Framework\HTTP\PhpEnvironment\Request                       $phpEnvironmentRequest
+     * @param \Magento\Framework\Logger\Monolog                                    $monolog
+     * @param \Magento\Framework\Stdlib\DateTime\Timezone                          $stdTimezone
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
         \Magestore\Bannerslider\Model\BannerFactory $bannerFactory,
         \Magestore\Bannerslider\Model\ReportFactory $reportFactory,
-        \Magestore\Bannerslider\Model\Resource\Report\CollectionFactory $reportCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Report\CollectionFactory $reportCollectionFactory,
         \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory $cookieMetadataFactory,
         \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager,
         \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
