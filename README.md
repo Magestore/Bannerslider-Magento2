@@ -33,4 +33,5 @@ Use the following table to verify you have the correct prerequisites to install 
 The Magento front end relies heavily on caching to provide a faster experience to customer. This is a wonderful tool, but can wreak havoc during the installation process. To ensure that the cache is not the cause of any problems, we should turn it off. This can be done from the admin console by navigating to the cache management page (System->Cache Management), selecting all caches, clicking ‘disable’ from the drop-down menu, and submitting the change.
 
 <h2>Step 3: Install and verify the installation</h2>
+You can download zip file and unzip it before copy to the rood folder of magento 2 or clone it from https://github.com/magento/magento2.git
 
