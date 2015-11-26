@@ -45,13 +45,13 @@ Use HTTPS: git clone https://github.com/Magestore/Bannerslider.git
 
 When you completed, you have a folder with name Bannerslider, it contain all files of this extension:
 
-<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231014181/in/dateposted-public/" title="bannersliderextension"><img src="https://farm1.staticflickr.com/579/23231014181_d3b668f1cd_o.png" width="1217" height="450" alt="bannersliderextension"></a>
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231014181/in/dateposted-public/" title="bannersliderextension"><img src="https://farm1.staticflickr.com/579/23231014181_d3b668f1cd_o.png" width="1217" height="400" alt="bannersliderextension"></a>
 
 Now you copy folder "app" then go to magento 2 root directory and paste it with select merge folder:
 
-<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22685238684/in/dateposted-public/" title="magentorootfolder"><img src="https://farm1.staticflickr.com/707/22685238684_eb7ed2d666_o.png" width="1219" height="450" alt="magentorootfolder"></a>
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22685238684/in/dateposted-public/" title="magentorootfolder"><img src="https://farm1.staticflickr.com/707/22685238684_eb7ed2d666_o.png" width="1219" height="400" alt="magentorootfolder"></a>
 
-<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22945692779/in/dateposted-public/" title="copy"><img src="https://farm1.staticflickr.com/647/22945692779_0163d920f3_o.png" width="1220" height="450" alt="copy"></a>
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22945692779/in/dateposted-public/" title="copy"><img src="https://farm1.staticflickr.com/647/22945692779_0163d920f3_o.png" width="1220" height="400" alt="copy"></a>
 
 
 Then you open a terminal application, change to magento root directory and use command line :
@@ -61,14 +61,14 @@ cd [magento 2 root folder]
 php bin/magento setup:upgrade
 
 Example :
-<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231013591/in/dateposted-public/" title="install"><img src="https://farm1.staticflickr.com/600/23231013591_1b40506c84_o.png" width="1137" height="450" alt="install"></a>
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231013591/in/dateposted-public/" title="install"><img src="https://farm1.staticflickr.com/600/23231013591_1b40506c84_o.png" width="1137" height="400" alt="install"></a>
 
 Wait a sec to complete install:
 
-<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231013931/in/dateposted-public/" title="completeinstall"><img src="https://farm6.staticflickr.com/5781/23231013931_2f12c9deb0_o.png" width="1136" height="450" alt="completeinstall"></a>
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231013931/in/dateposted-public/" title="completeinstall"><img src="https://farm6.staticflickr.com/5781/23231013931_2f12c9deb0_o.png" width="1136" height="400" alt="completeinstall"></a>
 
 Finaly, you back to magento 2 admin, to check completed installation Bannerslider extesnion:
-<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22945692189/in/dateposted-public/" title="successinstallbannerslider"><img src="https://farm6.staticflickr.com/5623/22945692189_fc051e00a3_o.png" width="1351" height="450" alt="successinstallbannerslider"></a>
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22945692189/in/dateposted-public/" title="successinstallbannerslider"><img src="https://farm6.staticflickr.com/5623/22945692189_fc051e00a3_o.png" width="1351" height="400" alt="successinstallbannerslider"></a>
 
 
 
