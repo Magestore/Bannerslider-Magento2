@@ -36,6 +36,14 @@ The Magento front end relies heavily on caching to provide a faster experience t
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23017808190/in/dateposted-public/" title="cache"><img src="https://farm1.staticflickr.com/638/23017808190_eb32649597_o.png" width="1246" height="450" alt="cache"></a>
 
+You also should run the Magento software in developer mode when you’re extending or customizing it. You can use this command line to show current mode :
+
+php bin/magento deploy:mode:show
+
+Use this command to change to developer mode :
+
+php bin/magento deploy:mode:set developer
+
 <h2>Step 3: Install and verify the installation</h2>
 You can download as "zip" file and unzip Banner Slider extension or clone this repository by the following commands:
 
