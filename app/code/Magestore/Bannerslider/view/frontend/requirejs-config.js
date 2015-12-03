@@ -11,4 +11,15 @@ var config = {
 		'magestore/evolutionslider': 'Magestore_Bannerslider/js/jquery/slider/jquery-slider-min',
 		'magestore/popup': 'Magestore_Bannerslider/js/jquery.bpopup.min',
 	},
+	shim: {
+		'magestore/flexslider': {
+			deps: ['jquery']
+		},
+		'magestore/evolutionslider': {
+			deps: ['jquery']
+		},
+		'magestore/zebra-tooltips': {
+			deps: ['jquery']
+		},
+	}
 };

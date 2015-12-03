@@ -235,6 +235,17 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
 
         $dateFormat = $this->_localeDate->getDateFormat(\IntlDateFormatter::SHORT);
         $timeFormat = $this->_localeDate->getTimeFormat(\IntlDateFormatter::SHORT);
+
+        if($dataObj->hasData('start_time')) {
+            $datetime = new \DateTime($dataObj->getData('start_time'));
+            $dataObj->setData('start_time', $datetime->setTimezone(new \DateTimeZone($this->_localeDate->getConfigTimezone())));
+        }
+
+        if($dataObj->hasData('end_time')) {
+            $datetime = new \DateTime($dataObj->getData('end_time'));
+            $dataObj->setData('end_time', $datetime->setTimezone(new \DateTimeZone($this->_localeDate->getConfigTimezone())));
+        }
+
         $style = 'color: #000;background-color: #fff; font-weight: bold; font-size: 13px;';
         $elements['start_time'] = $fieldset->addField(
             'start_time',
@@ -249,6 +260,7 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
                 'class' => 'required-entry',
                 'date_format' => $dateFormat,
                 'time_format' => $timeFormat,
+                'note' => $this->_localeDate->getDateTimeFormat(\IntlDateFormatter::SHORT),
             ]
         );
 
@@ -265,6 +277,7 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
                 'class' => 'required-entry',
                 'date_format' => $dateFormat,
                 'time_format' => $timeFormat,
+                'note' => $this->_localeDate->getDateTimeFormat(\IntlDateFormatter::SHORT)
             ]
         );
 
@@ -296,8 +309,7 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
                 $elements[$attribute]->setStoreViewId($storeViewId);
             }
         }
-
-        $form->setValues($dataObj->getData());
+        $form->addValues($dataObj->getData());
         $this->setForm($form);
 
         return parent::_prepareForm();

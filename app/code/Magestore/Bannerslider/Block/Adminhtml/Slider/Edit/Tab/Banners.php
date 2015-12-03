@@ -177,6 +177,7 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'start_time',
                 'class' => 'xxx',
                 'width' => '50px',
+                'timezone' => true,
             ]
         );
 
@@ -188,6 +189,7 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'end_time',
                 'class' => 'xxx',
                 'width' => '50px',
+                'timezone' => true,
             ]
         );
 

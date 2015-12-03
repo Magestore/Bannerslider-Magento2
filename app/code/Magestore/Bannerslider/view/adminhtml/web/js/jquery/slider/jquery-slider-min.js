@@ -13,12 +13,6 @@
  * jQuery Easing released under the BSD License.
  */
 (function ($) {
-  var u = (jQuery.browser.msie && parseInt(jQuery.browser.version, 10) < 7 && parseInt(jQuery.browser.version, 10) > 4);
-  if (u) {
-    try {
-      document.execCommand("BackgroundImageCache", false, true)
-    } catch (err) {}
-  };
   if ($.proxy === undefined) {
     $.extend({
       proxy: function (a, b) {
@@ -264,7 +258,7 @@
               "-o-transform": a,
               "transform": a
             });
-            if (jQuery.browser.msie) {
+            if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
               this.esqueleto.clock.rotator.get(0).style['msTransform'] = a
             }
             if (this.degrees > 180) {
@@ -331,7 +325,7 @@
             "-o-transform": a,
             "transform": a
           });
-          if (jQuery.browser.msie) {
+          if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
             this.esqueleto.clock.rotator.get(0).style['msTransform'] = a
           }
         }
