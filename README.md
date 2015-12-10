@@ -12,7 +12,7 @@ Welcome to Banner Slider on Magento 2.0 Installation! We're glad that you are in
 </ul>
 <p><span style="color: #000000;"><strong>TRY LIVE DEMO HERE:</strong></span></p>
 <span> Frontend Demo </span>
-<span> Backend Demo </span>
+<br><span> Backend Demo </span></br>
 
 <h2>New to Magento? Need some help?</h2>
 If you're not sure about the following, you probably need a little help before you start installing the Banner Slider extension:
