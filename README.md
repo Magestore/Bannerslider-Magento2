@@ -1,7 +1,7 @@
 # Banner Slider Extension on Magento 2.0
 
 Welcome to Banner Slider on Magento 2.0 Installation! We're glad that you are interested in our extension.
-
+<img src="http://blog.magestore.com/wp-content/uploads/2015/08/BS-gift.gif"></img>
 <p><span style="color: #000000;">First time in the market, Magento 2 Banner Slider is upgraded to be <span style="color: #ff6600;"><strong>compatible with Magento 2</strong></span> and is promised to become <span style="color: #ff6600;"><strong>the hottest FREE extension</strong></span>.</span></p>
 <p><span style="color: #000000;">Still with full features as the previous version, Magento 2 Banner Slider will <strong>attract customers right from the very first moments they are on site:</strong></span></p>
 <ul class="short-features">
