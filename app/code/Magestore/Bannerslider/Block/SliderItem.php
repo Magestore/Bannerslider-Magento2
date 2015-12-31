@@ -159,8 +159,16 @@ class SliderItem extends \Magento\Framework\View\Element\Template
     {
         $store = $this->_storeManager->getStore()->getId();
 
-        $configEnable = $this->_scopeConfig->getValue(SliderModel::XML_CONFIG_BANNERSLIDER, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store);
-        if (!$configEnable || $this->_slider->getStatus() === Status::STATUS_DISABLED || !$this->_slider->getId() || !$this->getBannerCollection()->getSize()) {
+        $configEnable = $this->_scopeConfig->getValue(
+            SliderModel::XML_CONFIG_BANNERSLIDER,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        );
+
+        if (!$configEnable
+            || $this->_slider->getStatus() === Status::STATUS_DISABLED
+            || !$this->_slider->getId()
+            || !$this->getBannerCollection()->getSize()) {
             return '';
         }
 
@@ -181,7 +189,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
             $this->setSlider($slider);
 
             if ($slider->getStyleContent() == SliderModel::STYLE_CONTENT_NO) {
-                $this->setTemplate(SliderModel::STYLESLIDE_CUSTOM_TEMPLATE);
+                $this->setTemplate(self::STYLESLIDE_CUSTOM_TEMPLATE);
             } else {
                 $this->setStyleSlideTemplate($slider->getStyleSlide());
             }
