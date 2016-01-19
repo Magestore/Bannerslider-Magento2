@@ -38,7 +38,7 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
      */
     public function execute()
     {
-        $resultRedirect = $this->_resultRedirectFactory->create();
+        $resultRedirect = $this->resultRedirectFactory->create();
         $formPostValues = $this->getRequest()->getPostValue();
 
         if (isset($formPostValues['slider'])) {

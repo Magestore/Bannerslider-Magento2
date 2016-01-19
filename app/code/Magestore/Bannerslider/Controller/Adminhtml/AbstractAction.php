@@ -131,4 +131,33 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
         $this->_sliderCollectionFactory = $sliderCollectionFactory;
     }
+
+    /**
+     * get back result redirect after add/edit.
+     *
+     * @param \Magento\Backend\Model\View\Result\Redirect $resultRedirect
+     *
+     * @return \Magento\Backend\Model\View\Result\Redirect
+     */
+    protected function _getBackResultRedirect(\Magento\Backend\Model\View\Result\Redirect $resultRedirect, $paramCrudId = null)
+    {
+        switch ($this->getRequest()->getParam('back')) {
+            case 'edit':
+                $resultRedirect->setPath(
+                    '*/*/edit',
+                    [
+                        static::PARAM_CRUD_ID => $paramCrudId,
+                        '_current' => true,
+                    ]
+                );
+                break;
+            case 'new':
+                $resultRedirect->setPath('*/*/new');
+                break;
+            default:
+                $resultRedirect->setPath('*/*/');
+        }
+
+        return $resultRedirect;
+    }
 }

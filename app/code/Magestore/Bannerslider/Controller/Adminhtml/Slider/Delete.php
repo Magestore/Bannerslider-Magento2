@@ -43,7 +43,7 @@ class Delete extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
         } catch (\Exception $e) {
             $this->messageManager->addError($e->getMessage());
         }
-        $resultRedirect = $this->_resultRedirectFactory->create();
+        $resultRedirect = $this->resultRedirectFactory->create();
 
         return $resultRedirect->setPath('*/*/');
     }
