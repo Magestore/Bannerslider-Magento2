@@ -61,11 +61,6 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
     protected $_resultPageFactory;
 
     /**
-     * @var \Magento\Backend\Model\View\Result\RedirectFactory
-     */
-    protected $_resultRedirectFactory;
-
-    /**
      * Banner factory.
      *
      * @var \Magestore\Bannerslider\Model\BannerFactory
@@ -104,7 +99,6 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      * @param \Magento\Framework\View\Result\LayoutFactory $resultLayoutFactory
      * @param \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
-     * @param \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Backend\Helper\Js $jsHelper
      */
@@ -119,7 +113,6 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Framework\View\Result\LayoutFactory $resultLayoutFactory,
         \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory,
-        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Backend\Helper\Js $jsHelper
     ) {
@@ -132,7 +125,6 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
         $this->_resultPageFactory = $resultPageFactory;
         $this->_resultLayoutFactory = $resultLayoutFactory;
         $this->_resultForwardFactory = $resultForwardFactory;
-        $this->_resultRedirectFactory = $resultRedirectFactory;
 
         $this->_bannerFactory = $bannerFactory;
         $this->_sliderFactory = $sliderFactory;
