@@ -104,24 +104,6 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
                 $this->messageManager->addSuccess(__('The banner has been saved.'));
                 $this->_getSession()->setFormData(false);
 
-//                if ($this->getRequest()->getParam('back') === 'edit') {
-//                    return $resultRedirect->setPath(
-//                        '*/*/edit',
-//                        [
-//                            'banner_id' => $model->getId(),
-//                            '_current' => true,
-//                            'store' => $storeViewId,
-//                            'current_slider_id' => $this->getRequest()->getParam('current_slider_id'),
-//                            'saveandclose' => $this->getRequest()->getParam('saveandclose'),
-//                        ]
-//                    );
-//                } elseif ($this->getRequest()->getParam('back') === 'new') {
-//                    return $resultRedirect->setPath(
-//                        '*/*/new',
-//                        ['_current' => TRUE]
-//                    );
-//                }
-
                 return $this->_getBackResultRedirect($resultRedirect, $model->getId());
             } catch (\Exception $e) {
                 $this->messageManager->addError($e->getMessage());
