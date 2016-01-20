@@ -110,16 +110,7 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
                 $this->messageManager->addSuccess(__('The slider has been saved.'));
                 $this->_getSession()->setFormData(false);
 
-                if ($this->getRequest()->getParam('back') === 'edit') {
-                    return $resultRedirect->setPath(
-                        '*/*/edit', ['slider_id' => $model->getId(), '_current' => TRUE]
-                    );
-                } elseif ($this->getRequest()->getParam('back') === 'new') {
-                    return $resultRedirect->setPath('*/*/new', ['_current' => TRUE]);
-                }
-
-                return $resultRedirect->setPath('*/*/');
-
+                return $this->_getBackResultRedirect($resultRedirect, $model->getId());
             } catch (\Exception $e) {
                 $this->messageManager->addError($e->getMessage());
                 $this->messageManager->addException($e, __('Something went wrong while saving the slider.'));
@@ -127,7 +118,7 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
 
             $this->_getSession()->setFormData($formPostValues);
 
-            return $resultRedirect->setPath('*/*/edit', ['slider_id' => $sliderId]);
+            return $resultRedirect->setPath('*/*/edit', [static::PARAM_CRUD_ID => $sliderId]);
         }
 
         return $resultRedirect->setPath('*/*/');

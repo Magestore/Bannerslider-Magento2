@@ -33,7 +33,7 @@ class Delete extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
 {
     public function execute()
     {
-        $sliderId = $this->getRequest()->getParam('slider_id');
+        $sliderId = $this->getRequest()->getParam(static::PARAM_CRUD_ID);
         try {
             $slider = $this->_sliderFactory->create()->setId($sliderId);
             $slider->delete();

@@ -38,13 +38,13 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
      */
     public function execute()
     {
-        $resultRedirect = $this->_resultRedirectFactory->create();
+        $resultRedirect = $this->resultRedirectFactory->create();
 
         if ($data = $this->getRequest()->getPostValue()) {
             $model = $this->_bannerFactory->create();
             $storeViewId = $this->getRequest()->getParam('store');
 
-            if ($id = $this->getRequest()->getParam('banner_id')) {
+            if ($id = $this->getRequest()->getParam(static::PARAM_CRUD_ID)) {
                 $model->load($id);
             }
 
@@ -104,25 +104,25 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
                 $this->messageManager->addSuccess(__('The banner has been saved.'));
                 $this->_getSession()->setFormData(false);
 
-                if ($this->getRequest()->getParam('back') === 'edit') {
-                    return $resultRedirect->setPath(
-                        '*/*/edit',
-                        [
-                            'banner_id' => $model->getId(),
-                            '_current' => true,
-                            'store' => $storeViewId,
-                            'current_slider_id' => $this->getRequest()->getParam('current_slider_id'),
-                            'saveandclose' => $this->getRequest()->getParam('saveandclose'),
-                        ]
-                    );
-                } elseif ($this->getRequest()->getParam('back') === 'new') {
-                    return $resultRedirect->setPath(
-                        '*/*/new',
-                        ['_current' => TRUE]
-                    );
-                }
+//                if ($this->getRequest()->getParam('back') === 'edit') {
+//                    return $resultRedirect->setPath(
+//                        '*/*/edit',
+//                        [
+//                            'banner_id' => $model->getId(),
+//                            '_current' => true,
+//                            'store' => $storeViewId,
+//                            'current_slider_id' => $this->getRequest()->getParam('current_slider_id'),
+//                            'saveandclose' => $this->getRequest()->getParam('saveandclose'),
+//                        ]
+//                    );
+//                } elseif ($this->getRequest()->getParam('back') === 'new') {
+//                    return $resultRedirect->setPath(
+//                        '*/*/new',
+//                        ['_current' => TRUE]
+//                    );
+//                }
 
-                return $resultRedirect->setPath('*/*/');
+                return $this->_getBackResultRedirect($resultRedirect, $model->getId());
             } catch (\Exception $e) {
                 $this->messageManager->addError($e->getMessage());
                 $this->messageManager->addException($e, __('Something went wrong while saving the banner.'));
@@ -132,7 +132,7 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
 
             return $resultRedirect->setPath(
                 '*/*/edit',
-                ['banner_id' => $this->getRequest()->getParam('banner_id')]
+                [static::PARAM_CRUD_ID => $this->getRequest()->getParam(static::PARAM_CRUD_ID)]
             );
         }
 

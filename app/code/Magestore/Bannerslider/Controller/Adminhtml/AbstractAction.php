@@ -31,6 +31,8 @@ namespace Magestore\Bannerslider\Controller\Adminhtml;
  */
 abstract class AbstractAction extends \Magento\Backend\App\Action
 {
+    const PARAM_CRUD_ID = 'entity_id';
+
     /**
      * @var \Magento\Backend\Helper\Js
      */
@@ -66,6 +68,13 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
      * @var \Magestore\Bannerslider\Model\BannerFactory
      */
     protected $_bannerFactory;
+
+    /**
+     * Slider factory.
+     *
+     * @var \Magestore\Bannerslider\Model\SliderFactory
+     */
+    protected $_sliderFactory;
 
     /**
      * Banner Collection Factory.
@@ -133,13 +142,14 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
     }
 
     /**
-     * get back result redirect after add/edit.
+     * Get back result redirect after add/edit.
      *
-     * @param \Magento\Backend\Model\View\Result\Redirect $resultRedirect
+     * @param \Magento\Framework\Controller\Result\Redirect $resultRedirect
+     * @param null                                          $paramCrudId
      *
-     * @return \Magento\Backend\Model\View\Result\Redirect
+     * @return \Magento\Framework\Controller\Result\Redirect
      */
-    protected function _getBackResultRedirect(\Magento\Backend\Model\View\Result\Redirect $resultRedirect, $paramCrudId = null)
+    protected function _getBackResultRedirect(\Magento\Framework\Controller\Result\Redirect $resultRedirect, $paramCrudId = null)
     {
         switch ($this->getRequest()->getParam('back')) {
             case 'edit':
@@ -152,7 +162,7 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
                 );
                 break;
             case 'new':
-                $resultRedirect->setPath('*/*/new');
+                $resultRedirect->setPath('*/*/new', ['_current' => true]);
                 break;
             default:
                 $resultRedirect->setPath('*/*/');
