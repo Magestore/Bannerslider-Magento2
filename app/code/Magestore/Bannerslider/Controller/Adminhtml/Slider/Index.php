@@ -45,12 +45,6 @@ class Index extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
 
         $resultPage = $this->_resultPageFactory->create();
 
-        /*
-         * Add breadcrumb item
-         */
-        $this->_addBreadcrumb(__('Sliders'), __('Sliders'));
-        $this->_addBreadcrumb(__('Manage Sliders'), __('Manage Sliders'));
-
         return $resultPage;
     }
 }
