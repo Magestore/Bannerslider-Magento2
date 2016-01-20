@@ -45,12 +45,6 @@ class Index extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
 
         $resultPage = $this->_resultPageFactory->create();
 
-        /*
-         * Add breadcrumb item
-         */
-        $this->_addBreadcrumb(__('Banners'), __('Banners'));
-        $this->_addBreadcrumb(__('Manage Banners'), __('Manage Banners'));
-
         return $resultPage;
     }
 }
