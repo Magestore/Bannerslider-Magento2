@@ -44,7 +44,7 @@ class Edit extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
             $model->setStoreViewId($storeViewId)->load($id);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This banner no longer exists.'));
-                $resultRedirect = $this->_resultRedirectFactory->create();
+                $resultRedirect = $this->resultRedirectFactory->create();
 
                 return $resultRedirect->setPath('*/*/');
             }

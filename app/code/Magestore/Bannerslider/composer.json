@@ -1,9 +1,9 @@
 {
-  "name": "magestore/Bannerslider-Magento2",
+  "name": "magestore/module-bannerslider",
   "description": "N/A",
   "require": {
     "php": "~5.5.0|~5.6.0|~7.0.0",
-    "magento/framework": "100.0.*",
+    "magento/framework": "1.0.0-beta",
     "lib-libxml": "*"
   },
   "type": "magento2-module",
