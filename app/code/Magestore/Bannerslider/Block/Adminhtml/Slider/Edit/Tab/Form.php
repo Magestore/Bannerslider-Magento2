@@ -264,7 +264,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             [
                 'label' => __('Speed'),
                 'name' => 'slider_speed',
-                'note' => 'mini seconds. This is the display time of a banner',
+                'note' => 'milliseconds . This is the display time of a banner',
             ]
         );
 
