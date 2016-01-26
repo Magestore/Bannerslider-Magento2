@@ -10,17 +10,16 @@
     {
       "type": "package",
       "package": {
-        "name": "magestore/bannerslider-magento2", //give package name to anything, must be unique
+        "name": "magestore/bannerslider-magento2",
         "version": "1.0",
         "source": {
-          "url": "https://github.com/Magestore/Bannerslider-Magento2.git", //git url
+          "url": "https://github.com/Magestore/Bannerslider-Magento2.git",
           "type": "git",
-          "reference": "master" //git branch-name
+          "reference": "master"
         }
       }
     }],
   "type": "magento2-module",
-  "version": "100.0.2",
   "license": [
     "OSL-3.0",
     "AFL-3.0"
