@@ -23,5 +23,11 @@
     "psr-4": {
       "Magestore\\Bannerslider\\": ""
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Magestore/Bannerslider-Magento2.git"
+    }
+    ]
 }
