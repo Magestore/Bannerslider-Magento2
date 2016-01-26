@@ -5,7 +5,6 @@
     "php": "~5.5.0|~5.6.0|~7.0.0"
   },
   "type": "magento2-module",
-  "version": "0.1.3",
   "license": [
     "OSL-3.0",
     "AFL-3.0"
@@ -19,7 +18,9 @@
     }
   ],
   "autoload": {
-    "files": [ "registration.php" ],
+    "files": [
+      "registration.php"
+    ],
     "psr-4": {
       "Magestore\\Bannerslider\\": ""
     }
@@ -29,5 +30,5 @@
       "type": "vcs",
       "url": "https://github.com/Magestore/Bannerslider-Magento2.git"
     }
-    ]
+  ]
 }
