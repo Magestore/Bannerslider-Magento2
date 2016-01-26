@@ -9,7 +9,7 @@
     "OSL-3.0",
     "AFL-3.0"
   ],
-  "minimum-stability": "dev-master",
+  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Blanka",
