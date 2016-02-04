@@ -57,6 +57,13 @@ Use this command to change to developer mode :
 php bin/magento deploy:mode:set developer
 
 <h2>Step 3: Install and verify the installation</h2>
+
+-Install by Composer : You can install the module by Composer (If your server supports Composer). Please go to the Magento folder and run the command:
+
+composer require magestore/module-bannerslider
+
+-Install by uploading files:
+
 You can download as "zip" file and unzip Banner Slider extension or clone this repository by the following commands:
 
 Use SSH: git clone git@github.com:Magestore/Bannerslider.git
@@ -67,7 +74,7 @@ When you have completed, you will have a folder named Bannerslider containing al
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231014181/in/dateposted-public/" title="bannersliderextension"><img src="https://farm1.staticflickr.com/579/23231014181_d3b668f1cd_o.png" width="1217" height="400" alt="bannersliderextension"></a>
 
-Now you copy folder "app" then go to magento 2 root directory and paste it in selected merge folder:
+Then, please go to the Magento 2 root folder, create the folder app/code/Magestore/Bannerslider and copy all files to that folder.
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22685238684/in/dateposted-public/" title="magentorootfolder"><img src="https://farm1.staticflickr.com/707/22685238684_eb7ed2d666_o.png" width="1219" height="400" alt="magentorootfolder"></a>
 
@@ -86,6 +93,10 @@ Example :
 Wait a second to complete installation process:
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231013931/in/dateposted-public/" title="completeinstall"><img src="https://farm6.staticflickr.com/5781/23231013931_2f12c9deb0_o.png" width="1136" height="400" alt="completeinstall"></a>
+
+After that, if your website is in the production mode, please run the command:
+
+php bin/magento setup:static-content:deploy
 
 Finally, coming back to Magento 2 admin to check if Banner Slider extension is installed properly:
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22945692189/in/dateposted-public/" title="successinstallbannerslider"><img src="https://farm6.staticflickr.com/5623/22945692189_fc051e00a3_o.png" width="1351" height="400" alt="successinstallbannerslider"></a>
