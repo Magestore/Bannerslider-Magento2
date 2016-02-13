@@ -317,6 +317,12 @@ class InstallSchema implements InstallSchemaInterface
             null,
             ['nullable' => true],
             'Banner ending time'
+        )->addColumn(
+            'caption',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            null,
+            ['nullable' => true, 'default' => ''],
+            'Banner caption'
         )->addIndex(
             $installer->getIdxName('magestore_bannerslider_banner', ['banner_id']),
             ['banner_id']
