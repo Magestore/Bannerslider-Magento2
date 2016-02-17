@@ -99,7 +99,7 @@ After that, if your website is in the production mode, please run the command:
 php bin/magento setup:static-content:deploy
 
 Finally, coming back to Magento 2 admin to check if Banner Slider extension is installed properly:
-<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22945692189/in/dateposted-public/" title="successinstallbannerslider"><img src="https://farm6.staticflickr.com/5623/22945692189_fc051e00a3_o.png" width="1351" height="400" alt="successinstallbannerslider"></a>
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/138738707@N02/25081717235/in/dateposted-public/" title="successinstallbannerslider"><img src="https://farm6.staticflickr.com/5623/22945692189_fc051e00a3_o.png" width="1351" height="400" alt="successinstallbannerslider"></a>
 
 
 
