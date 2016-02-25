@@ -58,11 +58,11 @@ php bin/magento deploy:mode:set developer
 
 <h2>Step 3: Install and verify the installation</h2>
 
--Install by Composer : You can install the module by Composer (If your server supports Composer). Please go to the Magento folder and run the command:
+<strong>-Install by Composer :</strong> You can install the module by Composer (If your server supports Composer). Please go to the Magento folder and run the command:
 
-composer require magestore/module-bannerslider
+<strong>composer require magestore/module-bannerslider</strong>
 
--Install by uploading files:
+<strong>-Install by uploading files:</strong>
 
 You can download as "zip" file and unzip Banner Slider extension or clone this repository by the following commands:
 
@@ -74,7 +74,7 @@ When you have completed, you will have a folder named Bannerslider containing al
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231014181/in/dateposted-public/" title="bannersliderextension"><img src="https://farm1.staticflickr.com/579/23231014181_d3b668f1cd_o.png" width="1217" height="400" alt="bannersliderextension"></a>
 
-Then, please go to the Magento 2 root folder, create the folder app/code/Magestore/Bannerslider and copy all files to that folder.
+Then, please go to the Magento 2 root folder, create the folder <strong>app/code/Magestore/Bannerslider</strong> and copy all files to that folder. 
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22685238684/in/dateposted-public/" title="magentorootfolder"><img src="https://farm1.staticflickr.com/707/22685238684_eb7ed2d666_o.png" width="1219" height="400" alt="magentorootfolder"></a>
 
