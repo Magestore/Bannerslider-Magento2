@@ -97,7 +97,7 @@ Wait a second to complete installation process:
 
 After that, if your website is in the production mode, please run the command:
 
-php bin/magento setup:static-content:deploy
+<strong>php bin/magento setup:static-content:deploy</strong>
 
 Finally, coming back to Magento 2 admin to check if Banner Slider extension is installed properly:
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138738707@N02/25081717235/in/dateposted-public/" title="successinstallbannerslider"><img src="https://farm2.staticflickr.com/1458/25081717235_7c98d5a5bd_h.jpg" width="1351" height="400" alt="successinstallbannerslider"></a>
