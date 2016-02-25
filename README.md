@@ -70,11 +70,12 @@ Use SSH: git clone git@github.com:Magestore/Bannerslider.git
 
 Use HTTPS: git clone https://github.com/Magestore/Bannerslider.git
 
-When you have completed, you will have a folder named Bannerslider containing all files of this extension:
+When you have completed, you will have a folder containing all files of this extension. 
+Then, please create the folder <strong>app/code/Magestore/Bannerslider</strong> and copy all files which you have downloaded to that folder.
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/23231014181/in/dateposted-public/" title="bannersliderextension"><img src="https://farm1.staticflickr.com/579/23231014181_d3b668f1cd_o.png" width="1217" height="400" alt="bannersliderextension"></a>
 
-Then, please go to the Magento 2 root folder, create the folder <strong>app/code/Magestore/Bannerslider</strong> and copy all files to that folder. 
+ After that, please uploaded the <strong>app</strong> folder to your Magento 2 root folder.
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/138040484@N02/22685238684/in/dateposted-public/" title="magentorootfolder"><img src="https://farm1.staticflickr.com/707/22685238684_eb7ed2d666_o.png" width="1219" height="400" alt="magentorootfolder"></a>
 
