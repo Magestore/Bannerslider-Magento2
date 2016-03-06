@@ -48,7 +48,18 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
                 $model->load($id);
             }
 
-            if (isset($_FILES['image']) && isset($_FILES['image']['name']) && strlen($_FILES['image']['name'])) {
+            $imageRequest = $this->getRequest()->getFiles('image');
+            if ($imageRequest) {
+                if (isset($imageRequest['name'])) {
+                    $fileName = $imageRequest['name'];
+                } else {
+                    $fileName = '';
+                }
+            } else {
+                $fileName = '';
+            }
+
+            if ($imageRequest && strlen($fileName)) {
                 /*
                  * Save image upload
                  */
