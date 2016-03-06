@@ -6,10 +6,6 @@
   },
   "type": "magento2-module",
   "version": "1.6.0",
-  "license": [
-    "OSL-3.0",
-    "AFL-3.0"
-  ],
   "authors": [
     {
       "name": "Blanka",
