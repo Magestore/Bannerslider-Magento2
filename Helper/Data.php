@@ -149,7 +149,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             Slider::STYLESLIDE_FLEXSLIDER_ONE => 'FlexSlider 1',
             Slider::STYLESLIDE_FLEXSLIDER_TWO => 'FlexSlider 2',
             Slider::STYLESLIDE_FLEXSLIDER_THREE => 'FlexSlider 3',
-            Slider::STYLESLIDE_FLEXSLIDER_THREE => 'FlexSlider 4',
+            Slider::STYLESLIDE_FLEXSLIDER_FOUR => 'FlexSlider 4',
         ];
     }
 
