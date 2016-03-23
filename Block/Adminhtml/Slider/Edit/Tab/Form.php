@@ -454,7 +454,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             [
                 'fieldName' => 'position',
                 'fieldNameFrom' => 'style_slide',
-                'refField' => '5,6,10,',
+                'refField' => '5,6,',
                 'negative' => true,
             ],
             [
