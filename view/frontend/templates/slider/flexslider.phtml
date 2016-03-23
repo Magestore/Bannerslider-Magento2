@@ -34,6 +34,17 @@ $bannerCollection = $block->getBannerCollection();
 (function  () {
     var flexSliderSelector = '<?php echo $htmlId; ?>';
     require(['jquery', 'magestore/flexslider'], function($) {
+        var fitImageSlider = function (slider) {
+            if(slider && slider[0]) {
+                var height = $(slider[0]).find('.slides li img').height();
+                $(slider[0]).find('.slides li img').each(function(index, element){
+                    if($(element).height() > height) {
+                        height = $(element).height();
+                    }
+                });
+                $(slider[0]).find('.slides li,.slides  li a,.slides li img').css('height', height + 'px');
+            }
+        }
         $(document).ready(function($) {
             var STYLESLIDE_FLEXSLIDER_ONE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_ONE ?>;
             var STYLESLIDE_FLEXSLIDER_TWO = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO ?>;
@@ -44,6 +55,9 @@ $bannerCollection = $block->getBannerCollection();
                     $('.' + flexSliderSelector).flexslider({
                         animation: '<?php echo $slider->getData("animationB") ?>',
                         slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>,
+                        start: function (slider) {
+                            fitImageSlider(slider);
+                        }
                     });
                     break;
                 case STYLESLIDE_FLEXSLIDER_TWO:
@@ -51,6 +65,9 @@ $bannerCollection = $block->getBannerCollection();
                         animation: '<?php echo $slider->getData("animationB") ?>',
                         controlNav: 'thumbnails',
                         slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>,
+                        start: function (slider) {
+                            fitImageSlider(slider);
+                        }
                     });
                     break;
                 case STYLESLIDE_FLEXSLIDER_THREE:
@@ -61,7 +78,10 @@ $bannerCollection = $block->getBannerCollection();
                         slideshow: true,
                         itemWidth: 210,
                         itemMargin: 5,
-                        asNavFor: '#' + flexSliderSelector
+                        asNavFor: '#' + flexSliderSelector,
+                        start: function (slider) {
+                            fitImageSlider(slider);
+                        }
                     });
                     $('#' + flexSliderSelector).flexslider({
                         animation: '<?php echo $slider->getData("animationB") ?>',
@@ -69,7 +89,10 @@ $bannerCollection = $block->getBannerCollection();
                         animationLoop: true,
                         slideshow: true,
                         sync: '#'+flexSliderSelector + '-carousel',
-                        slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>
+                        slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>,
+                        start: function (slider) {
+                            fitImageSlider(slider);
+                        }
                     });
                     break;
                 default:
@@ -80,7 +103,10 @@ $bannerCollection = $block->getBannerCollection();
                         slideshow: true,
                         itemMargin: 5,
                         minItems: 2,
-                        maxItems: 4
+                        maxItems: 4,
+                        start: function (slider) {
+                            fitImageSlider(slider);
+                        }
                     });
                     break;
             }
@@ -135,3 +161,8 @@ $bannerCollection = $block->getBannerCollection();
         <?php endif; ?>
     </div>
 </div>
+<style>
+    .flex-viewport .slides li{
+        margin-bottom: 0px !important;
+    }
+</style>
