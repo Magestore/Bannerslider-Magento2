@@ -25,7 +25,7 @@
         <label translate="true">Banner Slider Widget</label>
         <description>Choose a slideshow from: Admin » Content » Banner Slider</description>
         <parameters>
-            <parameter name="slider" xsi:type="select" source_model="Magestore\Bannerslider\Model\Config\Source\Slider" visible="true" sort_order="10" >
+            <parameter name="slider" xsi:type="select" source_model="Magestore\Bannerslider\Model\Config\Source\Slider" visible="true" required="true" sort_order="10" >
                 <label translate="true">Slider</label>
             </parameter>
             <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="20">
