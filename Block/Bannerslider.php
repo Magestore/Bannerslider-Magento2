@@ -158,19 +158,20 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
             ->addFieldToFilter('position', $position)
             ->addFieldToFilter('status', Status::STATUS_ENABLED);
         $category = $this->_coreRegistry->registry('current_category');
-        $categoryPathIds = $category->getPathIds();
-
-        foreach ($sliderCollection as $slider) {
-            $sliderCategoryIds = explode(',', $slider->getCategoryIds());
-            if (count(array_intersect($categoryPathIds, $sliderCategoryIds)) > 0) {
-                $this->append(
-                    $this->getLayout()->createBlock(
-                        'Magestore\Bannerslider\Block\SliderItem'
-                    )->setSliderId($slider->getId())
-                );
+        if (!is_null($category)) {
+            $categoryPathIds = $category->getPathIds();
+    
+            foreach ($sliderCollection as $slider) {
+                $sliderCategoryIds = explode(',', $slider->getCategoryIds());
+                if (count(array_intersect($categoryPathIds, $sliderCategoryIds)) > 0) {
+                    $this->append(
+                        $this->getLayout()->createBlock(
+                            'Magestore\Bannerslider\Block\SliderItem'
+                        )->setSliderId($slider->getId())
+                    );
+                }
             }
         }
-
         return $this;
     }
 
