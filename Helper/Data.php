@@ -150,6 +150,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             Slider::STYLESLIDE_FLEXSLIDER_TWO => 'FlexSlider 2',
             Slider::STYLESLIDE_FLEXSLIDER_THREE => 'FlexSlider 3',
             Slider::STYLESLIDE_FLEXSLIDER_FOUR => 'FlexSlider 4',
+            Slider::STYLESLIDE_FLEXSLIDER_FIVE => 'FlexSlider 5',
         ];
     }
 
@@ -210,6 +211,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
                     [
                         'label' => __('FlexSlider 4'),
                         'value' => Slider::STYLESLIDE_FLEXSLIDER_FOUR,
+                    ],
+                    [
+                        'label' => __('FlexSlider 5'),
+                        'value' => Slider::STYLESLIDE_FLEXSLIDER_FIVE,
                     ],
                 ],
             ],
@@ -462,6 +467,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             [
                 'label' => __('FlexSlider 4'),
                 'value' => Slider::STYLESLIDE_FLEXSLIDER_FOUR,
+            ],
+            [
+                'label' => __('FlexSlider 5'),
+                'value' => Slider::STYLESLIDE_FLEXSLIDER_FIVE,
             ],
         ];
     }

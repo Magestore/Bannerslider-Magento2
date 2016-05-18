@@ -85,6 +85,7 @@ class Preview extends \Magento\Backend\Block\Template
             case SliderModel::STYLESLIDE_FLEXSLIDER_TWO:
             case SliderModel::STYLESLIDE_FLEXSLIDER_THREE:
             case SliderModel::STYLESLIDE_FLEXSLIDER_FOUR:
+            case SliderModel::STYLESLIDE_FLEXSLIDER_FIVE:
                 $this->setTemplate(self::STYLESLIDE_FLEXSLIDER_PREVIEW_TEMPLATE);
                 break;
         }

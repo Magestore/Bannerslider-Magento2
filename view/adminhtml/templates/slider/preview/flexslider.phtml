@@ -30,6 +30,7 @@ require(['jquery', 'magestore/flexslider'], function($) {
         var STYLESLIDE_FLEXSLIDER_ONE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_ONE ?>;
         var STYLESLIDE_FLEXSLIDER_TWO = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO ?>;
         var STYLESLIDE_FLEXSLIDER_THREE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_THREE ?>;
+        var STYLESLIDE_FLEXSLIDER_FIVE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_FIVE ?>;
 
         switch (<?php echo $sliderpreviewId ?>) {
             case STYLESLIDE_FLEXSLIDER_ONE:
@@ -60,6 +61,15 @@ require(['jquery', 'magestore/flexslider'], function($) {
                     animationLoop: false,
                     slideshow: false,
                     sync: "#carousel"
+                });
+                break;
+            case STYLESLIDE_FLEXSLIDER_FIVE:
+                $('.flexslider').flexslider({
+                    animation: 'slide',
+                    animationLoop: true,
+                    itemWidth: 200,
+                    slideshow: true,
+                    itemMargin: 5
                 });
                 break;
             default:

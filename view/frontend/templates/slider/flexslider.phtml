@@ -45,10 +45,12 @@ $bannerCollection = $block->getBannerCollection();
                 $(slider[0]).find('.slides li,.slides  li a,.slides li img').css('height', height + 'px');
             }
         }
+        
         $(document).ready(function($) {
             var STYLESLIDE_FLEXSLIDER_ONE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_ONE ?>;
             var STYLESLIDE_FLEXSLIDER_TWO = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO ?>;
             var STYLESLIDE_FLEXSLIDER_THREE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_THREE ?>;
+            var STYLESLIDE_FLEXSLIDER_FIVE = <?php echo \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_FIVE ?>;
 
             switch (<?php echo $styleSlide ?>) {
                 case STYLESLIDE_FLEXSLIDER_ONE:
@@ -90,6 +92,15 @@ $bannerCollection = $block->getBannerCollection();
                         slideshow: true,
                         sync: '#'+flexSliderSelector + '-carousel',
                         slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>,
+                    });
+                    break;
+                case STYLESLIDE_FLEXSLIDER_FIVE:
+                    $('.' + flexSliderSelector).flexslider({
+                        animation: 'slide',
+                        animationLoop: true,
+                        itemWidth: <?php echo $slider->getWidth() ?>,
+                        slideshow: true,
+                        itemMargin: 5,
                         start: function (slider) {
                             fitImageSlider(slider);
                         }
