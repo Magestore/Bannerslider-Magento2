@@ -6,7 +6,7 @@
  */
 
 'use strict';
-require(['jquery','magestore/zebra-tooltips'], function($) {
+require(['jquery','Magestore_Bannerslider/js/jquery/ui/zebra-tooltips'], function($) {
     $(document).ready(function() {
         var atooltip = $('[data-position-image]'),
             positionImage = atooltip.data('position-image'),
