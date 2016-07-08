@@ -58,6 +58,11 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
     protected $_banner;
 
     /**
+     * @var \Magento\Cms\Model\Wysiwyg\Config
+     */
+    protected $_wysiwygConfig;
+
+    /**
      * constructor.
      *
      * @param \Magento\Backend\Block\Template\Context                        $context
@@ -77,12 +82,14 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         \Magestore\Bannerslider\Model\Banner $banner,
         \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory $valueCollectionFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
+        \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
         array $data = []
     ) {
         $this->_objectFactory = $objectFactory;
         $this->_banner = $banner;
         $this->_valueCollectionFactory = $valueCollectionFactory;
         $this->_sliderFactory = $sliderFactory;
+        $this->_wysiwygConfig = $wysiwygConfig;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -103,6 +110,7 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         );
 
         return $this;
+
     }
 
     /**
@@ -209,6 +217,19 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
                 'label' => __('Alt Text'),
                 'name' => 'image_alt',
                 'note' => 'Used for SEO',
+            ]
+        );
+
+        $wysiwygConfig = $this->_wysiwygConfig->getConfig();
+
+        $elements['caption'] = $fieldset->addField(
+            'caption',
+            'editor',
+            [
+                'title' => __('Caption'),
+                'label' => __('Caption'),
+                'name' => 'caption',
+                'config' => $wysiwygConfig
             ]
         );
 
