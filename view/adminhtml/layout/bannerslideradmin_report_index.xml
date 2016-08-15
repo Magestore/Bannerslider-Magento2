@@ -39,5 +39,8 @@
         <referenceContainer name="content">
             <block class="Magestore\Bannerslider\Block\Adminhtml\Report" name="admin.block.report.grid.container"/>
         </referenceContainer>
+		<!--<referenceContainer name="content">-->
+			<!--<uiComponent name="slider_grid_listing"/>-->
+		<!--</referenceContainer>-->
     </body>
 </page>

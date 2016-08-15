@@ -64,14 +64,12 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
                  * Save image upload
                  */
                 try {
-                    $uploader = $this->_objectManager->create(
-                        'Magento\MediaStorage\Model\File\Uploader',
-                        ['fileId' => 'image']
-                    );
+                    $uploader = $this->_uploaderFactory->create(['fileId' => 'image']);
+
                     $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
 
                     /** @var \Magento\Framework\Image\Adapter\AdapterInterface $imageAdapter */
-                    $imageAdapter = $this->_objectManager->get('Magento\Framework\Image\AdapterFactory')->create();
+                    $imageAdapter = $this->_adapterFactory->create();
 
                     $uploader->addValidateCallback('banner_image', $imageAdapter, 'validateUploadFile');
                     $uploader->setAllowRenameFiles(true);
@@ -103,9 +101,11 @@ class Save extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
             }
 
             /** @var \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate */
-            $localeDate = $this->_objectManager->get('Magento\Framework\Stdlib\DateTime\TimezoneInterface');
-            $data['start_time'] = $localeDate->date($data['start_time'])->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i');
-            $data['end_time'] = $localeDate->date($data['end_time'])->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i');
+//            $localeDate = $this->_objectManager->get('Magento\Framework\Stdlib\DateTime\TimezoneInterface');
+            $localeDate = $this->_objectManager->get('Magento\Framework\Stdlib\DateTime\Timezone');
+
+            $data['start_time'] = $localeDate->date($data['start_time'], null, 'UTC')->format('Y-m-d H:i');
+            $data['end_time'] = $localeDate->date($data['end_time'],  null, 'UTC')->format('Y-m-d H:i');
             
             $model->setData($data)
                 ->setStoreViewId($storeViewId);

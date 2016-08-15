@@ -43,8 +43,12 @@
     	        </action>
     	    </block>
     	</referenceContainer>
-        <referenceContainer name="content">
-            <block class="Magestore\Bannerslider\Block\Adminhtml\Banner" name="admin.block.banner.grid.container"/>
-        </referenceContainer>
+        <!--<referenceContainer name="content">-->
+            <!--<block class="Magestore\Bannerslider\Block\Adminhtml\Banner" name="admin.block.banner.grid.container"/>-->
+        <!--</referenceContainer>-->
+		<referenceContainer name="content">
+			<uiComponent name="banner_grid_listing"/>
+		</referenceContainer>
+
     </body>
 </page>

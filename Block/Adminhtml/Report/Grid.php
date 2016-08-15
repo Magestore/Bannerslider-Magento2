@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Magestore
  *
@@ -19,11 +18,8 @@
  * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
  * @license     http://www.magestore.com/license-agreement.html
  */
-
 namespace Magestore\Bannerslider\Block\Adminhtml\Report;
-
 use Magestore\Bannerslider\Model\ResourceModel\Report\Collection as ReportCollection;
-
 /**
  * Report grid.
  * @category Magestore
@@ -39,7 +35,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      * @var \Magestore\Bannerslider\Model\ReportFactory
      */
     protected $_reportCollectionFactory;
-
     /**
      * [__construct description].
      *
@@ -57,7 +52,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->_reportCollectionFactory = $reportCollectionFactory;
         parent::__construct($context, $backendHelper, $data);
     }
-
     /**
      * [_construct description].
      *
@@ -72,14 +66,11 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->setSaveParametersInSession(true);
         $this->setUseAjax(true);
     }
-
     protected function _prepareCollection()
     {
         /** @var \Magestore\Bannerslider\Model\ResourceModel\Report\Collection $collection */
         $collection = $this->_reportCollectionFactory->create();
-
         $actionName = $this->getRequest()->getActionName();
-
         if ($actionName === 'index'
             || ($actionName == 'grid' && $this->getRequest()->getParam('action') === 'index')
         ) {
@@ -89,12 +80,9 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         ) {
             $collection->reportClickAndImpress(ReportCollection::REPORT_TYPE_ALL_SLIDER);
         }
-
         $this->setCollection($collection);
-
         return parent::_prepareCollection();
     }
-
     /**
      * @return $this
      */
@@ -128,7 +116,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'banner_url',
             ]
         );
-
         $actionName = $this->getRequest()->getActionName();
         if ($actionName === 'index' || ($actionName == 'grid' && $this->getRequest()->getParam('action') === 'index')) {
             $this->addColumn(
@@ -141,7 +128,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 ]
             );
         }
-
         $this->addColumn(
             'banner_click',
             [
@@ -153,7 +139,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '100px',
             ]
         );
-
         $this->addColumn(
             'banner_impress',
             [
@@ -176,7 +161,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'renderer' => 'Magestore\Bannerslider\Block\Adminhtml\Report\Helper\Renderer\Image',
             ]
         );
-
         $this->addColumn(
             'date_click',
             [
@@ -189,10 +173,8 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addExportType('*/*/exportCsv', __('CSV'));
         $this->addExportType('*/*/exportXml', __('XML'));
         $this->addExportType('*/*/exportExcel', __('Excel'));
-
         return parent::_prepareColumns();
     }
-
     /**
      * @return string
      */

@@ -24,9 +24,9 @@
 <?php if ($block->isShowTitle() == 1) :
 ?>
 <div class="magestore-bannerslider-title" style="font: bold 12px/16px Arial, Helvetica, sans-serif;text-transform: uppercase;color: #e26703;">
-	<strong><span><?php echo $block->getSlider()->getTitle(); ?></span></strong>
+	<strong><span><?php echo $block->escapeHtml($block->getSlider()->getTitle()); ?></span></strong>
 </div>
 <?php endif; ?>
 <div class="magestore-bannerslider-custom">
-	<?php echo $block->getSlider()->getCustomCode(); ?>
+	<?php echo $block->escapeHtml($block->getSlider()->getCustomCode()); ?>
 </div>

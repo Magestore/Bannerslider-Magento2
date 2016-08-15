@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Magestore
  *
@@ -19,9 +18,7 @@
  * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
  * @license     http://www.magestore.com/license-agreement.html
  */
-
 namespace Magestore\Bannerslider\Block\Adminhtml;
-
 /**
  * Report grid container.
  * @category Magestore

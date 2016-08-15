@@ -233,37 +233,66 @@ class Banner extends \Magento\Framework\Model\AbstractModel
     /**
      * after save.
      */
+//    public function afterSave()
+//    {
+//        if ($storeViewId = $this->getStoreViewId()) {
+//            $storeAttributes = $this->getStoreAttributes();
+//
+//            foreach ($storeAttributes as $attribute) {
+//                $attributeValue = $this->_valueFactory->create()
+//                    ->loadAttributeValue($this->getId(), $storeViewId, $attribute);
+//                if ($this->getData($attribute.'_in_store')) {
+//                    try {
+//                        if ($attribute == 'image' && $this->getData('delete_image')) {
+//                            $attributeValue->delete();
+//                        } else {
+//                            $attributeValue->setValue($this->getData($attribute.'_value'))->save();
+//                        }
+//                    } catch (\Exception $e) {
+//                        $this->_monolog->addError($e->getMessage());
+//                    }
+//                } elseif ($attributeValue && $attributeValue->getId()) {
+//                    try {
+//                        $attributeValue->delete();
+//                    } catch (\Exception $e) {
+//                        $this->_monolog->addError($e->getMessage());
+//                    }
+//                }
+//            }
+//        }
+//
+//        return parent::afterSave();
+//    }
+
     public function afterSave()
     {
         if ($storeViewId = $this->getStoreViewId()) {
             $storeAttributes = $this->getStoreAttributes();
-
-            foreach ($storeAttributes as $attribute) {
-                $attributeValue = $this->_valueFactory->create()
-                    ->loadAttributeValue($this->getId(), $storeViewId, $attribute);
-                if ($this->getData($attribute.'_in_store')) {
+            $collectionBanner = $this->_valueCollectionFactory->create();
+            $attributeValue = $this->_valueFactory->create()
+                ->loadAttributeValue($this->getId(), $storeViewId, $storeAttributes, $collectionBanner);
+            foreach ($attributeValue as $model) {
+                if ($this->getData($model->getData('attribute_code') . '_in_store')) {
                     try {
-                        if ($attribute == 'image' && $this->getData('delete_image')) {
-                            $attributeValue->delete();
+                        if ($model->getData('attribute_code') == 'image' && $this->getData('delete_image')) {
+                            $model->delete();
                         } else {
-                            $attributeValue->setValue($this->getData($attribute.'_value'))->save();
+                            $model->setValue($this->getData($model->getData('attribute_code') . '_value'))->save();
                         }
                     } catch (\Exception $e) {
                         $this->_monolog->addError($e->getMessage());
                     }
-                } elseif ($attributeValue && $attributeValue->getId()) {
+                } elseif ($model && $model->getId()) {
                     try {
-                        $attributeValue->delete();
+                        $model->delete();
                     } catch (\Exception $e) {
                         $this->_monolog->addError($e->getMessage());
                     }
                 }
             }
+
         }
-
-        return parent::afterSave();
     }
-
     /**
      * load info multistore.
      *

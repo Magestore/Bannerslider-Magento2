@@ -67,11 +67,6 @@ class SliderItem extends \Magento\Framework\View\Element\Template
     protected $_stdlibDateTime;
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    protected $_storeManager;
-
-    /**
      * slider factory.
      *
      * @var \Magestore\Bannerslider\Model\SliderFactory
@@ -133,7 +128,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $bannerCollectionFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
         SliderModel $slider,
         \Magento\Framework\Stdlib\DateTime\DateTime $stdlibDateTime,
@@ -146,7 +141,6 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         $this->_slider = $slider;
         $this->_stdlibDateTime = $stdlibDateTime;
         $this->_bannersliderHelper = $bannersliderHelper;
-        $this->_storeManager = $context->getStoreManager();
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
         $this->_scopeConfig = $context->getScopeConfig();
         $this->_stdTimezone = $_stdTimezone;
@@ -243,23 +237,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      */
     public function getBannerCollection()
     {
-        $storeViewId = $this->_storeManager->getStore()->getId();
-        $dateTimeNow = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
-
-        /** @var \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $bannerCollection */
-        $bannerCollection = $this->_bannerCollectionFactory->create()
-            ->setStoreViewId($storeViewId)
-            ->addFieldToFilter('slider_id', $this->_slider->getId())
-            ->addFieldToFilter('status', Status::STATUS_ENABLED)
-            ->addFieldToFilter('start_time', ['lteq' => $dateTimeNow])
-            ->addFieldToFilter('end_time', ['gteq' => $dateTimeNow])
-            ->setOrder('order_banner', 'ASC');
-
-        if ($this->_slider->getSortType() == SliderModel::SORT_TYPE_RANDOM) {
-            $bannerCollection->setOrderRandByBannerId();
-        }
-
-        return $bannerCollection;
+        $sliderId = $this->_slider->getId();
+        return $this->_bannerCollectionFactory->getBannerCollection($sliderId);
     }
 
     /**

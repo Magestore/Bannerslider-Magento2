@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?php
+
 /**
  * Magestore
  *
@@ -15,15 +15,23 @@
  * version in the future.
  *
  * @category    Magestore
- * @package     Magestore_Bannerslider
+ * @package     Magestore_BannerSlider
  * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
  * @license     http://www.magestore.com/license-agreement.html
  */
--->
-<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
-    <update handle="formkey"/>
-    <container name="root">
-        <block class="Magestore\Bannerslider\Block\Adminhtml\Banner\Grid" name="admin.block.banner.grid"/>
-    </container>
-</layout>
+
+namespace Magestore\BannerSlider\Model\Data\Option;
+
+/**
+ * Interface OptionHashInterface
+ * @package Magestore\Storelocator\Model\Data\Option
+ */
+interface OptionHashInterface
+{
+    /**
+     * Return array of options as key-value pairs.
+     *
+     * @return array Format: array('<key>' => '<value>', '<key>' => '<value>', ...)
+     */
+    public function toOptionHash();
+}

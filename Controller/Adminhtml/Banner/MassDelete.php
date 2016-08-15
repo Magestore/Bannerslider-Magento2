@@ -20,8 +20,9 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\Bannerslider\Controller\Adminhtml\Banner;
+namespace Magestore\BannerSlider\Controller\Adminhtml\Banner;
 
+use Magento\Framework\Controller\ResultFactory;
 /**
  * MassDelete action.
  * @category Magestore
@@ -29,32 +30,28 @@ namespace Magestore\Bannerslider\Controller\Adminhtml\Banner;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\Banner
+class MassDelete extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAction
 {
+
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * Execute action
+     *
+     * @return \Magento\Backend\Model\View\Result\Redirect
+     * @throws \Magento\Framework\Exception\LocalizedException|\Exception
      */
     public function execute()
     {
-        $bannerIds = $this->getRequest()->getParam('banner');
-        if (!is_array($bannerIds) || empty($bannerIds)) {
-            $this->messageManager->addError(__('Please select banner(s).'));
-        } else {
-            $bannerCollection = $this->_bannerCollectionFactory->create()
-                ->addFieldToFilter('banner_id', ['in' => $bannerIds]);
-            try {
-                foreach ($bannerCollection as $banner) {
-                    $banner->delete();
-                }
-                $this->messageManager->addSuccess(
-                    __('A total of %1 record(s) have been deleted.', count($bannerIds))
-                );
-            } catch (\Exception $e) {
-                $this->messageManager->addError($e->getMessage());
-            }
-        }
-        $resultRedirect = $this->resultRedirectFactory->create();
+        $collection = $this->_massActionFilter->getCollection($this->_createMainCollection());
 
+        $collectionSize = $collection->getSize();
+        foreach ($collection as $banner) {
+            $banner->delete();
+        }
+
+        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $collectionSize));
+
+        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         return $resultRedirect->setPath('*/*/');
     }
 }

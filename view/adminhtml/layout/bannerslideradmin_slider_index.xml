@@ -36,8 +36,11 @@
     	        <argument name="pageTitle" xsi:type="string">Slider Manager</argument>
     	    </action>
     	</referenceBlock>
-        <referenceContainer name="content">
-            <block class="Magestore\Bannerslider\Block\Adminhtml\Slider" name="admin.block.slider.grid.container"/>
-        </referenceContainer>
+        <!--<referenceContainer name="content">-->
+            <!--<block class="Magestore\Bannerslider\Block\Adminhtml\Slider" name="admin.block.slider.grid.container"/>-->
+        <!--</referenceContainer>-->
+		<referenceContainer name="content">
+			<uiComponent name="slider_grid_listing"/>
+		</referenceContainer>
     </body>
 </page>

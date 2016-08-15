@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing_data_source</item>
+            <item name="deps" xsi:type="string">report_grid_listing.report_grid_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">report_grid_columns</item>
+    </argument>
+    <dataSource name="report_grid_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">ReportGridDataProvider</argument>
+            <argument name="name" xsi:type="string">report_grid_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">report_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+                <item name="stickyTmpl" xsi:type="string">ui/grid/sticky/toolbar</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="namespace" xsi:type="string">report_grid_listing</item>
+                    </item>
+                </item>
+            </argument>
+        </bookmark>
+        <component name="columns_controls">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsData" xsi:type="array">
+                        <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing.report_grid_columns</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                </item>
+            </argument>
+        </component>
+        <filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing_data_source</item>
+                    <item name="chipsProvider" xsi:type="string">report_grid_listing.report_grid_listing.listing_top.listing_filters_chips</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.search</item>
+                    </item>
+                </item>
+            </argument>
+        </filterSearch>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsProvider" xsi:type="string">report_grid_listing.report_grid_listing.report_grid_columns</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.filters</item>
+                    </item>
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                    <item name="childDefaults" xsi:type="array">
+                        <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing.listing_top.listing_filters</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="visible" xsi:type="string">report_grid_listing.report_grid_listing.report_grid_columns.${ $.index }:visible</item>
+                        </item>
+                    </item>
+                </item>
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
+                </item>
+            </argument>
+        </filters>
+
+        <paging name="listing_paging">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.paging</item>
+                    </item>
+                    <item name="selectProvider" xsi:type="string">report_grid_listing.report_grid_listing.report_grid_columns.ids</item>
+                </item>
+            </argument>
+        </paging>
+    </container>
+    <columns name="report_grid_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current</item>
+                </item>
+                <!--<item name="editorConfig" xsi:type="array">-->
+                <!--<item name="selectProvider" xsi:type="string">report_grid_listing.report_grid_listing.report_grid_columns.ids</item>-->
+                <!--<item name="enabled" xsi:type="boolean">true</item>-->
+                <!--<item name="indexField" xsi:type="string">banner_id</item>-->
+                <!--<item name="clientConfig" xsi:type="array">-->
+                <!--<item name="saveUrl" xsi:type="url" path="bannerslideradmin/banner/inlineEdit"/>-->
+                <!--<item name="validateBeforeSave" xsi:type="boolean">false</item>-->
+                <!--</item>-->
+                <!--</item>-->
+                <item name="childDefaults" xsi:type="array">
+                    <item name="fieldAction" xsi:type="array">
+                        <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing.report_grid_columns_editor</item>
+                        <item name="target" xsi:type="string">startEdit</item>
+                        <item name="params" xsi:type="array">
+                            <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                            <item name="1" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">report_grid_listing.report_grid_listing.listing_top.bookmarks</item>
+                        <item name="root" xsi:type="string">columns.${ $.index }</item>
+                        <item name="namespace" xsi:type="string">current.${ $.storageConfig.root}</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">report_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="report_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                </item>
+            </argument>
+        </column>
+        <!--<column name="banner_id" class="Magestore\BannerSlider\Ui\Component\Listing\Column\BannerName">-->
+            <!--<argument name="data" xsi:type="array">-->
+                <!--<item name="width" xsi:type="string">150px</item>-->
+                <!--<item name="config" xsi:type="array">-->
+                    <!--<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/column</item>-->
+                    <!--<item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>-->
+                    <!--<item name="sortable" xsi:type="boolean">false</item>-->
+                    <!--<item name="dataType" xsi:type="string">text</item>-->
+                    <!--<item name="align" xsi:type="string">left</item>-->
+                    <!--<item name="label" xsi:type="string" translate="true">Banner</item>-->
+                    <!--<item name="index" xsi:type="string">banner_id</item>-->
+                <!--</item>-->
+            <!--</argument>-->
+        <!--</column>-->
+        <!--<column name="banner_url">-->
+            <!--<argument name="data" xsi:type="array">-->
+                <!--<item name="config" xsi:type="array">-->
+                    <!--<item name="filter" xsi:type="string">text</item>-->
+                    <!--&lt;!&ndash;<item name="editor" xsi:type="array">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<item name="editorType" xsi:type="string">text</item>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<item name="validation" xsi:type="array">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<item name="required-entry" xsi:type="boolean">true</item>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</item>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</item>&ndash;&gt;-->
+                    <!--<item name="label" xsi:type="string" translate="true">Url</item>-->
+                <!--</item>-->
+            <!--</argument>-->
+        <!--</column>-->
+        <column name="slider_id" class="Magestore\BannerSlider\Ui\Component\Listing\Column\Slidertitle">
+            <argument name="data" xsi:type="array">
+                <item name="width" xsi:type="string">150px</item>
+                <item name="config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/column</item>
+                <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                <item name="sortable" xsi:type="boolean">false</item>
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="align" xsi:type="string">left</item>
+                <item name="label" xsi:type="string" translate="true">Slider</item>
+                <item name="index" xsi:type="string">slider_id</item>
+                </item>
+            </argument>
+        </column>
+        <column name="clicks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <!--<item name="editor" xsi:type="array">-->
+                    <!--<item name="editorType" xsi:type="string">text</item>-->
+                    <!--<item name="validation" xsi:type="array">-->
+                    <!--<item name="required-entry" xsi:type="boolean">true</item>-->
+                    <!--</item>-->
+                    <!--</item>-->
+                    <item name="label" xsi:type="string" translate="true">Click</item>
+                </item>
+            </argument>
+        </column>
+         <column name="impmode">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <!--<item name="editor" xsi:type="array">-->
+                    <!--<item name="editorType" xsi:type="string">text</item>-->
+                    <!--<item name="validation" xsi:type="array">-->
+                    <!--<item name="required-entry" xsi:type="boolean">true</item>-->
+                    <!--</item>-->
+                    <!--</item>-->
+                    <item name="label" xsi:type="string" translate="true">Impressions</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="banner_id" class="Magestore\BannerSlider\Ui\Component\Listing\Column\Report\Image">
+            <argument name="data" xsi:type="array">
+                <item name="width" xsi:type="string">150px</item>
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/column</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                    <item name="index" xsi:type="string">banner_id</item>
+                </item>
+            </argument>
+        </column>
+        <column name="date_click" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Date</item>
+                    <item name="index" xsi:type="string">date_click</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+    <container name="sticky">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/sticky/sticky</item>
+                <item name="toolbarProvider" xsi:type="string">report_grid_listing.report_grid_listing.listing_top</item>
+                <item name="listingProvider" xsi:type="string">report_grid_listing.report_grid_listing.report_grid_columns</item>
+            </item>
+        </argument>
+    </container>
+</listing>

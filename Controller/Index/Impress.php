@@ -47,8 +47,8 @@ class Impress extends \Magestore\Bannerslider\Controller\Index
                 $sliderOwnBannerCollection->setPageSize(1)->setCurPage(1);
             }
             $bannerIds = $sliderOwnBannerCollection->getColumnValues('banner_id');
-            if ($this->_cookieManager->getCookie('bannerslider_user_code_impress_slider'.$sliderId) === null) {
-                $this->_cookieManager->setPublicCookie('bannerslider_user_code_impress_slider'.$sliderId, $userCode);
+            if ($this->getCookieManager()->getCookie('bannerslider_user_code_impress_slider'.$sliderId) === null) {
+                $this->getCookieManager()->setPublicCookie('bannerslider_user_code_impress_slider'.$sliderId, $userCode);
                 $reportCollection = $this->_reportCollectionFactory->create()
                     ->addFieldToFilter('date_click', $date)
                     ->addFieldToFilter('slider_id', $sliderId)

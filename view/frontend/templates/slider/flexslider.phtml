@@ -53,7 +53,7 @@ $bannerCollection = $block->getBannerCollection();
             switch (<?php echo $styleSlide ?>) {
                 case STYLESLIDE_FLEXSLIDER_ONE:
                     $('.' + flexSliderSelector).flexslider({
-                        animation: '<?php echo $slider->getData("animationB") ?>',
+                        animation: '<?php echo $block->escapeHtml($slider->getData("animationB")); ?>',
                         slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>,
                         start: function (slider) {
                             fitImageSlider(slider);
@@ -62,7 +62,7 @@ $bannerCollection = $block->getBannerCollection();
                     break;
                 case STYLESLIDE_FLEXSLIDER_TWO:
                     $('.' + flexSliderSelector).flexslider({
-                        animation: '<?php echo $slider->getData("animationB") ?>',
+                        animation: '<?php echo $block->escapeHtml($slider->getData("animationB")) ?>',
                         controlNav: 'thumbnails',
                         slideshowSpeed: <?php echo $slider->getSliderSpeed() ?>,
                         start: function (slider) {
@@ -84,7 +84,7 @@ $bannerCollection = $block->getBannerCollection();
                         }
                     });
                     $('#' + flexSliderSelector).flexslider({
-                        animation: '<?php echo $slider->getData("animationB") ?>',
+                        animation: '<?php echo $block->escapeHtml($slider->getData("animationB")) ?>',
                         controlNav: false,
                         animationLoop: true,
                         slideshow: true,
@@ -119,7 +119,7 @@ $bannerCollection = $block->getBannerCollection();
     <?php if ($block->isShowTitle() == \Magestore\Bannerslider\Model\Slider::SHOW_TITLE_YES) :
     ?>
         <div class="magestore-bannerslider-title" style="font: bold 12px/16px Arial, Helvetica, sans-serif;text-transform: uppercase;color: #e26703;">
-        <strong><span><?php echo $slider->getTitle(); ?></span></strong>
+        <strong><span><?php echo $block->escapeHtml($slider->getTitle()); ?></span></strong>
         </div>
     <?php endif; ?>
     <div class="magestore-bannerslide-flex-slider" style="margin: auto; margin-bottom: 40px;">

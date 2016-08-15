@@ -20,9 +20,10 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Controller\Adminhtml\Slider;
+namespace Magestore\BannerSlider\Controller\Adminhtml\Banner;
 
 use Magento\Framework\Controller\ResultFactory;
+use Magestore\BannerSlider\Model\ResourceModel\Banner\Grid\StatusesArray;
 /**
  * MassDelete action.
  * @category Magestore
@@ -30,7 +31,7 @@ use Magento\Framework\Controller\ResultFactory;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class MassDelete extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAction
+class MassEnable extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAction
 {
 
     /**
@@ -41,19 +42,26 @@ class MassDelete extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAc
      */
     public function execute()
     {
-        $sliderCollection = $this->_objectManager->create('Magestore\BannerSlider\Model\ResourceModel\Slider\Collection');
 
-        $collection = $this->_massActionFilter->getCollection($sliderCollection);
-
+        $collection = $this->_massActionFilter->getCollection($this->_createMainCollection());
         $collectionSize = $collection->getSize();
-        foreach ($collection as $slider) {
-            $slider->delete();
+        $storeId = $this->getRequest()->getParam('store');
+        $collection->setStoreViewId($storeId);
+        foreach ($collection as $item) {
+            $item->setStoreViewId($storeId);
+            $item->setStatus(StatusesArray::STATUS_ENABLED);
+            try{
+                $item->save();
+
+            }catch (\Exception $e){
+                $this->messageManager->addError($e->getMessage());
+            }
         }
 
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $collectionSize));
+        $this->messageManager->addSuccess(__('A total of %1 record(s) have been disabled.', $collectionSize));
 
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+
         return $resultRedirect->setPath('*/*/');
     }
 }
