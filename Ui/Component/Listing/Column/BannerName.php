@@ -75,7 +75,6 @@ class BannerName extends \Magestore\BannerSlider\Ui\Component\Listing\Column\Abs
     protected function _prepareItem(array & $item)
     {
         $banner = $this->_bannerFactory->create()->load($item[$this->getData('name')]);
-        var_dump($item[$this->getData('name')]);die;
         if (isset($item[$this->getData('name')])) {
             if ($item[$this->getData('name')]) {
 

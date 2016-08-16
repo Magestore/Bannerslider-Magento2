@@ -292,6 +292,7 @@ class Banner extends \Magento\Framework\Model\AbstractModel
             }
 
         }
+        return parent::afterSave();
     }
     /**
      * load info multistore.

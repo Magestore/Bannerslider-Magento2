@@ -72,164 +72,164 @@ class Position extends \Magestore\BannerSlider\Ui\Component\Listing\Column\Abstr
      */
     protected function _prepareItem(array & $item)
     {
-        $position = $item[$this->getData('name')];
-        switch ($position) {
-            case "pop-up":
-                $label = 'Pop up at Home page';
-                break;
-            case "note-allsite":
-                $label = 'Note will be displayed on all pages';
-                break;
-            case "cms-page-content-top":
-                $label = 'Homepage content top';
-                break;
-            case "custom":
-                $label = 'Custom';
-                break;
-             case "sidebar-right-top":
-                $label = 'Sidebar-Top-Right(all pages)';
-                break;
-             case "sidebar-right-bottom":
-                $label = 'Sidebar-Bottom-Right (all pages)';
-                break;
-             case "sidebar-left-top":
-                $label = 'Sidebar-Top-Left(all pages)';
-                break;
-             case "sidebar-left-bottom":
-                $label = 'Sidebar-Bottom-Left(all pages)';
-                break;
-             case "content-top":
-                $label = 'Content-Top(all pages)';
-                break;
-             case "menu-top":
-                $label = 'Menu-Top(all pages)';
-                break;
-             case "menu-bottom":
-                $label = 'Menu-Bottom(all pages)';
-                break;
-             case "page-bottom":
-                $label = 'Page-Bottom(all pages)';
-                break;
-             case "catalog-sidebar-right-top":
-                $label = ' Catalog-Sidebar-Top-Right';
-                break;
-             case "catalog-sidebar-right-bottom":
-                $label = 'Catalog-Sidebar-Bottom-Right';
-                break;
-            case "catalog-sidebar-left-top":
-                $label = 'Catalog-Sidebar-Top-Left';
-                break;
-            case "catalog-sidebar-left-bottom":
-                $label = 'Catalog-Sidebar-Bottom-Left';
-                break;
-            case "catalog-content-top":
-                $label = 'Catalog-Content-Top';
-                break;
-            case "catalog-menu-top":
-                $label = 'Catalog-Menu-Top';
-                break;
-            case "catalog-menu-bottom":
-                $label = 'Catalog-Menu-Bottom';
-                break;
-            case "catalog-page-bottom":
-                $label = 'Catalog-Page-Bottom';
-                break;
-            case "catalog-page-bottom":
-                $label = 'Catalog-Page-Bottom';
-                break;
-            case "category-sidebar-right-top":
-                $label = 'Category-Sidebar-Top-Right';
-                break;
-            case "category-sidebar-right-bottom":
-                $label = 'Category-Sidebar-Bottom-Right';
-                break;
-            case "category-sidebar-left-top":
-                $label = 'Category-Sidebar-Top-Left';
-                break;
-            case "category-sidebar-left-bottom":
-                $label = 'Category-Sidebar-Bottom-Left';
-                break;
-            case "category-content-top":
-                $label = 'Category-Content-Top';
-                break;
-            case "category-menu-top":
-                $label = 'Category-Menu-Top';
-                break;
-            case "category-menu-top":
-                $label = 'Category-Menu-Top';
-                break;
-            case "category-menu-bottom":
-                $label = 'Category-Menu-Bottom';
-                break;
-            case "category-page-bottom":
-                $label = 'Category-Page-Bottom';
-                break;
-            case "product-sidebar-right-top":
-                $label = 'Product-Sidebar-Top-Right';
-                break;
-            case "product-sidebar-right-bottom":
-                $label = 'Product-Sidebar-Bottom-Right';
-                break;
-            case "product-sidebar-right-bottom":
-                $label = 'Product-Sidebar-Bottom-Right';
-                break;
-            case "product-sidebar-left-top":
-                $label = 'Product-Sidebar-Top-Left';
-                break;
-            case "product-sidebar-left-bottom":
-                $label = 'Product-Sidebar-Bottom-Left';
-                break;
-            case "product-content-top":
-                $label = 'Product-Content-Top';
-                break;
-            case "product-menu-top":
-                $label = 'Product-Menu-Top';
-                break;
-             case "product-menu-top":
-                $label = 'Product-Menu-Top';
-                break;
-             case "product-menu-bottom":
-                $label = 'Product-Menu-Bottom';
-                break;
-             case "product-page-bottom":
-                $label = 'Product-Page-Bottom';
-                break;
-             case "customer-content-top":
-                $label = 'Customer-Content-Top';
-                break;
-            case "customer-content-top":
-                $label = 'Customer-Content-Top';
-                break;
-            case "cart-content-top":
-                $label = 'Cart-Content-Top';
-                break;
-            case "checkout-content-top":
-                $label = 'Checkout-Content-Top';
-                break;
-            case "customer-sidebar-main-top":
-                $label = 'Customer-Siderbar-Main-Top';
-                break;
-            case "customer-sidebar-main-bottom":
-                $label = 'Customer-Siderbar-Main-Bottom';
-                break;
-
-
-            default:
-                $label= '';
-        }
-
-        if (isset($item[$this->getData('name')])) {
-            if ($item[$this->getData('name')]) {
-
-                $item[$this->getData('name')] = sprintf(
-                    '%s',
-                    $label
-                );
-            } else {
-                $item[$this->getData('name')] = '';
-            }
-        }
-
-        return $item;
+//        $position = $item[$this->getData('name')];
+//        switch ($position) {
+//            case "pop-up":
+//                $label = 'Pop up at Home page';
+//                break;
+//            case "note-allsite":
+//                $label = 'Note will be displayed on all pages';
+//                break;
+//            case "cms-page-content-top":
+//                $label = 'Homepage content top';
+//                break;
+//            case "custom":
+//                $label = 'Custom';
+//                break;
+//             case "sidebar-right-top":
+//                $label = 'Sidebar-Top-Right(all pages)';
+//                break;
+//             case "sidebar-right-bottom":
+//                $label = 'Sidebar-Bottom-Right (all pages)';
+//                break;
+//             case "sidebar-left-top":
+//                $label = 'Sidebar-Top-Left(all pages)';
+//                break;
+//             case "sidebar-left-bottom":
+//                $label = 'Sidebar-Bottom-Left(all pages)';
+//                break;
+//             case "content-top":
+//                $label = 'Content-Top(all pages)';
+//                break;
+//             case "menu-top":
+//                $label = 'Menu-Top(all pages)';
+//                break;
+//             case "menu-bottom":
+//                $label = 'Menu-Bottom(all pages)';
+//                break;
+//             case "page-bottom":
+//                $label = 'Page-Bottom(all pages)';
+//                break;
+//             case "catalog-sidebar-right-top":
+//                $label = ' Catalog-Sidebar-Top-Right';
+//                break;
+//             case "catalog-sidebar-right-bottom":
+//                $label = 'Catalog-Sidebar-Bottom-Right';
+//                break;
+//            case "catalog-sidebar-left-top":
+//                $label = 'Catalog-Sidebar-Top-Left';
+//                break;
+//            case "catalog-sidebar-left-bottom":
+//                $label = 'Catalog-Sidebar-Bottom-Left';
+//                break;
+//            case "catalog-content-top":
+//                $label = 'Catalog-Content-Top';
+//                break;
+//            case "catalog-menu-top":
+//                $label = 'Catalog-Menu-Top';
+//                break;
+//            case "catalog-menu-bottom":
+//                $label = 'Catalog-Menu-Bottom';
+//                break;
+//            case "catalog-page-bottom":
+//                $label = 'Catalog-Page-Bottom';
+//                break;
+//            case "catalog-page-bottom":
+//                $label = 'Catalog-Page-Bottom';
+//                break;
+//            case "category-sidebar-right-top":
+//                $label = 'Category-Sidebar-Top-Right';
+//                break;
+//            case "category-sidebar-right-bottom":
+//                $label = 'Category-Sidebar-Bottom-Right';
+//                break;
+//            case "category-sidebar-left-top":
+//                $label = 'Category-Sidebar-Top-Left';
+//                break;
+//            case "category-sidebar-left-bottom":
+//                $label = 'Category-Sidebar-Bottom-Left';
+//                break;
+//            case "category-content-top":
+//                $label = 'Category-Content-Top';
+//                break;
+//            case "category-menu-top":
+//                $label = 'Category-Menu-Top';
+//                break;
+//            case "category-menu-top":
+//                $label = 'Category-Menu-Top';
+//                break;
+//            case "category-menu-bottom":
+//                $label = 'Category-Menu-Bottom';
+//                break;
+//            case "category-page-bottom":
+//                $label = 'Category-Page-Bottom';
+//                break;
+//            case "product-sidebar-right-top":
+//                $label = 'Product-Sidebar-Top-Right';
+//                break;
+//            case "product-sidebar-right-bottom":
+//                $label = 'Product-Sidebar-Bottom-Right';
+//                break;
+//            case "product-sidebar-right-bottom":
+//                $label = 'Product-Sidebar-Bottom-Right';
+//                break;
+//            case "product-sidebar-left-top":
+//                $label = 'Product-Sidebar-Top-Left';
+//                break;
+//            case "product-sidebar-left-bottom":
+//                $label = 'Product-Sidebar-Bottom-Left';
+//                break;
+//            case "product-content-top":
+//                $label = 'Product-Content-Top';
+//                break;
+//            case "product-menu-top":
+//                $label = 'Product-Menu-Top';
+//                break;
+//             case "product-menu-top":
+//                $label = 'Product-Menu-Top';
+//                break;
+//             case "product-menu-bottom":
+//                $label = 'Product-Menu-Bottom';
+//                break;
+//             case "product-page-bottom":
+//                $label = 'Product-Page-Bottom';
+//                break;
+//             case "customer-content-top":
+//                $label = 'Customer-Content-Top';
+//                break;
+//            case "customer-content-top":
+//                $label = 'Customer-Content-Top';
+//                break;
+//            case "cart-content-top":
+//                $label = 'Cart-Content-Top';
+//                break;
+//            case "checkout-content-top":
+//                $label = 'Checkout-Content-Top';
+//                break;
+//            case "customer-sidebar-main-top":
+//                $label = 'Customer-Siderbar-Main-Top';
+//                break;
+//            case "customer-sidebar-main-bottom":
+//                $label = 'Customer-Siderbar-Main-Bottom';
+//                break;
+//
+//
+//            default:
+//                $label= '';
+//        }
+//
+//        if (isset($item[$this->getData('name')])) {
+//            if ($item[$this->getData('name')]) {
+//
+//                $item[$this->getData('name')] = sprintf(
+//                    '%s',
+//                    $label
+//                );
+//            } else {
+//                $item[$this->getData('name')] = '';
+//            }
+//        }
+//
+//        return $item;
     }
 }
