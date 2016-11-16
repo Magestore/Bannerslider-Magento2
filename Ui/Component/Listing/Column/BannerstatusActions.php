@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Ui\Component\Listing\Column;
+namespace Magestore\Bannerslider\Ui\Component\Listing\Column;
 
 
 use Magento\Framework\UrlInterface;
@@ -31,7 +31,7 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
  * Class BannerstatusActions
  * @package Magestore\BannerSlider\Ui\Component\Listing\Column
  */
-class BannerstatusActions extends \Magestore\BannerSlider\Ui\Component\Listing\Column\AbstractColumn
+class BannerstatusActions extends \Magestore\Bannerslider\Ui\Component\Listing\Column\AbstractColumn
 {
     /**
      * @var UrlInterface
