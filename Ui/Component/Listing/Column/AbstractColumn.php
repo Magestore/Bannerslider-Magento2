@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Ui\Component\Listing\Column;
+namespace Magestore\Bannerslider\Ui\Component\Listing\Column;
 
 abstract class AbstractColumn extends \Magento\Ui\Component\Listing\Columns\Column
 {
