@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Ui\Component\Listing\Column;
+namespace Magestore\Bannerslider\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
@@ -31,7 +31,7 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
  * @module   Storelocator
  * @author   Magestore Developer
  */
-class Image extends \Magestore\BannerSlider\Ui\Component\Listing\Column\AbstractColumn
+class Image extends \Magestore\Bannerslider\Ui\Component\Listing\Column\AbstractColumn
 {
     /**
      * default width and height image.
