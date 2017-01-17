@@ -31,7 +31,7 @@ namespace Magestore\Bannerslider\Model;
  */
 class Banner extends \Magento\Framework\Model\AbstractModel
 {
-    const BASE_MEDIA_PATH = 'magestore/bannerslider/images';
+    const BASE_MEDIA_PATH = 'magestore/bannerslider/images/';
 
     const BANNER_TARGET_SELF = 0;
     const BANNER_TARGET_PARENT = 1;
