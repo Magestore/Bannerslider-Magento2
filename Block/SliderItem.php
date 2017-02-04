@@ -293,7 +293,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      */
     public function getBannerImageUrl(\Magestore\Bannerslider\Model\Banner $banner)
     {
-        return $this->_bannersliderHelper->getBaseUrlMedia($banner->getImage());
+	
+        return $this->_bannersliderHelper->getBaseUrlMedia($banner->getImage(), $this->isSecure());
     }
 
     /**
@@ -305,4 +306,15 @@ class SliderItem extends \Magento\Framework\View\Element\Template
     {
         return 'magestore-bannerslider-flex-slider-'.$this->getSlider()->getId().$this->_stdlibDateTime->gmtTimestamp();
     }
+	
+	/**
+     * check if secure connection
+     *
+     * @return bool
+     */
+	private function isSecure() {
+	  return
+		(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+		|| $_SERVER['SERVER_PORT'] == 443;
+	}
 }
