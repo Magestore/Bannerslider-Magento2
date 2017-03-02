@@ -152,7 +152,13 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             Slider::STYLESLIDE_FLEXSLIDER_FOUR => 'FlexSlider 4',
         ];
     }
-
+    /**
+     * Check if current requested URL is secure *
+     * @return boolean
+     */
+    public function isCurrentlySecure() {
+        return $this->_storeManager->getStore()->isCurrentlySecure();
+    }
     /**
      *  get Style Slider
      * @return array
