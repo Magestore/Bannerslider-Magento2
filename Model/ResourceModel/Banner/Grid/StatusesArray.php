@@ -15,12 +15,12 @@
  * version in the future.
  *
  * @category    Magestore
- * @package     Magestore_BannerSlider
+ * @package     Magestore_Bannerslider
  * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Model\ResourceModel\Banner\Grid;
+namespace Magestore\Bannerslider\Model\ResourceModel\Banner\Grid;
 
 /**
  * Class StatusesArray

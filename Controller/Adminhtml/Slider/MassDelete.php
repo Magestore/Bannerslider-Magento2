@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Controller\Adminhtml\Slider;
+namespace Magestore\Bannerslider\Controller\Adminhtml\Slider;
 
 use Magento\Framework\Controller\ResultFactory;
 /**
@@ -30,7 +30,7 @@ use Magento\Framework\Controller\ResultFactory;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class MassDelete extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAction
+class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
 {
 
     /**
@@ -41,7 +41,7 @@ class MassDelete extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAc
      */
     public function execute()
     {
-        $sliderCollection = $this->_objectManager->create('Magestore\BannerSlider\Model\ResourceModel\Slider\Collection');
+        $sliderCollection = $this->_objectManager->create('Magestore\Bannerslider\Model\ResourceModel\Slider\Collection');
 
         $collection = $this->_massActionFilter->getCollection($sliderCollection);
 

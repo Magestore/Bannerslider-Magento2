@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Controller\Adminhtml\Banner;
+namespace Magestore\Bannerslider\Controller\Adminhtml\Banner;
 
 use Magento\Framework\Controller\ResultFactory;
 /**
@@ -30,7 +30,7 @@ use Magento\Framework\Controller\ResultFactory;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class MassDelete extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAction
+class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
 {
 
     /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace Magestore\BannerSlider\Model\ResourceModel\Report\Grid;
+namespace Magestore\Bannerslider\Model\ResourceModel\Report\Grid;
 
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Search\AggregationInterface;
-use Magestore\BannerSlider\Model\ResourceModel\Report\Collection as ReportCollection;
+use Magestore\Bannerslider\Model\ResourceModel\Report\Collection as ReportCollection;
 
 /**
  * Class Collection

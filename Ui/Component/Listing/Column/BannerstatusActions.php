@@ -15,7 +15,7 @@
  * version in the future.
  *
  * @category    Magestore
- * @package     Magestore_BannerSlider
+ * @package     Magestore_Bannerslider
  * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
  * @license     http://www.magestore.com/license-agreement.html
  */
@@ -29,7 +29,7 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 
 /**
  * Class BannerstatusActions
- * @package Magestore\BannerSlider\Ui\Component\Listing\Column
+ * @package Magestore\Bannerslider\Ui\Component\Listing\Column
  */
 class BannerstatusActions extends \Magestore\Bannerslider\Ui\Component\Listing\Column\AbstractColumn
 {
