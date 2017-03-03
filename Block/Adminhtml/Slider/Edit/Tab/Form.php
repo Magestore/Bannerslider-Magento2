@@ -371,10 +371,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'height' => 200,
             'slider_speed' => 4500,
         ];
-
+		$slider->addData($defaultData);	
         if (!$slider->getId()) {
-            $slider->setStatus($isElementDisabled ? Status::STATUS_ENABLED : Status::STATUS_DISABLED);
-            $slider->addData($defaultData);
+            $slider->setStatus($isElementDisabled ? Status::STATUS_ENABLED : Status::STATUS_DISABLED);  
         }
 
         if ($slider->hasData('animationB')) {
