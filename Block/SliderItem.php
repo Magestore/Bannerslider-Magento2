@@ -113,6 +113,12 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      */
     protected $_stdTimezone;
 
+
+    /**
+     * @var \Magento\Framework\App\RequestInterface
+     */
+    protected $_request;
+
     /**
      * [__construct description].
      *
@@ -124,6 +130,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      * @param \Magestore\Bannerslider\Helper\Data                             $bannersliderHelper
      * @param \Magento\Store\Model\StoreManagerInterface                      $storeManager
      * @param \Magento\Framework\Stdlib\DateTime\Timezone                     $_stdTimezone
+     * @param \Magento\Framework\App\RequestInterface                         $request
      * @param array                                                           $data
      */
     public function __construct(
@@ -134,6 +141,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         \Magento\Framework\Stdlib\DateTime\DateTime $stdlibDateTime,
         \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         \Magento\Framework\Stdlib\DateTime\Timezone $_stdTimezone,
+        \Magento\Framework\App\RequestInterface $request,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -144,6 +152,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
         $this->_scopeConfig = $context->getScopeConfig();
         $this->_stdTimezone = $_stdTimezone;
+        $this->_request = $request;
     }
 
     /**
@@ -293,7 +302,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      */
     public function getBannerImageUrl(\Magestore\Bannerslider\Model\Banner $banner)
     {
-        return $this->_bannersliderHelper->getBaseUrlMedia($banner->getImage());
+        return $this->_bannersliderHelper->getBaseUrlMedia($banner->getImage(), $this->_request->isSecure());
     }
 
     /**
