@@ -106,8 +106,7 @@ abstract class Index extends \Magento\Framework\App\Action\Action
         \Magestore\Bannerslider\Model\ResourceModel\Report\CollectionFactory $reportCollectionFactory,
         \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
         \Magento\Framework\Logger\Monolog $monolog,
-        \Magento\Framework\Stdlib\DateTime\Timezone $stdTimezone,
-        \Magento\Framework\ObjectManagerInterface $objectManager
+        \Magento\Framework\Stdlib\DateTime\Timezone $stdTimezone
     ) {
         parent::__construct($context);
         $this->_sliderFactory = $sliderFactory;
@@ -118,7 +117,7 @@ abstract class Index extends \Magento\Framework\App\Action\Action
         $this->_resultRawFactory = $resultRawFactory;
         $this->_monolog = $monolog;
         $this->_stdTimezone = $stdTimezone;
-        $this->_objectManager = $objectManager;
+        $this->_objectManager = $context->getObjectManager();
     }
 
 
