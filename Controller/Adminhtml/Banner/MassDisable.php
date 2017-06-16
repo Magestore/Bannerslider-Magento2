@@ -20,10 +20,10 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Controller\Adminhtml\Banner;
+namespace Magestore\Bannerslider\Controller\Adminhtml\Banner;
 
 use Magento\Framework\Controller\ResultFactory;
-use Magestore\BannerSlider\Model\ResourceModel\Banner\Grid\StatusesArray;
+use Magestore\Bannerslider\Model\ResourceModel\Banner\Grid\StatusesArray;
 /**
  * MassDelete action.
  * @category Magestore
@@ -31,7 +31,7 @@ use Magestore\BannerSlider\Model\ResourceModel\Banner\Grid\StatusesArray;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class MassDisable extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAction
+class MassDisable extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
 {
 
     /**

@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Controller\Adminhtml\Slider;
+namespace Magestore\Bannerslider\Controller\Adminhtml\Slider;
 
 use Magento\Framework\Controller\ResultFactory;
 /**
@@ -30,30 +30,29 @@ use Magento\Framework\Controller\ResultFactory;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class MassDelete extends \Magestore\BannerSlider\Controller\Adminhtml\AbstractAction
+class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
 {
 
-    /**
-     * Execute action
-     *
-     * @return \Magento\Backend\Model\View\Result\Redirect
-     * @throws \Magento\Framework\Exception\LocalizedException|\Exception
-     */
     public function execute()
     {
-        $sliderCollection = $this->_objectManager->create('Magestore\BannerSlider\Model\ResourceModel\Slider\Collection');
-
-        $collection = $this->_massActionFilter->getCollection($sliderCollection);
-
-        $collectionSize = $collection->getSize();
-        foreach ($collection as $slider) {
-            $slider->delete();
+        $sliderIds = $this->getRequest()->getParam('slider');
+        if (!is_array($sliderIds) || empty($sliderIds)) {
+            $this->messageManager->addErrorMessage(__('Please select slider(s).'));
+        } else {
+            try {
+                foreach ($sliderIds as $sliderUd) {
+                    $slider = $this->_objectManager->create('Magestore\Bannerslider\Model\Slider')
+                        ->load($sliderUd);
+                    $slider->delete();
+                }
+                $this->messageManager->addSuccessMessage(
+                    __('A total of %1 record(s) have been deleted.', count($sliderIds))
+                );
+            } catch (\Exception $e) {
+                $this->messageManager->addErrorMessage($e->getMessage());
+            }
         }
-
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $collectionSize));
-
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+        $resultRedirect = $this->resultRedirectFactory->create();
         return $resultRedirect->setPath('*/*/');
     }
 }

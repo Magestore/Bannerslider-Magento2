@@ -223,7 +223,7 @@
                 </item>
             </argument>
         </column>
-        <column name="image" class="Magestore\BannerSlider\Ui\Component\Listing\Column\Image">
+        <column name="image" class="Magestore\Bannerslider\Ui\Component\Listing\Column\Image">
             <argument name="data" xsi:type="array">
                 <item name="width" xsi:type="string">150px</item>
                 <item name="config" xsi:type="array">
@@ -250,7 +250,7 @@
                 </item>
             </argument>
         </column>
-        <column name="slider_id" class="Magestore\BannerSlider\Ui\Component\Listing\Column\Slider">
+        <column name="slider_id" class="Magestore\Bannerslider\Ui\Component\Listing\Column\Slider">
             <argument name="data" xsi:type="array">
                 <item name="width" xsi:type="string">150px</item>
                 <item name="config" xsi:type="array">
@@ -307,7 +307,7 @@
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Magestore\BannerSlider\Ui\Component\Listing\Column\BannerstatusActions">
+        <actionsColumn name="actions" class="Magestore\Bannerslider\Ui\Component\Listing\Column\BannerstatusActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="draggable" xsi:type="boolean">false</item>

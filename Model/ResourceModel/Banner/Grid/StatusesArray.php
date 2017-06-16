@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Model\ResourceModel\Banner\Grid;
+namespace Magestore\Bannerslider\Model\ResourceModel\Banner\Grid;
 
 /**
  * Class StatusesArray

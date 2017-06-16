@@ -3,11 +3,11 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magestore\BannerSlider\Model\ResourceModel\Banner\Grid;
+namespace Magestore\Bannerslider\Model\ResourceModel\Banner\Grid;
 
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Search\AggregationInterface;
-use Magestore\BannerSlider\Model\ResourceModel\Banner\Collection as BannerCollection;
+use Magestore\Bannerslider\Model\ResourceModel\Banner\Collection as BannerCollection;
 
 /**
  * Class Collection

@@ -20,7 +20,7 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\BannerSlider\Model\Data\Option;
+namespace Magestore\Bannerslider\Model\Data\Option;
 
 /**
  * Interface OptionHashInterface

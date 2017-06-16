@@ -170,7 +170,7 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
     protected function _createMainCollection()
     {
         /** @var \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection $collection */
-        $collection = $this->_objectManager->create('Magestore\BannerSlider\Model\ResourceModel\Banner\Collection');
+        $collection = $this->_objectManager->create('Magestore\Bannerslider\Model\ResourceModel\Banner\Collection');
         if (!$collection instanceof \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection) {
             throw new LocalizedException(
                 __(

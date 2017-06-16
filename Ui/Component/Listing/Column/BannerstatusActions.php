@@ -29,7 +29,7 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 
 /**
  * Class BannerstatusActions
- * @package Magestore\BannerSlider\Ui\Component\Listing\Column
+ * @package Magestore\Bannerslider\Ui\Component\Listing\Column
  */
 class BannerstatusActions extends \Magestore\Bannerslider\Ui\Component\Listing\Column\AbstractColumn
 {
