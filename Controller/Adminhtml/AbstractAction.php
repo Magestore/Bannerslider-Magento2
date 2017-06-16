@@ -171,15 +171,6 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
     {
         /** @var \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection $collection */
         $collection = $this->_objectManager->create('Magestore\Bannerslider\Model\ResourceModel\Banner\Collection');
-        if (!$collection instanceof \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection) {
-            throw new LocalizedException(
-                __(
-                    '%1 isn\'t instance of Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection',
-                    get_class($collection)
-                )
-            );
-        }
-
         return $collection;
     }
 
