@@ -48,6 +48,16 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     protected $_bannersliderHelper;
 
     /**
+     * @var \Magento\Store\Ui\Component\Listing\Column\Store\Options
+     */
+    protected $_storeOptions;
+
+    /**
+     * @var \Magestore\Bannerslider\Model\SliderFactory
+     */
+    protected $_sliderFactory;
+
+    /**
      * [__construct description].
      *
      * @param \Magento\Backend\Block\Template\Context                                $context            [description]
@@ -64,10 +74,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Config\Model\Config\Structure\Element\Dependency\FieldFactory $fieldFactory,
+        \Magento\Store\Ui\Component\Listing\Column\Store\Options $_storeOptions,
+        \Magestore\Bannerslider\Model\SliderFactory $_sliderFactory,
         array $data = []
     ) {
         $this->_bannersliderHelper = $bannersliderHelper;
         $this->_fieldFactory = $fieldFactory;
+        $this->_storeOptions = $_storeOptions;
+        $this->_sliderFactory = $_sliderFactory;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -330,6 +344,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+
+
+
         /*
          * Add field map
          */
@@ -362,7 +379,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         }
 
         /*
-         * add child block dependence
+         * Add child block dependence
          */
         $this->setChild('form_after', $dependenceBlock);
 
@@ -388,6 +405,27 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         $form->setValues($slider->getData());
         $form->addFieldNameSuffix(self::FIELD_NAME_SUFFIX);
         $this->setForm($form);
+
+        /*
+         * Add multi-store support
+         */
+        $sliderId = $this->getRequest()->getParam('slider_id');
+        $sliderModel = $this->_sliderFactory->create();
+        $fieldset = $form->addFieldset('advanced_website', ['legend' => __('Website')]);
+        if($sliderId){
+            $sliderModel->load($sliderId);
+        }
+
+        $fieldMaps['website_id'] = $fieldset->addField(
+            'website_id',
+            'select',
+            [
+                'label' => __('Website'),
+                'name' => self::FIELD_NAME_SUFFIX.'[website_id]',
+                'values' => $this->_storeOptions->toOptionArray(),
+                'value' => $sliderModel->getWebsiteId(),
+            ]
+        );
 
         return parent::_prepareForm();
     }

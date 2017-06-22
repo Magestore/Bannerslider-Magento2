@@ -183,6 +183,12 @@ class InstallSchema implements InstallSchemaInterface
             null,
             ['nullable' => true],
             'Slider max item'
+        )->addColumn(
+            'website_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            null,
+            ['nullable' => true],
+            'Website ID'
         )->addIndex(
             $installer->getIdxName('magestore_bannerslider_slider', ['position']),
             ['position']

@@ -122,10 +122,12 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
      */
     public function setPosition($position)
     {
+        $store = $this->_storeManager->getStore()->getId();
         $sliderCollection = $this->_sliderCollectionFactory
             ->create()
             ->addFieldToFilter('position', $position)
-            ->addFieldToFilter('status', Status::STATUS_ENABLED);
+            ->addFieldToFilter('status', Status::STATUS_ENABLED)
+            ->addFieldToFilter('website_id', $store);
         $this->appendChildBlockSliders($sliderCollection);
 
         return $this;
