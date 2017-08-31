@@ -128,7 +128,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $bannerCollectionFactory,
+        \Magestore\Bannerslider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
         SliderModel $slider,
         \Magento\Framework\Stdlib\DateTime\DateTime $stdlibDateTime,
@@ -237,8 +237,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      */
     public function getBannerCollection()
     {
-        $sliderId = $this->_slider->getId();
-        return $this->_bannerCollectionFactory->getBannerCollection($sliderId);
+        return $this->_bannerCollectionFactory->create()
+            ->getBannerCollection($this->_slider->getId());
     }
 
     /**
