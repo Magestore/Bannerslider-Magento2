@@ -804,19 +804,15 @@
     }
   });
   $.fn.slideshow = function (a, b) {
-    if (parseFloat($.fn.jquery) > 1.2 || parseFloat($.fn.jquery) == 1.11) {
-      var d = {};
-      this.each(function () {
-        var s = $(this);
-        d = s.data("slider");
-        if (!d) {
-          d = new SliderObject(this, a, b);
-          s.data("slider", d)
-        }
-      });
-      return d
-    } else {
-      throw "The jQuery version that was loaded is too old. Slider Evolution requires jQuery 1.3+";
-    }
+    var d = {};
+    this.each(function () {
+      var s = $(this);
+      d = s.data("slider");
+      if (!d) {
+        d = new SliderObject(this, a, b);
+        s.data("slider", d)
+      }
+    });
+    return d
   }
 })(jQuery);
