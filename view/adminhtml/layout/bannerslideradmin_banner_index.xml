@@ -36,13 +36,13 @@
     	        <argument name="pageTitle" xsi:type="string">Banner Manager</argument>
     	    </action>
     	</referenceBlock>
-    	<referenceContainer name="page.main.actions">
-    	    <block class="Magento\Backend\Block\Store\Switcher" name="store_switcher">
-    	        <action method="setUseConfirm">
-    	            <argument name="params" xsi:type="string">0</argument>
-    	        </action>
-    	    </block>
-    	</referenceContainer>
+    	<!--<referenceContainer name="page.main.actions">-->
+    	    <!--<block class="Magento\Backend\Block\Store\Switcher" name="store_switcher">-->
+    	        <!--<action method="setUseConfirm">-->
+    	            <!--<argument name="params" xsi:type="string">0</argument>-->
+    	        <!--</action>-->
+    	    <!--</block>-->
+    	<!--</referenceContainer>-->
         <!--<referenceContainer name="content">-->
             <!--<block class="Magestore\Bannerslider\Block\Adminhtml\Banner" name="admin.block.banner.grid.container"/>-->
         <!--</referenceContainer>-->
