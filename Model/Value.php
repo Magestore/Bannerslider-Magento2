@@ -22,6 +22,8 @@
 
 namespace Magestore\Bannerslider\Model;
 
+use Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory as ValueCollectionFactory;
+
 /**
  * Value Model
  * @category Magestore
@@ -31,6 +33,11 @@ namespace Magestore\Bannerslider\Model;
  */
 class Value extends \Magento\Framework\Model\AbstractModel
 {
+    /**
+     * @var ValueCollectionFactory
+     */
+    protected $valueCollectionFactory;
+
     /**
      * constructor.
      *
@@ -43,7 +50,9 @@ class Value extends \Magento\Framework\Model\AbstractModel
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
         \Magestore\Bannerslider\Model\ResourceModel\Value $resource,
-        \Magestore\Bannerslider\Model\ResourceModel\Value\Collection $resourceCollection
+        \Magestore\Bannerslider\Model\ResourceModel\Value\Collection $resourceCollection,
+        ValueCollectionFactory $valueCollectionFactory
+
     ) {
         parent::__construct(
             $context,
@@ -51,6 +60,7 @@ class Value extends \Magento\Framework\Model\AbstractModel
             $resource,
             $resourceCollection
         );
+        $this->valueCollectionFactory = $valueCollectionFactory;
     }
 
     /**
@@ -84,7 +94,7 @@ class Value extends \Magento\Framework\Model\AbstractModel
 
     public function loadAttributeValue($bannerId, $storeViewId, $attributeCode)
     {
-        $attributeValue = $this->getResourceCollection()
+        $attributeValue = $this->valueCollectionFactory->create()
             ->addFieldToFilter('banner_id', $bannerId)
             ->addFieldToFilter('store_id', $storeViewId)
             ->addFieldToFilter('attribute_code', array('in' => $attributeCode));
