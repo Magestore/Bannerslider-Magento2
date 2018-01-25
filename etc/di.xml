@@ -50,6 +50,7 @@
             <argument name="eventPrefix" xsi:type="string">banner_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">banner_collection</argument>
             <argument name="resourceModel" xsi:type="string">Magestore\Bannerslider\Model\ResourceModel\Banner</argument>
+            <argument name="model" xsi:type="string">Magestore\Bannerslider\Model\Banner</argument>
         </arguments>
     </type>
     <type name="Magestore\Bannerslider\Model\ResourceModel\Slider\Grid\Collection">

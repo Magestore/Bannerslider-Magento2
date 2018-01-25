@@ -22,6 +22,8 @@
 
 namespace Magestore\Bannerslider\Model;
 
+use Magento\Framework\Api\AttributeValueFactory;
+
 /**
  * Banner Model
  * @category Magestore
@@ -92,6 +94,11 @@ class Banner extends \Magento\Framework\Model\AbstractModel
     protected $_monolog;
 
     /**
+     * @var AttributeValueFactory
+     */
+    protected $customAttributeFactory;
+
+    /**
      * [__construct description].
      *
      * @param \Magento\Framework\Model\Context                                $context
@@ -113,8 +120,10 @@ class Banner extends \Magento\Framework\Model\AbstractModel
         \Magestore\Bannerslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory,
         \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory $valueCollectionFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\Logger\Monolog $monolog
+        \Magento\Framework\Logger\Monolog $monolog,
+        AttributeValueFactory $customAttributeFactory
     ) {
+        $this->customAttributeFactory = $customAttributeFactory;
         parent::__construct(
             $context,
             $registry,
@@ -268,16 +277,26 @@ class Banner extends \Magento\Framework\Model\AbstractModel
     {
         if ($storeViewId = $this->getStoreViewId()) {
             $storeAttributes = $this->getStoreAttributes();
-            $collectionBanner = $this->_valueCollectionFactory->create();
             $attributeValue = $this->_valueFactory->create()
-                ->loadAttributeValue($this->getId(), $storeViewId, $storeAttributes, $collectionBanner);
-            foreach ($attributeValue as $model) {
-                if ($this->getData($model->getData('attribute_code') . '_in_store')) {
+                ->loadAttributeValue($this->getId(), $storeViewId, $storeAttributes);
+
+
+            foreach ($storeAttributes as $attributeCode) {
+
+                $model = $attributeValue->getItemByColumnValue('attribute_code',$attributeCode);
+                if(!$model){
+                    $model=$this->_valueFactory->create();
+                    $model->setData('banner_id', $this->getId())
+                        ->setData('store_id', $storeViewId)
+                        ->setData('attribute_code', $attributeCode);
+                }
+
+                if ($this->getData($attributeCode . '_in_store')) {
                     try {
-                        if ($model->getData('attribute_code') == 'image' && $this->getData('delete_image')) {
+                        if ($attributeCode == 'image' && $this->getData('delete_image')) {
                             $model->delete();
                         } else {
-                            $model->setValue($this->getData($model->getData('attribute_code') . '_value'))->save();
+                            $model->setValue($this->getData($attributeCode . '_value'))->save();
                         }
                     } catch (\Exception $e) {
                         $this->_monolog->addError($e->getMessage());
@@ -354,5 +373,26 @@ class Banner extends \Magento\Framework\Model\AbstractModel
             default:
                 return '_blank';
         }
+    }
+
+    /**
+     * Retrieve custom attributes values.
+     *
+     * @return \Magento\Framework\Api\AttributeInterface[]|null
+     */
+    public function getCustomAttributes()
+    {
+        $customAttributes = [];
+
+        $customAttributeCodes = array_keys($this->_data);
+
+        foreach ($customAttributeCodes as $customAttributeCode) {
+            $customAttribute = $this->customAttributeFactory->create()
+                ->setAttributeCode($customAttributeCode)
+                ->setValue($this->_data[$customAttributeCode]);
+            $customAttributes[$customAttributeCode] = $customAttribute;
+        }
+
+        return array_values($customAttributes);
     }
 }
