@@ -24,6 +24,7 @@ namespace Magestore\Bannerslider\Block;
 
 use Magestore\Bannerslider\Model\Slider as SliderModel;
 use Magestore\Bannerslider\Model\Status;
+use Magento\Cms\Model\Template\FilterProvider;
 
 /**
  * Slider item.
@@ -112,6 +113,13 @@ class SliderItem extends \Magento\Framework\View\Element\Template
      * @var \Magento\Framework\Stdlib\DateTime\Timezone
      */
     protected $_stdTimezone;
+	
+	/**
+     * filter provider
+     *
+     * @var \Magento\Cms\Model\Template\FilterProvider
+     */
+    protected $_filterProvider;
 
     /**
      * [__construct description].
@@ -134,6 +142,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         \Magento\Framework\Stdlib\DateTime\DateTime $stdlibDateTime,
         \Magestore\Bannerslider\Helper\Data $bannersliderHelper,
         \Magento\Framework\Stdlib\DateTime\Timezone $_stdTimezone,
+		FilterProvider $filterProvider,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -144,6 +153,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
         $this->_scopeConfig = $context->getScopeConfig();
         $this->_stdTimezone = $_stdTimezone;
+		$this->_filterProvider = $filterProvider;
     }
 
     /**
@@ -304,5 +314,14 @@ class SliderItem extends \Magento\Framework\View\Element\Template
     public function getFlexsliderHtmlId()
     {
         return 'magestore-bannerslider-flex-slider-'.$this->getSlider()->getId().$this->_stdlibDateTime->gmtTimestamp();
+    }
+	
+	/**
+	 *
+	 * format image
+	 * @return string
+	 */
+	public function formatCaption($content) {
+        return $this->_filterProvider->getPageFilter()->filter($content);
     }
 }
