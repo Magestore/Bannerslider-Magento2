@@ -132,7 +132,7 @@ $bannerCollection = $block->getBannerCollection();
                         <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
                             <img alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
                         </a>
-                        <?php if($banner->getCaption()): ?><div class="flex-caption"><?php echo $banner->getCaption(); ?></div><?php endif; ?>
+                        <?php if($banner->getCaption()): ?><div class="flex-caption"><?php echo $block->formatCaption($banner->getCaption()) ?></div><?php endif; ?>
                     </li>
                     <?php else :
                     ?>
@@ -140,7 +140,7 @@ $bannerCollection = $block->getBannerCollection();
                         <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
                             <img alt="<?php echo $banner->getImageAlt() ?>"  src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
                         </a>
-                        <?php if($banner->getCaption()): ?><div class="flex-caption"><?php echo $banner->getCaption(); ?></div><?php endif; ?>
+                        <?php if($banner->getCaption()): ?><div class="flex-caption"><?php echo $block->formatCaption($banner->getCaption()) ?></div><?php endif; ?>
                     </li>
                     <?php endif; ?>
                 <?php endforeach ?>
