@@ -22,39 +22,37 @@
 
 namespace Magestore\Bannerslider\Controller\Adminhtml\Slider;
 
+use Magento\Framework\Controller\ResultFactory;
 /**
- * Mass Delete Slider action
+ * MassDelete action.
  * @category Magestore
  * @package  Magestore_Bannerslider
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\Slider
+class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
 {
-    /**
-     * @var \Magento\Framework\View\Result\PageFactory
-     */
+
     public function execute()
     {
         $sliderIds = $this->getRequest()->getParam('slider');
         if (!is_array($sliderIds) || empty($sliderIds)) {
-            $this->messageManager->addError(__('Please select slider(s).'));
+            $this->messageManager->addErrorMessage(__('Please select slider(s).'));
         } else {
-            $sliderCollection = $this->_sliderCollectionFactory->create()
-                ->addFieldToFilter('slider_id', ['in' => $sliderIds]);
             try {
-                foreach ($sliderCollection as $slider) {
+                foreach ($sliderIds as $sliderUd) {
+                    $slider = $this->_objectManager->create('Magestore\Bannerslider\Model\Slider')
+                        ->load($sliderUd);
                     $slider->delete();
                 }
-                $this->messageManager->addSuccess(
+                $this->messageManager->addSuccessMessage(
                     __('A total of %1 record(s) have been deleted.', count($sliderIds))
                 );
             } catch (\Exception $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             }
         }
         $resultRedirect = $this->resultRedirectFactory->create();
-
         return $resultRedirect->setPath('*/*/');
     }
 }

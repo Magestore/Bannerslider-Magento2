@@ -31,6 +31,7 @@ namespace Magestore\Bannerslider\Model\ResourceModel\Banner;
  */
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+    protected $_idFieldName = 'banner_id';
     /**
      * store view id.
      *
@@ -54,6 +55,15 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected $_isLoadSliderTitle = FALSE;
 
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\Timezone
+     */
+    protected $_stdTimezone;
+
+    /**
+     * @var \Magestore\Bannerslider\Model\Slider
+     */
+    protected $_slider;
     /**
      * _construct
      * @return void
@@ -82,7 +92,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     ) {
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
         $this->_storeManager = $storeManager;
-
+        $this->_stdTimezone = $stdTimezone;
+        $this->_slider = $slider;
         if ($storeViewId = $this->_storeManager->getStore()->getId()) {
             $this->_storeViewId = $storeViewId;
         }
@@ -259,5 +270,26 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         }
 
         return $this;
+    }
+
+
+    public function getBannerCollection($sliderId)
+    {
+        $storeViewId = $this->_storeManager->getStore()->getId();
+        $dateTimeNow = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
+
+        /** @var \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $bannerCollection */
+        $bannerCollection = $this->setStoreViewId($storeViewId)
+            ->addFieldToFilter('slider_id', $sliderId)
+            ->addFieldToFilter('status', \Magestore\Bannerslider\Model\Status::STATUS_ENABLED)
+            ->addFieldToFilter('start_time', ['lteq' => $dateTimeNow])
+            ->addFieldToFilter('end_time', ['gteq' => $dateTimeNow])
+            ->setOrder('order_banner', 'ASC');
+
+        if ($this->_slider->getSortType() == \Magestore\Bannerslider\Model\Slider::SORT_TYPE_RANDOM) {
+            $bannerCollection->setOrderRandByBannerId();
+        }
+
+        return $bannerCollection;
     }
 }

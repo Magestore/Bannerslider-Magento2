@@ -184,9 +184,6 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => true],
             'Slider max item'
         )->addIndex(
-            $installer->getIdxName('magestore_bannerslider_slider', ['slider_id']),
-            ['slider_id']
-        )->addIndex(
             $installer->getIdxName('magestore_bannerslider_slider', ['position']),
             ['position']
         )->addIndex(
@@ -317,9 +314,12 @@ class InstallSchema implements InstallSchemaInterface
             null,
             ['nullable' => true],
             'Banner ending time'
-        )->addIndex(
-            $installer->getIdxName('magestore_bannerslider_banner', ['banner_id']),
-            ['banner_id']
+        )->addColumn(
+            'caption',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            null,
+            ['nullable' => true, 'default' => ''],
+            'Banner caption'
         )->addIndex(
             $installer->getIdxName('magestore_bannerslider_banner', ['slider_id']),
             ['slider_id']

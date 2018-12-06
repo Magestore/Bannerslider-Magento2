@@ -20,9 +20,10 @@
  * @license     http://www.magestore.com/license-agreement.html
  */
 
-namespace Magestore\Bannerslider\Controller\Adminhtml\Banner;
+namespace Magestore\Bannerslider\Controller\Adminhtml\Slider;
 
 use Magento\Framework\Controller\ResultFactory;
+use Magestore\Bannerslider\Model\ResourceModel\Banner\Grid\StatusesArray;
 /**
  * MassDelete action.
  * @category Magestore
@@ -30,7 +31,7 @@ use Magento\Framework\Controller\ResultFactory;
  * @module   Bannerslider
  * @author   Magestore Developer
  */
-class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
+class MassEnable extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAction
 {
 
     /**
@@ -41,17 +42,23 @@ class MassDelete extends \Magestore\Bannerslider\Controller\Adminhtml\AbstractAc
      */
     public function execute()
     {
-        $collection = $this->_massActionFilter->getCollection($this->_createMainCollection());
-
+        $sliderCollection = $this->_objectManager->create('Magestore\Bannerslider\Model\ResourceModel\Slider\Collection');
+        $collection = $this->_massActionFilter->getCollection($sliderCollection);
         $collectionSize = $collection->getSize();
-        foreach ($collection as $banner) {
-            $banner->delete();
+        foreach ($collection as $item) {
+            $item->setStatus(StatusesArray::STATUS_ENABLED);
+            try{
+                $item->save();
+
+            }catch (\Exception $e){
+                $this->messageManager->addError($e->getMessage());
+            }
         }
 
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $collectionSize));
+        $this->messageManager->addSuccess(__('A total of %1 record(s) have been disabled.', $collectionSize));
 
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+
         return $resultRedirect->setPath('*/*/');
     }
 }

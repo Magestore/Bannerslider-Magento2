@@ -45,8 +45,8 @@ class Click extends \Magestore\Bannerslider\Controller\Index
         $banner = $this->_bannerFactory->create()->load($bannerId);
 
         if ($banner->getId() && $slider->getId()) {
-            if ($this->_cookieManager->getCookie('bannerslider_user_code_click'.$bannerId) === null) {
-                $this->_cookieManager->setPublicCookie('bannerslider_user_code_click'.$bannerId, $userCode);
+            if ($this->getCookieManager()->getCookie('bannerslider_user_code_click'.$bannerId) === null) {
+                $this->getCookieManager()->setPublicCookie('bannerslider_user_code_click'.$bannerId, $userCode);
                 $reportCollection = $this->_reportCollectionFactory->create()
                     ->addFieldToFilter('date_click', $date)
                     ->addFieldToFilter('slider_id', $sliderId)

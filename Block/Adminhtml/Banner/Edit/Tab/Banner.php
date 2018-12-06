@@ -58,6 +58,12 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
     protected $_banner;
 
     /**
+     * @var \Magento\Cms\Model\Wysiwyg\Config
+     */
+    protected $_wysiwygConfig;
+
+    protected $dateTime;
+    /**
      * constructor.
      *
      * @param \Magento\Backend\Block\Template\Context                        $context
@@ -77,12 +83,16 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         \Magestore\Bannerslider\Model\Banner $banner,
         \Magestore\Bannerslider\Model\ResourceModel\Value\CollectionFactory $valueCollectionFactory,
         \Magestore\Bannerslider\Model\SliderFactory $sliderFactory,
+        \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
+        \Magento\Framework\Stdlib\DateTime\Timezone $dateTime,
         array $data = []
     ) {
         $this->_objectFactory = $objectFactory;
         $this->_banner = $banner;
         $this->_valueCollectionFactory = $valueCollectionFactory;
         $this->_sliderFactory = $sliderFactory;
+        $this->_wysiwygConfig = $wysiwygConfig;
+        $this->dateTime = $dateTime;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -103,6 +113,7 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         );
 
         return $this;
+
     }
 
     /**
@@ -212,6 +223,19 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
             ]
         );
 
+        $wysiwygConfig = $this->_wysiwygConfig->getConfig();
+
+        $elements['caption'] = $fieldset->addField(
+            'caption',
+            'editor',
+            [
+                'title' => __('Caption'),
+                'label' => __('Caption'),
+                'name' => 'caption',
+                'config' => $wysiwygConfig
+            ]
+        );
+
         $elements['click_url'] = $fieldset->addField(
             'click_url',
             'text',
@@ -236,13 +260,18 @@ class Banner extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         $dateFormat = 'M/d/yyyy';
         $timeFormat = 'h:mm a';
         if($dataObj->hasData('start_time')) {
-            $datetime = new \DateTime($dataObj->getData('start_time'));
-            $dataObj->setData('start_time', $datetime->setTimezone(new \DateTimeZone($this->_localeDate->getConfigTimezone())));
+
+            $datetime = $this->dateTime->date($dataObj->getData('start_time'), null, $this->_localeDate->getConfigTimezone());
+//            $datetime = new \DateTime($dataObj->getData('start_time'));
+
+            $dataObj->setData('start_time',$datetime);
+
         }
 
         if($dataObj->hasData('end_time')) {
-            $datetime = new \DateTime($dataObj->getData('end_time'));
-            $dataObj->setData('end_time', $datetime->setTimezone(new \DateTimeZone($this->_localeDate->getConfigTimezone())));
+            $datetime = $this->dateTime->date($dataObj->getData('end_time'), null, $this->_localeDate->getConfigTimezone());
+//            $datetime = new \DateTime($dataObj->getData('end_time'));
+            $dataObj->setData('end_time', $datetime);
         }
 
         $style = 'color: #000;background-color: #fff; font-weight: bold; font-size: 13px;';

@@ -46,7 +46,7 @@ $fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
         <?php if ($elementBeforeLabel): ?>
             <?php echo $block->getElementHtml() ?>
             <?php echo $element->getLabelHtml() ?>
-            <?php echo $note ?>
+            <?php echo $block->escapeHtml($note) ?>
         <?php else: ?>
             <?php echo $element->getLabelHtml() ?>
             <div class="control">

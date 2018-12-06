@@ -55,18 +55,6 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
     protected $_sliderCollectionFactory;
 
     /**
-     * scope config.
-     *
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $_scopeConfig;
-
-    /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    protected $_storeManager;
-
-    /**
      * [__construct description].
      *
      * @param \Magento\Framework\View\Element\Template\Context                $context
@@ -87,9 +75,6 @@ class Bannerslider extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
         $this->_coreRegistry = $coreRegistry;
         $this->_sliderCollectionFactory = $sliderCollectionFactory;
-
-        $this->_scopeConfig = $context->getScopeConfig();
-        $this->_storeManager = $context->getStoreManager();
     }
 
     /**

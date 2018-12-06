@@ -98,6 +98,20 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
     protected $_fileFactory;
 
     /**
+     * @var \Magento\Ui\Component\MassAction\Filter
+     */
+    protected $_massActionFilter;
+
+    /**
+     * @var \Magento\MediaStorage\Model\File\UploaderFactory
+     */
+    protected $_uploaderFactory;
+
+    /**
+     * @var \Magento\Framework\Image\AdapterFactory
+     */
+    protected $_adapterFactory;
+    /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magestore\Bannerslider\Model\BannerFactory $bannerFactory
      * @param \Magestore\Bannerslider\Model\SliderFactory $sliderFactory
@@ -123,13 +137,17 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
         \Magento\Framework\View\Result\LayoutFactory $resultLayoutFactory,
         \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Backend\Helper\Js $jsHelper
+        \Magento\Backend\Helper\Js $jsHelper,
+        \Magento\Ui\Component\MassAction\Filter $massActionFilter,
+        \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory,
+        \Magento\Framework\Image\AdapterFactory $adapterFactory
     ) {
         parent::__construct($context);
         $this->_coreRegistry = $coreRegistry;
         $this->_fileFactory = $fileFactory;
         $this->_storeManager = $storeManager;
         $this->_jsHelper = $jsHelper;
+        $this->_massActionFilter = $massActionFilter;
 
         $this->_resultPageFactory = $resultPageFactory;
         $this->_resultLayoutFactory = $resultLayoutFactory;
@@ -139,6 +157,21 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
         $this->_sliderFactory = $sliderFactory;
         $this->_bannerCollectionFactory = $bannerCollectionFactory;
         $this->_sliderCollectionFactory = $sliderCollectionFactory;
+        $this->_uploaderFactory = $uploaderFactory;
+        $this->_adapterFactory = $adapterFactory;
+    }
+
+
+    /**
+     * @return \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+     *
+     * @throws LocalizedException
+     */
+    protected function _createMainCollection()
+    {
+        /** @var \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection $collection */
+        $collection = $this->_objectManager->create('Magestore\Bannerslider\Model\ResourceModel\Banner\Collection');
+        return $collection;
     }
 
     /**
