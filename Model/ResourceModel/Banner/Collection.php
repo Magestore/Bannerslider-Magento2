@@ -279,7 +279,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $storeViewId = $this->_storeManager->getStore()->getId();
         $dateTimeNow = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
-
+        $this->clear()->getSelect()->reset(\Zend_Db_Select::WHERE);
         /** @var \Magestore\Bannerslider\Model\ResourceModel\Banner\Collection $bannerCollection */
         $bannerCollection = $this->setStoreViewId($storeViewId)
             ->addFieldToFilter('slider_id', $sliderId)
