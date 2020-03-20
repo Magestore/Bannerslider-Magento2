@@ -31,7 +31,7 @@ namespace Magestore\Bannerslider\Controller\Adminhtml;
  */
 abstract class AbstractAction extends \Magento\Backend\App\Action
 {
-    const PARAM_CRUD_ID = 'entity_id';
+    const PARAM_CRUD_ID = 'slider_id';
 
     /**
      * @var \Magento\Backend\Helper\Js
