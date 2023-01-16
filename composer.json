@@ -2,10 +2,10 @@
   "name": "magestore/bannerslider-magento2",
   "description": "N/A",
   "require": {
-    "php": "~5.5.0|~5.6.0|~7.0.0"
+    "php": "~8.0.0|~8.1.0"
   },
   "type": "magento2-module",
-  "version": "1.8.0",
+  "version": "3.0.0",
   "license": [
     "OSL-3.0",
     "AFL-3.0"
